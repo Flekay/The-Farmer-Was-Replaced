@@ -1,4 +1,3 @@
-# makes the program sleep for a specified amount of seconds
 def sleep(secs = 1):
     start = get_time()
     scale = 1/((num_unlocked(Unlocks.Speed)+1)*16)

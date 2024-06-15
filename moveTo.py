@@ -1,32 +1,43 @@
-# 0.1623s
-# 1676 op
-def moveTo(x, y):
+# 0.1036s
+# 1661 op
+def moveTo(x, y, ws = get_world_size()):
     # move to a specific tile, taking advantage of connected edges
     # this expects the world to be square so world_size >= 3 only
     # this is such a beautiful solution its a shame that naviTo(x,y) is 2% faster
-    n = get_world_size()
+    hws = ws // 2
     
     # Calculate the shortest x direction
-    dx = (x - get_pos_x() + n // 2) % n - n // 2
+    dx = (x - get_pos_x() + hws) % ws - hws
     # Calculate the shortest y direction
-    dy = (y - get_pos_y() + n // 2) % n - n // 2
+    dy = (y - get_pos_y() + hws) % ws - hws
     
     # Move in x direction
-    if dx > 0:
-        for i in range(dx):
-            move(East)
-    elif dx < 0:
-        for i in range(-dx):
-            move(West)
+    for i in range(dx):
+        move(East)
+    for i in range(-dx):
+        move(West)
     
     # Move in y direction
-    if dy > 0:
-        for i in range(dy):
-            move(North)
-    elif dy < 0:
-        for i in range(-dy):
-            move(South)
-            
+    for i in range(dy):
+        move(North)
+    for i in range(-dy):
+        move(South)
+        
+def moveToPos(pos, ws = get_world_size()):
+    hws = ws // 2
+    
+    dx = (pos[0] - get_pos_x() + hws) % ws - hws
+    dy = (pos[1] - get_pos_y() + hws) % ws - hws
+    
+    for i in range(dx):
+        move(East)
+    for i in range(-dx):
+        move(West)
+    for i in range(dy):
+        move(North)
+    for i in range(-dy):
+        move(South)
+
 def bench():
     clear()
     #set_execution_speed(1)

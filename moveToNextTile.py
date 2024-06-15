@@ -1,4 +1,4 @@
-# 4.1579s
+# 1.3465s
 # 21656 op
 def moveToNextTile():
     # move to a next tile in a zigzag pattern

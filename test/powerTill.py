@@ -24,8 +24,8 @@ def powerTill():
 
     # subsequent batches
     while 1:
-        items = num_items(Items.Power)
-        starts = get_time()
+        # items = num_items(Items.Power)
+        # starts = get_time()
         for b in range(size):
             harvest()
             while measure() != 15:
@@ -35,13 +35,19 @@ def powerTill():
                 plant(Entities.Sunflower)
             moveToNextTile()
         
-        quick_print("Total Time taken:", get_time() - starts, "seconds")
-        quick_print("Items harvested:", num_items(Items.Power) - items)
-        quick_print("Items harvested per second:", (num_items(Items.Power) - items) / (get_time() - starts) )
+        # quick_print("Total Time taken:", get_time() - starts, "seconds")
+        # quick_print("Items harvested:", num_items(Items.Power) - items)
+        # quick_print("Items harvested per second:", (num_items(Items.Power) - items) / (get_time() - starts) )
 
 
 
-start = get_time()
+cPower = num_items(Items.Power)
+batches = 5
 move_x2,move_y2 = loadData()
-powerTill()
-quick_print("Total Time taken:", get_time() - start, "seconds")
+start = get_time()
+powerTill(batches)
+# quick_print("Total Time taken:", get_time() - start, "seconds")
+quick_print("⌀ time per batch:", (get_time() - start) / batches)
+# quick_print("Total Items harvested:", num_items(Items.Power) - cPower)
+# quick_print("⌀ items per batch:", (num_items(Items.Power) - cPower) / batches)
+quick_print("⌀ Items harvested per second:", (num_items(Items.Power) - cPower) / (get_time() - start) )

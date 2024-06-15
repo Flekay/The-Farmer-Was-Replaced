@@ -1,12 +1,12 @@
 # naviTo
-# 0.1565 s
+# 0.1021s
 # 1631 op
 
 # Generate_data
 # 0.1284s
 # 1341 op
 
-# 2,76% faster then "moveTo.py" after ~30 moves
+# 1,84% faster then "moveTo.py" after ~45 moves
 
 def Generate_data(size=get_world_size()):
     move_x = dict()
@@ -821,18 +821,36 @@ def loadData(size=get_world_size()):
         }
     
 move_x2, move_y2 = loadData()
+
 def naviTo(x, y):
     for fx in move_x2[get_pos_x(), x]:
         move(fx)
     for fy in move_y2[get_pos_y(), y]:
         move(fy)
 
+def naviToPos(pos):
+    for fx in move_x2[get_pos_x(), pos[0]]:
+        move(fx)
+    for fy in move_y2[get_pos_y(), pos[1]]:
+        move(fy)
+
+# there is no performance difference between
+# unpacking the tuple: next_x, next_y = powers[i][x]
+# passing the tuple: naviToPos(powers[i][x])
+
 def bench():
     # set_farm_size(5)
     # set_execution_speed(2)
     clear()
+    powers = [0]
+    powers[0] = [0]
+    powers[0][0] = (6,6)
+    i = 0
+    x = 0
     start = get_time()
 
+    # next_x, next_y = powers[i][x]
+    # naviTo(next_x, next_y)
     naviTo(6,6)
     # move_x2, move_y2 = loadData()
     # move_x2,move_y2 = Generate_data()
@@ -841,6 +859,8 @@ def bench():
     clear()
     start = get_op_count()
 
+    # next_x, next_y = powers[i][x]
+    # naviTo(next_x, next_y)
     naviTo(6,6)
     # move_x2, move_y2 = loadData()
     # move_x2,move_y2 = Generate_data()

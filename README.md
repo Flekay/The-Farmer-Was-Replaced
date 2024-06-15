@@ -6,25 +6,18 @@ feel free to contribute
 ## How to use
 Copy and paste the script you want to use.
 
-## Upcoming features
-- use `get_time()` for time based scripts
-- use sunflowers
-- seperate scripts into different folders (Speedrun, First Runthrough)
-- use polyculture
-
-## Helper scripts
+## Common helper scripts
 Here are some helper scripts that can assist you in playing the game "The Farmer Was Replaced":
 
-- `moveTo(x, y)`: This script allows you to move your character to the specified coordinates `(x, y)` on the game map.
+- `moveTo(x, y)` and `moveToPos((x, y))`: These scripts allow you to move your character to a specific position on the map.
 
-- `moveToNextTile()`: Use this script to move your character to the next tile. Moves in a zigzag pattern across the map.
+- `naviTo(x, y)` and `naviToPos((x, y))`: These scripts allow you to navigate your character to a specific position on the map. ~2% Faster than `moveTo()` but requires some setup.
 
-- `tryWatering()`: This script attempts to water the current tile your character is standing on. It can be useful for automating the watering process in the game.
+- `moveToNextTile()`: Use this script to move your character to the next tile. Moves in a zigzag pattern across the map. Only works on even grid sizes.
 
-- `whatToFarm()`: Use this script to get recommendations on what crops to farm based on various factors such as season, soil quality, and market prices.
+- `str(number, precision = 4)`: This script converts a number to a string with a specified precision. Useful for displaying a more precise number in the game.
 
-- `buyTanks()`: This script enables you to purchase water tanks for your character, allowing you to store and transport water more efficiently.
-
+- `sleep(seconds)`: This script pauses the execution of the script for a specified number of seconds. Useful for adding delays between actions.
 
 ## farming scripts
 
@@ -36,8 +29,15 @@ Here are some helper scripts that can assist you in playing the game "The Farmer
 
 - `farmPumpkin(farmAmount)`: Use this script to farm a specified amount of pumpkins on your farm. It can help you automate the process of farming pumpkins in the game.
 
-- `farmPumpkinFast(farmAmount)`: This script allows you to farm a specified amount of pumpkins on your farm quickly. You can use it to automate the process of farming pumpkins in the game. **Requires Lists**
+- `farmPumpkinFast(farmAmount)`: This script allows you to farm a specified amount of pumpkins on your farm quickly. You can use it to automate the process of farming pumpkins in the game.
 
 - `farmMaze(farmAmount)`: This script enables you to farm a specified amount of maze on your farm. You can use it to automate the process of farming maze in the game.
+
+## speedrun stats
+Based on the ingame Stats page, where the stats over the last 60 seconds are displayed. The values are rounded to the nearest 100.
+
+- `Bones`: 16.3k - 16.5k
+
+
 
 Happy farming!

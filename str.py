@@ -1,4 +1,4 @@
-def str(number, round_to = 4, forced = True):
+def str(number, precision = 4):
     negative = False
     if number <= 0:
         if number == 0:
@@ -7,20 +7,12 @@ def str(number, round_to = 4, forced = True):
         negative = True
     string = ""
     n = "0123456789"
-    number = (number * (10**round_to) + 0.5)
+    number = (number * (10**precision) + 0.5)
     number //= 1
-    if round_to > 0 and forced == True:
-        for i in range(round_to):
-            string = n[number %10] + string
-            number //= 10
-        string = "."+string
-    else:
-        for i in range(round_to):
-            if len(string) > 0 or number %10//1 != 0:
-                string = n[number %10] + string  
-            number //= 10
-        if len(string) != 0:
-            string = "."+string
+    for i in range(precision):
+        string = n[number %10] + string
+        number //= 10
+    string = "."+string
     while number > 0:        
         string = n[number% 10] + string
         number //= 10

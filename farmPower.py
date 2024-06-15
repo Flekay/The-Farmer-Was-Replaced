@@ -61,5 +61,16 @@ def farmPower(batches=999999):
                 harvest()
             powers[i] = []
 
+# set_farm_size(6) # 240p/s
+# set_farm_size(8) # 334p/s
+# set_farm_size(10) # 415p/s
+cPower = num_items(Items.Power)
+batches = 5
 move_x2,move_y2 = loadData()
-farmPower(1)
+start = get_time()
+farmPower(batches)
+# quick_print("Total Time taken:", get_time() - start, "seconds")
+quick_print("⌀ time per batch:", (get_time() - start) / batches)
+# quick_print("Total Items harvested:", num_items(Items.Power) - cPower)
+# quick_print("⌀ items per batch:", (num_items(Items.Power) - cPower) / batches)
+quick_print("⌀ Items harvested per second:", (num_items(Items.Power) - cPower) / (get_time() - start) )
