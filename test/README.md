@@ -16,7 +16,3 @@ list of incomplete, inefficient or non-working scripts. So you don't have to was
 ### powerSkip()
 `powerSkip()` is the most promising approach to farm power. It skips level 7 petals. But i want to add the option to fertilize the sunflowers to not loose the waiting for growth time, before replacing the old function.
 - produces ~5% more power than `farmpower()`
-
-## BONES
-### farmBoneHard()
-`farmBoneHard()` is the same as `farmBone()` but hardcoded. It is a bit faster than `farmBone()` but still far from world record(19.2k bones / minute).

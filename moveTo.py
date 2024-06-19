@@ -1,5 +1,5 @@
-# 0.1036s
-# 1661 op
+# bench by @MrBlobfisch
+# 1.7741 - 1.7754
 def moveTo(x, y, ws = get_world_size()):
     # move to a specific tile, taking advantage of connected edges
     # this expects the world to be square so world_size >= 3 only
@@ -23,6 +23,7 @@ def moveTo(x, y, ws = get_world_size()):
     for i in range(-dy):
         move(South)
         
+        
 def moveToPos(pos, ws = get_world_size()):
     hws = ws // 2
     
@@ -38,15 +39,20 @@ def moveToPos(pos, ws = get_world_size()):
     for i in range(-dy):
         move(South)
 
+
+
 def bench():
     clear()
-    #set_execution_speed(1)
+    spots = [
+        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
+        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
+        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
+        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5)
+    ]
+    ws = get_world_size()
     start = get_time()
-    moveTo(6,6)
-    quick_print(str(get_time()-start))
-    
-    clear()
-    start = get_op_count()
-    moveTo(6,6)
-    quick_print(get_op_count()-start-4)
+    for pos in spots:
+        moveToPos(pos, ws)
+    end = get_time()
+    quick_print("moveTo: " + str(end-start))
 bench()

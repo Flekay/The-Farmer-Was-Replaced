@@ -1,6 +1,5 @@
-# naviTo
-# 0.1021s
-# 1631 op
+# bench by @MrBlobfisch
+# 1.7324 - 1.7340
 
 # Generate_data
 # 0.1284s
@@ -820,7 +819,6 @@ def loadData(size=get_world_size()):
             (9, 9): []
         }
     
-move_x2, move_y2 = loadData()
 
 def naviTo(x, y):
     for fx in move_x2[get_pos_x(), x]:
@@ -838,31 +836,18 @@ def naviToPos(pos):
 # unpacking the tuple: next_x, next_y = powers[i][x]
 # passing the tuple: naviToPos(powers[i][x])
 
+move_x2, move_y2 = loadData()
 def bench():
-    # set_farm_size(5)
-    # set_execution_speed(2)
     clear()
-    powers = [0]
-    powers[0] = [0]
-    powers[0][0] = (6,6)
-    i = 0
-    x = 0
+    spots = [
+        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
+        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
+        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
+        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5)
+    ]
     start = get_time()
-
-    # next_x, next_y = powers[i][x]
-    # naviTo(next_x, next_y)
-    naviTo(6,6)
-    # move_x2, move_y2 = loadData()
-    # move_x2,move_y2 = Generate_data()
-    quick_print(str(get_time()-start))
-    
-    clear()
-    start = get_op_count()
-
-    # next_x, next_y = powers[i][x]
-    # naviTo(next_x, next_y)
-    naviTo(6,6)
-    # move_x2, move_y2 = loadData()
-    # move_x2,move_y2 = Generate_data()
-    quick_print(get_op_count()-start-4)
+    for pos in spots:
+        naviToPos(pos)
+    end = get_time()
+    quick_print("NaviTo: " + str(end-start))
 bench()

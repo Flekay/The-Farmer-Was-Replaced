@@ -31,14 +31,14 @@ Here are some helper scripts that can assist you in playing the game "The Farmer
 
 - `farmPumpkin(farmAmount)`: Use this script to farm a specified amount of pumpkins on your farm. It can help you automate the process of farming pumpkins in the game.
 
-- `farmPumpkinFast(farmAmount)`: This script allows you to farm a specified amount of pumpkins on your farm quickly. You can use it to automate the process of farming pumpkins in the game.
-
 - `farmMaze(farmAmount)`: This script enables you to farm a specified amount of maze on your farm. You can use it to automate the process of farming maze in the game.
+
+- `farmBones(count)`: This script allows you to farm a specified amount of bones on your farm. You can use it to automate the process of farming bones in the game.
 
 ## speedrun stats
 Based on the ingame Stats page, where the stats over the last 60 seconds are displayed. The values are rounded to the nearest 100. Max upgrades are assumed.
 
-- `Bones`: 16.6k
+- `Bones`: 19.6k
 - `Power`: 60.8k # with Fertilizer
 - `Power`: 29.2k # without Fertilizer
 
