@@ -8,5 +8,5 @@ def farmWood(farmAmount):
             plant(Entities.Tree)
         else:
             plant(Entities.Bush)
-        tryWatering()
+        # tryWatering()
         moveToNextTile()

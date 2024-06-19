@@ -1,5 +1,5 @@
 # 60s stats 16.3k - 16.5k
-def farmBone(count):
+def farmBone(count=2000):
     setupBones()
     opposite = {
         North: South,
@@ -14,7 +14,7 @@ def farmBone(count):
     
     while items < count:
         if num_items(egg) < 1:
-            trade(Items.Egg)
+            trade(egg)
         use_item(egg)
         colour = measure()
         numDinos = dinos[colour]
@@ -75,5 +75,5 @@ def setupBones():
 
 
 start = get_time()
-farmBone(2000)
+farmBone()
 quick_print(get_time() - start)

@@ -8,5 +8,5 @@ def farmCarrot(farmAmount):
         if get_ground_type() == Grounds.Turf:
             till()
         plant(Entities.Carrots)
-        tryWatering()
+        # tryWatering()
         moveToNextTile()

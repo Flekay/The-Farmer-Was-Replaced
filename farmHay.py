@@ -3,5 +3,4 @@ def farmHay(farmAmount):
     while num_items(Items.Hay) < farmAmount:
         if can_harvest():
             harvest()
-        tryWatering()
         moveToNextTile()
