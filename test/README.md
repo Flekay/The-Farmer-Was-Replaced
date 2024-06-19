@@ -1,6 +1,10 @@
 ## Failed / Inefficient scripts
 list of incomplete, inefficient or non-working scripts. So you don't have to waste time on them.
 
+## BENCHMARK 
+
+### bench
+`bench()` simple function to test the performance moveTo() functions.
 
 ## POWER
 ### powerTill()

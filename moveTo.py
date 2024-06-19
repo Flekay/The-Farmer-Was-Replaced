@@ -1,5 +1,5 @@
-# bench by @MrBlobfisch
-# 1.7741 - 1.7754
+# bench()
+# op: 35019  | time: 2.0837
 def moveTo(x, y, ws = get_world_size()):
     # move to a specific tile, taking advantage of connected edges
     # this expects the world to be square so world_size >= 3 only
@@ -41,18 +41,29 @@ def moveToPos(pos, ws = get_world_size()):
 
 
 
+# Setup for your function
+ws = get_world_size()
+
 def bench():
     clear()
+    # True Random Number Generator
+    # https://www.random.org/
     spots = [
-        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
-        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
-        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
-        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5)
+        (5,0),(2,0),(3,5),(8,9),(6,6),(6,6),
+        (3,0),(4,7),(9,7),(5,3),(7,9),(9,4),
+        (6,7),(4,4),(2,6),(1,5),(6,8),(2,0),
+        (0,1),(4,2),(8,7),(4,7),(8,2),(6,4),
+        (2,7),(5,8),(0,2),(8,0),(0,8),(6,6)
     ]
-    ws = get_world_size()
-    start = get_time()
+    startOp = get_op_count()
+    startTime = get_time()
     for pos in spots:
-        moveToPos(pos, ws)
-    end = get_time()
-    quick_print("moveTo: " + str(end-start))
+
+        # Call your moveTo function here
+        moveToPos(pos)
+
+        if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
+            quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
+            break
+    quick_print("@username | op:", get_op_count() - startOp - 8, " | time:", str(get_time() - startTime))
 bench()

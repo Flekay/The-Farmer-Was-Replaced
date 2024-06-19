@@ -1,3 +1,4 @@
+# up to 19.6k / 60s
 def farmBones(numBones=2000):
 
     dinos = [0, 0, 0, 0]

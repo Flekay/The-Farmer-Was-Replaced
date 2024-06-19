@@ -6,6 +6,7 @@ feel free to contribute
 ## How to use
 Copy and paste the script you want to use.
 
+
 ## Common helper scripts
 Here are some helper scripts that can assist you in playing the game "The Farmer Was Replaced":
 
@@ -41,6 +42,7 @@ Based on the ingame Stats page, where the stats over the last 60 seconds are dis
 - `Bones`: 19.6k
 - `Power`: 60.8k # with Fertilizer
 - `Power`: 29.2k # without Fertilizer
+- `naviTo`: op: 34119  | time: 2.0303
 
 
 

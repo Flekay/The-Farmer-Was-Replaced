@@ -1,5 +1,5 @@
-# bench by @MrBlobfisch
-# 1.7324 - 1.7340
+# bench()
+# op: 34119  | time: 2.0325
 
 # Generate_data
 # 0.1284s
@@ -836,18 +836,29 @@ def naviToPos(pos):
 # unpacking the tuple: next_x, next_y = powers[i][x]
 # passing the tuple: naviToPos(powers[i][x])
 
+# Setup for your function
 move_x2, move_y2 = loadData()
+
 def bench():
     clear()
+    # True Random Number Generator
+    # https://www.random.org/
     spots = [
-        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
-        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
-        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5),
-        (1,7),(4,5),(9,1),(1,9),(0,0),(5,5)
+        (5,0),(2,0),(3,5),(8,9),(6,6),(6,6),
+        (3,0),(4,7),(9,7),(5,3),(7,9),(9,4),
+        (6,7),(4,4),(2,6),(1,5),(6,8),(2,0),
+        (0,1),(4,2),(8,7),(4,7),(8,2),(6,4),
+        (2,7),(5,8),(0,2),(8,0),(0,8),(6,6)
     ]
-    start = get_time()
+    startOp = get_op_count()
+    startTime = get_time()
     for pos in spots:
+
+        # Call your moveTo function here
         naviToPos(pos)
-    end = get_time()
-    quick_print("NaviTo: " + str(end-start))
+
+        if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
+            quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
+            break
+    quick_print("@username | op:", get_op_count() - startOp - 8, " | time:", str(get_time() - startTime))
 bench()
