@@ -1,9 +1,21 @@
-# 2k bones | time: 6.9825
-def farmBones(numBones=2000):
+def farmBones():
     dinos = [0, 0, 0, 0]
-    bones = num_items(Items.Bones)
     egg = Items.Egg
 
+    def setupBlackCocks():
+        clear()
+        for tile in range(get_world_size()**2):
+            till()
+            for inf in range(0, 1, 0):
+                use_item(Items.Egg)
+                if measure() != 0:
+                    till()
+                    till()
+                else:
+                    break
+
+            moveToNextTile()
+        moveTo(2, 2)
     # Functions for black dino
     def swap_black():
         swap(North)
@@ -81,50 +93,12 @@ def farmBones(numBones=2000):
     }
 
     # Setup 
-    setupBones()
+    setupBlackCocks()
+    harvest()
 
     # Main loop
-    while num_items(Items.Bones) < numBones + bones:
+    for inf in range(0, 1, 0):
         use_item(egg)
         dino_type = measure()
         operations[dino_type][dinos[dino_type]]()
-
-# outside functions because probably not needed in a speedrun
-def setupBones():
-    clear()
-    moveTo(2, 2)
-    till()
-    move(North)
-    move(North)
-    till()
-    move(South)
-    till()
-    move(East)
-    till()
-    move(South)
-    move(East)
-    till()
-    move(West)
-    till()
-    move(South)
-    till()
-    move(West)
-    move(South)
-    till()
-    move(North)
-    till()
-    move(West)
-    till()
-    move(North)
-    move(West)
-    till()
-    move(East)
-    till()
-    move(North)
-    till()
-    move(East)
-    move(South)
-
-start = get_time()
 farmBones()
-quick_print("2k bones | time:", str(get_time() - start))

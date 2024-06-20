@@ -39,10 +39,13 @@ Here are some helper scripts that can assist you in playing the game "The Farmer
 ## speedrun stats
 Based on the ingame Stats page, where the stats over the last 60 seconds are displayed. The values are rounded to the nearest 100. Max upgrades are assumed.
 
-- `Bones`: 19.6k
+- `Bones`: 19.6k # without preload
+- `Bones`: 20 640 # with preload
 - `Power`: 60.8k # with Fertilizer
 - `Power`: 29.2k # without Fertilizer
 - `naviTo`: op: 34119  | time: 2.0303
+- `Pumpkin`: 130k # netto 107 891
+- `Pumpkin`: 120k # netto 121 000
 
 
 
