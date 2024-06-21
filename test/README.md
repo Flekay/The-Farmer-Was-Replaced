@@ -4,7 +4,10 @@ list of incomplete, inefficient or non-working scripts. So you don't have to was
 ## BENCHMARK 
 
 ### bench
-`bench()` simple function to test the performance moveTo() functions.
+`bench()` simple function to test the performance `moveTo()` functions.
+
+`benchCock()` simple function to test the performance `farmBone()` functions.
+
 
 ## POWER
 ### powerTill()

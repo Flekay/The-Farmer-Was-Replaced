@@ -1,64 +1,32 @@
-# 1.2845s
-# 21656 op
-def moveToNextTileEven():
-    if get_pos_x() % 2 == 0:
-        if get_pos_y() == get_world_size() - 1:
-            move(East)
-        else:
-            move(North)
-    else:
-        if get_pos_y() == 0:
-            move(East)
-        else:
-            move(South)
-
-def moveToNextTileOdd():
-    if get_pos_x() % 2 == 0:
-        if get_pos_y() == get_world_size() - 1:
-            if get_pos_x() == get_world_size() - 1:
-                move(North)
-            move(East)
-        else:
-            move(North)
-    else:
-        if get_pos_y() == 0:
-            move(East)
-        else:
-            move(South)
-
 def moveToNextTile():
-    if get_world_size() == 2:
-        move(North)
-        return
-    if get_pos_x() % 2 == 0:
-        if get_pos_y() == get_world_size() - 1:
-            if get_pos_x() == get_world_size() - 1:
-                move(North)
-            move(East)
-        else:
-            move(North)
+    if get_pos_x() == get_pos_y():
+        move(West)
     else:
-        if get_pos_y() == 0:
-            move(East)
-        else:
-            move(South)
+        move(North)
 
+def moveToNextTileMirror():
+    if get_pos_x() == get_pos_y():
+        move(South)
+    else:
+        move(East)
 
-
+        
+# set_farm_size(3)
+# set_execution_speed(7)
 
 def bench():
     clear()
-    start = get_time()
+    startOp = get_op_count()
+    startTime = get_time()
     for i in range(get_world_size()**2):
-        # moveToNextTileOdd()
-        # moveToNextTileEven()
-        moveToNextTile()
-    quick_print(str(get_time()-start))
+        till()
 
-    clear()
-    start = get_op_count()
-    for i in range(get_world_size()**2):
-        moveToNextTile()
-        # moveToNextTileEven()
-    quick_print(get_op_count()-start-4)
+        # inline is faster than function call
+        if get_pos_x() == get_pos_y():
+            move(West)
+        else:
+            move(North)
+
+    quick_print("@username | op:", get_op_count() - startOp - 8,
+                " | time:", str(get_time() - startTime - 0.0008))
 bench()

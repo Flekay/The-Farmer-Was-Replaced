@@ -14,9 +14,9 @@ Here are some helper scripts that can assist you in playing the game "The Farmer
 
 - `naviTo(x, y)` and `naviToPos((x, y))`: These scripts allow you to navigate your character to a specific position on the map. ~2% Faster than `moveTo()` but requires some setup.
 
-- `moveToNextTile()`: Use this script to move your character to the next tile. Moves in a zigzag pattern across the map. General purpose script. Slower than `moveToNextTileEven()` and `moveToNextTileOdd()`.
-- `moveToNextTileEven()`: Same as `moveToNextTile()` but optimized for even grid sizes.
-- `moveToNextTileOdd()`: Same as `moveToNextTile()` but optimized for odd grid sizes.
+- `moveToNextTile()`: Use this script to move your character to the next tile. Sould be called as an inline function.
+
+- `naviToNextTile()`: Use this script to navigate your character to the next tile. requires some setup. Same speed as `inline moveToNextTile()`, but allows custom pattern.
 
 - `str(number, precision = 4)`: This script converts a number to a string with a specified precision. Useful for displaying a more precise number in the game.
 
@@ -39,11 +39,14 @@ Here are some helper scripts that can assist you in playing the game "The Farmer
 ## speedrun stats
 Based on the ingame Stats page, where the stats over the last 60 seconds are displayed. The values are rounded to the nearest 100. Max upgrades are assumed.
 
-- `Bones`: 19.6k # without preload
-- `Bones`: 20 640 # with preload
-- `Power`: 60.8k # with Fertilizer
+- `Bones`: 19 728 # without preload
+- `Bones`: 20 736 # with preload
+
+- `Power`: 66 819 # with Fertilizer
 - `Power`: 29.2k # without Fertilizer
+
 - `naviTo`: op: 34119  | time: 2.0303
+
 - `Pumpkin`: 130k # netto 107 891
 - `Pumpkin`: 120k # netto 121 000
 

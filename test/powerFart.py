@@ -1,34 +1,55 @@
-# ⌀ Items harvested per second: 995
-# max Over the last 60s you farmed 60.8k Power
+naviToNextTile = loadNaviToNextTile()
+moves = generate_moves()
+
 def powerFart():
     size = get_world_size()**2
-    start = get_time()
+    waterTank = Items.Water_Tank
+    fertilizer = Items.Fertilizer
+    sunflower = Entities.Sunflower
 
-    for i in range(size):
-        while True:
-            if num_items(Items.Sunflower_Seed) < size:
-                trade(Items.Sunflower_Seed, size)
-            if get_ground_type() != Grounds.Soil:
-                till()
-            # while get_water() < 0.76:
-            #     use_item(Items.Water_Tank)
+    def plant7s():
+        for i in range(size):
+            for i in range(0, 1, 0):
+                if get_ground_type() != Grounds.Soil:
+                    till()
+                plant(sunflower)
                 
-            plant(Entities.Sunflower)
-            
-            if measure() != 7:
-                till()
-            else:
-                break
-        moveToNextTile()
+                if measure() != 7:
+                    till()
+                else:
+                    break
+            move(naviToNextTile[get_pos_x()][get_pos_y()])
+    def water():
+        for i in range(size):
+            use_item(waterTank)
+            use_item(waterTank)
+            use_item(waterTank)
+            use_item(waterTank)
+            move(naviToNextTile[get_pos_x()][get_pos_y()])
+        for i in range(size):
+            use_item(waterTank)
+            move(naviToNextTile[get_pos_x()][get_pos_y()])
 
-    while get_time() - start < 80:
-        harvest()
-        plant(Entities.Sunflower)
-        use_item(Items.Fertilizer)
-        use_item(Items.Fertilizer)
-        use_item(Items.Fertilizer)
+    plant7s()
+    water()
 
-    while get_entity_type() == Entities.Sunflower:
+
+    for i in range(1067):
         harvest()
-        moveToNextTile()
-powerFart()
+        plant(sunflower)
+        if measure() == 7:
+            move(naviToNextTile[get_pos_x()][get_pos_y()])
+        elif get_water():
+            use_item(fertilizer)
+        else:
+            use_item(waterTank)
+            use_item(waterTank)
+            use_item(fertilizer)
+
+    for dir in moves:
+        harvest()
+        move(dir)
+
+
+for i in range(0, 1, 0):
+    powerFart()
