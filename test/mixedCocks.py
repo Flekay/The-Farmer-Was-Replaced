@@ -10,23 +10,25 @@ def setupMixedCocks():
             (4, 0), (4, 1), (4, 2), (4, 3), (4, 4),
         ],
         1: [
-            (0, 6), (0, 7), (0, 8), (0, 9),
-            (1, 6), (1, 7), (1, 8), (1, 9),
-            (2, 6), (2, 7), (2, 8), (2, 9),
-            (3, 6), (3, 7), (3, 8), (3, 9),
-            (4, 6), (4, 7), (4, 8), (4, 9),
+            (0, 6), (0, 7), (0, 8), (0, 9), (0, 5),
+            (1, 6), (1, 7), (1, 8), (1, 9), (1, 5),
+            (2, 6), (2, 7), (2, 8), (2, 9), (2, 5),
+            (3, 6), (3, 7), (3, 8), (3, 9), (3, 5),
+            (4, 6), (4, 7), (4, 8), (4, 9), (4, 5),
         ],
         2: [
             (6, 0), (6, 1), (6, 2), (6, 3), (6, 4),
             (7, 0), (7, 1), (7, 2), (7, 3), (7, 4),
             (8, 0), (8, 1), (8, 2), (8, 3), (8, 4),
             (9, 0), (9, 1), (9, 2), (9, 3), (9, 4),
+            (5, 0), (5, 1), (5, 2), (5, 3), (5, 4),
         ],
         3: [
-            (6, 6), (6, 7), (6, 8), (6, 9),
-            (7, 6), (7, 7), (7, 8), (7, 9),
-            (8, 6), (8, 7), (8, 8), (8, 9),
-            (9, 6), (9, 7), (9, 8), (9, 9),
+            (6, 6), (6, 7), (6, 8), (6, 9), (6, 5),
+            (7, 6), (7, 7), (7, 8), (7, 9), (7, 5),
+            (8, 6), (8, 7), (8, 8), (8, 9), (8, 5),
+            (9, 6), (9, 7), (9, 8), (9, 9), (9, 5),
+            (5, 6), (5, 7), (5, 8), (5, 9), (5, 5),
         ],
     }
     for color in cocks:
@@ -44,6 +46,19 @@ def setupMixedCocks():
 
     moveTo(9, 9)
 
+def harvestMixedCocks():
+    harvest()
+    move(North)
+    harvest()
+    move(South)
+    move(East)
+    harvest()
+    move(North)
+    move(North)
+    move(North)
+    move(East)
+    move(East)
+    harvest()
 
 def farmBones():
     egg = Items.Egg
@@ -51,7 +66,7 @@ def farmBones():
     # Functions for black dino
     def swap_black():
         swap(North)
-        return shuffle_black
+        operations[0] = shuffle_black
 
     def shuffle_black():
         move(North)
@@ -59,20 +74,20 @@ def farmBones():
         swap(South)
         swap(East)
         move(South)
-        return swap_black2
+        operations[0] = swap_black2
     
     def swap_black2():
         swap(North)
-        return harvest_black
+        operations[0] = harvest_black
 
     def harvest_black():
         harvest()
-        return swap_black
+        operations[0] = swap_black
 
     # Functions for brown dino
     def swap_brown():
         swap(East)
-        return shuffle_brown
+        operations[1] = shuffle_brown
 
     def shuffle_brown():
         move(East)
@@ -80,20 +95,20 @@ def farmBones():
         swap(West)
         swap(South)
         move(West)
-        return swap_brown2
+        operations[1] = swap_brown2
     
     def swap_brown2():  
         swap(East)
-        return harvest_brown
+        operations[1] = harvest_brown
 
     def harvest_brown():
         harvest()
-        return swap_brown
+        operations[1] = swap_brown
 
     # Functions for white dino
     def swap_white():
         swap(South)
-        return shuffle_white
+        operations[2] = shuffle_white
 
     def shuffle_white():
         move(South)
@@ -101,20 +116,20 @@ def farmBones():
         swap(North)
         swap(West)
         move(North)
-        return swap_white2
+        operations[2] = swap_white2
     
     def swap_white2():
         swap(South)
-        return harvest_white
+        operations[2] = harvest_white
 
     def harvest_white():
         harvest()
-        return swap_white
+        operations[2] = swap_white
 
     # Functions for grey dino
     def swap_grey():
         swap(West)
-        return shuffle_grey
+        operations[3] = shuffle_grey
 
     def shuffle_grey():
         move(West)
@@ -122,26 +137,26 @@ def farmBones():
         swap(East)
         swap(North)
         move(East)
-        return swap_grey2
+        operations[3] = swap_grey2
     
     def swap_grey2():
         swap(West)
-        return harvest_grey
+        operations[3] = harvest_grey
 
     def harvest_grey():
         harvest()
-        return swap_grey
+        operations[3] = swap_grey
 
     operations = [swap_black, swap_brown, swap_white, swap_grey]
 
     # Setup 
     setupMixedCocks()
-    harvest()
+    harvestMixedCocks()
 
     # Main loop
     for i in range(0, 1, 0):
         use_item(egg)
         color = measure()
-        operations[color] = operations[color]()
+        operations[measure()]()
 
 farmBones()
