@@ -10,7 +10,7 @@ def reRun():
         plant(Entities.Pumpkin)
         if get_water() <= 0.0:
             use_item(Items.Water_Tank)
-        moveToNextTileEven()
+        moveToNextTile()
     for i in range(ws):
         for b in range(0, 1, 0):
             plant(Entities.Pumpkin)
@@ -18,20 +18,20 @@ def reRun():
                 use_item(Items.Fertilizer)
             else:
                 break
-        moveToNextTileEven()
+        moveToNextTile()
     harvest()
 
 def setupPumpkin():
     clear()
     for i in range(ws):
         till()
-        moveToNextTileEven()
+        moveToNextTile()
 
 def preWater():
     for i in range(ws):
         while get_water() <= 0.75:
             use_item(Items.Water_Tank)
-        moveToNextTileEven()
+        moveToNextTile()
 
 setupPumpkin()
 # preWater() # toggle water
@@ -45,6 +45,7 @@ startTime = get_time()
 reRun()
 nettoPumpkins = num_items(Items.Pumpkin) - pumpkins - fertilizerCost * (fertilizers - num_items(Items.Fertilizer))
 nettoPumpkins = nettoPumpkins / (get_time() - startTime) * 60
+bruttoPumpkins = (num_items(Items.Pumpkin) - pumpkins) / (get_time() - startTime) * 60
 quick_print("op:", get_op_count() - startOp - 8,
 " | time:", str(get_time() - startTime),
-" | netto:", nettoPumpkins)
+" | netto:", nettoPumpkins, "brutto:", bruttoPumpkins)

@@ -75,6 +75,22 @@ def loadNaviToNextTile(size=get_world_size()):
             [West, North, North, North, North, North, North, North, West, East],
             [West, South, South, South, South, South, South, South, South, South]
         ]
+    
+
+def generate_moves(ws = get_world_size()):
+    moves = []
+    moves_row = []
+    for i in range(ws-1):
+        moves_row.append(East)
+    moves_row.append(North)
+    for i in range(ws):
+        moves += moves_row
+    return moves
+
+# this global is generated once per run
+# moves = generate_moves()
+# for dir in moves:
+#     move(dir)
 
 
 

@@ -1,6 +1,5 @@
-# 2k bones | time: 6.7922
-def farmBones(numBones=2000):
-    bones = num_items(Items.Bones)
+def farm_bone(num_bone=2000):
+    bone = num_items(Items.Bones)
     egg = Items.Egg
 
     # Functions for black dino
@@ -90,17 +89,20 @@ def farmBones(numBones=2000):
     operations = [swap_black, swap_brown, swap_white, swap_grey]
 
     # Setup 
-    setupBones()
+    setup_bone()
 
     # Main loop
-    while num_items(Items.Bones) < numBones + bones:
+    while num_items(Items.Bones) < num_bone + bone:
         use_item(egg)
         operations[measure()]()
 
 # outside functions because probably not needed in a speedrun
-def setupBones():
+def setup_bone():
     clear()
-    moveTo(2, 2)
+    move(North)
+    move(North)
+    move(East)
+    move(East)
     till()
     move(North)
     move(North)
@@ -132,7 +134,3 @@ def setupBones():
     till()
     move(East)
     move(South)
-
-start = get_time()
-farmBones()
-quick_print("2k bones | time:", str(get_time() - start))

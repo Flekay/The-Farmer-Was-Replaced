@@ -19,6 +19,7 @@ def powerFart():
                 else:
                     break
             move(naviToNextTile[get_pos_x()][get_pos_y()])
+
     def water():
         for i in range(size):
             use_item(waterTank)
@@ -30,9 +31,9 @@ def powerFart():
             use_item(waterTank)
             move(naviToNextTile[get_pos_x()][get_pos_y()])
 
+
     plant7s()
     water()
-
 
     for i in range(1067):
         harvest()

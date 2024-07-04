@@ -1,7 +1,7 @@
 def farmGold():
     start = get_time()
     n = get_world_size() 
-    
+    clear()
     plant(Entities.Bush)
     nextChestPos = (0, 0)
 
