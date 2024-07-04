@@ -1,57 +1,57 @@
-# The-Farmer-Was-Replaced
-Usefull scripts for the game "The Farmer Was Replaced".
+# The-Farmer-Was-Replaced Scripts
 
-feel free to contribute
+The largest collection of community scripts for the game "The Farmer Was Replaced", including multiple #1 record holders.
 
-## How to use
-Copy and paste the script you want to use.
+## About
 
+This repository contains a variety of scripts created by the community to enhance gameplay and achieve high scores in "The Farmer Was Replaced". Our goal is to compile the most efficient and effective scripts for the game.
 
-## Common helper scripts
-Here are some helper scripts that can assist you in playing the game "The Farmer Was Replaced":
+## Repository Structure
 
-- `moveTo(x, y)` and `moveToPos((x, y))`: These scripts allow you to move your character to a specific position on the map.
+Each folder in this repository represents a different category or type of script. Within each folder, you'll find:
 
-- `naviTo(x, y)` and `naviToPos((x, y))`: These scripts allow you to navigate your character to a specific position on the map. ~2% Faster than `moveTo()` but requires some setup.
+- Individual script files
+- A README.md file containing:
+  - Benchmarks for the scripts in that folder
+  - Detailed descriptions of how each file functions
 
-- `moveToNextTile()`: Use this script to move your character to the next tile. Sould be called as an inline function.
+## How to Use
 
-- `naviToNextTile()`: Use this script to navigate your character to the next tile. requires some setup. Same speed as `inline moveToNextTile()`, but allows custom pattern.
+Most scripts in this collection require the base movement scripts. Follow these steps to get started:
 
-- `str(number, precision = 4)`: This script converts a number to a string with a specified precision. Useful for displaying a more precise number in the game.
+1. Add the movement scripts first. You can find them in the `movement` folder.
+2. Choose the specific script you want to use from the appropriate folder.
+3. Read the folder's README.md for benchmarks and functionality details.
+4. Follow the individual script instructions for implementation.
 
-- `sleep(seconds)`: This script pauses the execution of the script for a specified number of seconds. Useful for adding delays between actions.
+## Contributing
 
-## farming scripts
+We welcome and encourage contributions from all players! If you have a more efficient approach or a new script to share:
 
-- `farmHay(count)`: This script allows you to farm a specified amount of hay on your farm. You can use it to automate the process of farming hay in the game.
+1. Fork this repository
+2. Create a new branch for your script
+3. Add your script to the appropriate folder
+4. Update the folder's README.md with benchmarks and functionality description
+5. Submit a pull request with a clear description of your changes
 
-- `farmWood(farmAmount)`: Use this script to farm a specified amount of wood on your farm. It can help you automate the process of farming wood in the game.
+Please ensure your code is well-commented and include any necessary instructions for use.
 
-- `farmCarrot(farmAmount)`: This script enables you to farm a specified amount of carrots on your farm. You can use it to automate the process of farming carrots in the game.
+Important notes for contributors:
+- Please use the style defined in `style.md`.
+- You can also send your code or ask any questions on Discord: **flekay**
 
-- `farmPumpkin(farmAmount)`: Use this script to farm a specified amount of pumpkins on your farm. It can help you automate the process of farming pumpkins in the game.
+## Record Holders
 
-- `farmMaze(farmAmount)`: This script enables you to farm a specified amount of maze on your farm. You can use it to automate the process of farming maze in the game.
+This collection includes scripts that have achieved #1 records in various categories. Check the individual folder READMEs for detailed benchmarks and performance information.
 
-- `farmBones(count)`: This script allows you to farm a specified amount of bones on your farm. You can use it to automate the process of farming bones in the game.
+## Disclaimer
 
-## speedrun stats
-Based on the ingame Stats page, where the stats over the last 60 seconds are displayed. The values are rounded to the nearest 100. Max upgrades are assumed.
+These scripts are community-created content and are not officially affiliated with or endorsed by the creators of "The Farmer Was Replaced". Use at your own discretion and in accordance with the game's terms of service.
 
-- `Bones`: 19 872 # without preload
-- `Bones`: 20 736 # with preload
+## License
 
-- `Power`: 66 819 # with Fertilizer
-- `Power`: 29.2k # without Fertilizer
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0). See the [LICENSE](LICENSE) file for details.
 
-- `naviTo`: op: 34119  | time: 2.0303
+## Contact
 
-- `Pumpkin`: 130k # netto 107 891
-- `Pumpkin`: 120k # netto 121 000
-
-- `Cactus`: ???
-
-
-
-Happy farming!
+For questions, suggestions, or discussions, you can reach out on Discord: **flekay**

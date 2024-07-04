@@ -1,0 +1,6 @@
+{
+    "files.eol": "\n",
+    "[python]": {
+        "editor.tabSize": 4,
+    }
+}
