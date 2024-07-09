@@ -1,13 +1,13 @@
 clear()
 move_to(4,4)
+MOVES = generate_moves()
 ENTITY = {Entities.Tree, Entities.Carrots}
 FERTILIZER = Items.Fertilizer
+BUSH = Entities.Bush
 
-for x in range(10):
-	for y in range(10):
-		plant(Entities.Bush)
-		move(East)
-	move(North)
+for direction in MOVES:
+	plant(BUSH)
+	move(direction)
 harvest()
 
 for i in range(0,1,0):

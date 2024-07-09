@@ -7,7 +7,7 @@ This folder contains movement related functions. These functions are used to mov
 ### benchmark-destination.py | move to a specific position
 | file                        | setup time | ops per bench | ops per move |
 | --------------------------- | ---------- | ------------- | ------------ |
-| navi-to-pos.py              | 69.4154s   |  539          |  3.2865      |
+| navi-to-pos.py              | 51.0140s   |  539          |  3.2865      |
 | navi-to.py                  | 0.0806s    |  869          |  5.2987      |
 | move-to.py                  | 0s         | 1769          | 10.7865      |
 
