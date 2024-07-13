@@ -1,35 +1,34 @@
-NAVI_TO_NEXT_TILE = loadNaviToNextTile()
+NAVI_TO_NEXT_TILE = navi_to_next_tile()
 MOVES = generate_moves()
+WATER = Items.Water_Tank
+FERTILIZER = Items.Fertilizer
+SUNFLOWER = Entities.Sunflower
 
 def powerFart():
-	size = get_world_size()**2
-	WATER = Items.Water_Tank
-	FERTILIZER = Items.Fertilizer
-	SUNFLOWER = Entities.Sunflower
 
 	def plant7s():
-		for i in range(size):
-			for i in range(0, 1, 0):
-				if get_ground_type() != Grounds.Soil:
-					till()
+		for direction in MOVES:
+			if get_ground_type() != Grounds.Soil:
+				till()
+			plant(SUNFLOWER)
+			while measure() != 7:
 				plant(SUNFLOWER)
-				
 				if measure() != 7:
 					till()
 				else:
 					break
-			move(NAVI_TO_NEXT_TILE[get_pos_x()][get_pos_y()])
+			move(direction)
 
 	def water():
-		for i in range(size):
+		for direction in MOVES:
 			use_item(WATER)
 			use_item(WATER)
 			use_item(WATER)
 			use_item(WATER)
-			move(NAVI_TO_NEXT_TILE[get_pos_x()][get_pos_y()])
-		for i in range(size):
+			move(direction)
+		for direction in MOVES:
 			use_item(WATER)
-			move(NAVI_TO_NEXT_TILE[get_pos_x()][get_pos_y()])
+			move(direction)
 
 
 	plant7s()
@@ -52,5 +51,5 @@ def powerFart():
 		move(dir)
 
 
-for i in range(0, 1, 0):
+while True:
 	powerFart()
