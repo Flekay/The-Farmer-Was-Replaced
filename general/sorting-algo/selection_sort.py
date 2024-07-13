@@ -10,3 +10,12 @@ def selection_sort(list):
                 min_idx = i
         (sorted_numbers[s], sorted_numbers[min_idx]) = (sorted_numbers[min_idx], sorted_numbers[s])
     return list
+
+# since resuls are returned, the original list is not modified
+def compact_selection_sort(list):
+    res = []
+    while list:
+        m = min(list)
+        res.append(m)
+        list.remove(m)
+    return res
