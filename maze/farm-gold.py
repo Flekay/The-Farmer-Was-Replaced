@@ -1,6 +1,4 @@
-def farmGold():
-	start = get_time()
-	n = get_world_size() 
+def farmGold(iterations=100):
 	clear()
 	plant(Entities.Bush)
 	nextChestPos = (0, 0)
@@ -11,7 +9,7 @@ def farmGold():
 		(South, East, West, North),
 		(North, West, East, South)
 	)
-	
+
 	opposite = {
 		North: South,
 		East:  West,
@@ -19,14 +17,14 @@ def farmGold():
 		West:  East
 	}
 
-	for x in range(300):
+	for x in range(iterations):
 		while get_entity_type() in [Entities.Treasure, Entities.Bush]:
 			use_item(Items.Fertilizer)
-		
+
 		x, y = get_pos_x(), get_pos_y()
 		stack = []
 		visited = set([(x, y)])
-		
+
 		while get_entity_type() != Entities.Treasure:
 			moves = moveTable[getMovesOpt(x, y, nextChestPos)]
 			moved = False
@@ -40,17 +38,16 @@ def farmGold():
 					stack.append(dir)
 					moved = True
 					break
-			
+
 			if moved:
 				continue
-			
+
 			move(opposite[stack.pop()])
 			x, y = get_pos_x(), get_pos_y()
-		
+
 		nextChestPos = measure()
-		
+
 	harvest()
-	quick_print(get_time() - start)
 
 
 def mazeCoordAdd(x, y, dir):

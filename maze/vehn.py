@@ -1,7 +1,10 @@
+BUSH = Entities.Bush
+FERTILIZER = Items.Fertilizer
+TREASURE = Entities.Treasure
 # This is not Vehn's code, but implements the core idea.
 def vehn(iterations=100):
 	BASE = (4, 4)
-	
+
 	# Geometry tables
 	OPP = {North: South, East: West,
 		   South: North, West: East}
@@ -16,9 +19,7 @@ def vehn(iterations=100):
 
 	# Helper recursive function to find walls and treasure
 	def scan_maze(back=None):
-		if (get_pos_x(), get_pos_y()) == BASE:
-			till()
-		if get_entity_type() == Entities.Treasure:
+		if get_entity_type() == TREASURE:
 			TREASURE_POS.append((get_pos_x(), get_pos_y()))
 		WALLS[(get_pos_x(), get_pos_y())] = set()
 		for dir in [North, East, South, West]:
@@ -73,9 +74,9 @@ def vehn(iterations=100):
 
 	# Start the maze!
 	clear()
-	plant(Entities.Bush)
-	while get_entity_type() == Entities.Bush:
-		use_item(Items.Fertilizer)
+	plant(BUSH)
+	while get_entity_type() == BUSH:
+		use_item(FERTILIZER)
 
 	# Map the maze
 	scan_maze()
@@ -85,20 +86,20 @@ def vehn(iterations=100):
 	goal = TREASURE_POS[0]
 	while True:
 		# Recycle or harvest treasure if it's here
-		while get_entity_type() == Entities.Treasure:
+		while get_entity_type() == TREASURE:
 			goal = measure()
 			iterations -= 1
 			if iterations == 0:
 				harvest()
 				return
-			while not use_item(Items.Fertilizer):
+			while not use_item(FERTILIZER):
 				pass
 
 		# Compute paths from drone and goal to base
 		dpath = get_path_to_base(get_pos_x(), get_pos_y())
 		gpath = get_path_to_base(goal[0], goal[1])
 		# Cancel the final moves if they're the same
-		while dpath and gpath and dpath[-1] == gpath[-1]:		
+		while dpath and gpath and dpath[-1] == gpath[-1]:
 			gpath.pop()
 			dpath.pop()
 		# Follow the drone path forward
@@ -108,6 +109,11 @@ def vehn(iterations=100):
 		for step in gpath[::-1]:
 			move_and_break_walls(OPP[step])
 
-start_time = get_time()
-vehn()
-quick_print("Maze time:", get_time() - start_time)
+
+timings = []
+for i in range(10000):
+	time = get_time()
+	vehn()
+	time = get_time() - time
+	insort(timings, time)
+	quick_print("#", i, "min:", timings[0], "max:", timings[-1], "median:", median(timings), "avg:", average(timings), "time:", time)
