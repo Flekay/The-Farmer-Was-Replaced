@@ -15,7 +15,7 @@ companion_by_index = {}
 INDEX_MAP = {}
 BUSH_LOCATIONS = [(1,1),(3,6),(6,3),(9,6),(6,9)]
 
-def dieselloc():
+def popwood():
 	for i in range(GRID_SIZE):
 		companion_by_index[i] = 0
 		if not i % 2:
@@ -99,7 +99,7 @@ def dieselloc():
 				companion, x, y = get_companion()
 				# while (x,y) in companions:
 				# 	harvest()
-				# 	plant(CARROT)
+				# 	plant(TREE)
 				# 	companion, x, y = get_companion()
 
 				companions[(x,y)] = companion
@@ -108,4 +108,4 @@ def dieselloc():
 	quick_print("Time taken: " + str(get_time() - start))
 
 for i in range(0,1,0):
-	dieselloc()
+	popwood()

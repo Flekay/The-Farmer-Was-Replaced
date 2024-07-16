@@ -1,8 +1,5 @@
 # Polyculture Carrot
-This will be a collection of scripts that are used to farm carrots using polyculture.
-
-# Polyculture Hay
-This is a script that are used to farm hay using polyculture. Current record is 173,0k items/min.
+This is a collection of scripts that are used to farm carrots using polyculture.
 
 ## Benchmarks
 | file          | items/min | note |
