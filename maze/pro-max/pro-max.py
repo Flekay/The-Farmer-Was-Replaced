@@ -105,7 +105,7 @@ for i in range(10000):
 		use_item(FERTILIZER)
 	# run the timed pro-max algorithm
 	pro_max()
-	time = (get_time() - time)*10
+	time = get_time() - time
 	insort(timings, time)
 	quick_print("#", i, "min:", str(timings[0]), "max:", timings[-1], "median:", median(timings), "avg:", average(timings), "time:", time)
 	# reset

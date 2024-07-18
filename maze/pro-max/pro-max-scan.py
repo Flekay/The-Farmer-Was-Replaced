@@ -73,8 +73,8 @@ def scan_north():
 			# harvest if treasure is found
 			# fails 1/3 of the time
 			# TREASURE_POS[0] = measure()
-			# while not use_item(FERTILIZER):
-			# 	pass
+			# while measure():
+			# 	use_item(FERTILIZER)
 		scan_north()
 		scan_east()
 		scan_west()
@@ -92,8 +92,8 @@ def scan_east():
 			TREASURE_POS[0] = pos
 			# harvest if treasure is found
 			# TREASURE_POS[0] = measure()
-			# while not use_item(FERTILIZER):
-			# 	pass
+			# while measure():
+			# 	use_item(FERTILIZER)
 		scan_east()
 		scan_north()
 		scan_south()
@@ -111,8 +111,8 @@ def scan_south():
 			TREASURE_POS[0] = pos
 			# harvest if treasure is found
 			# TREASURE_POS[0] = measure()
-			# while not use_item(FERTILIZER):
-			# 	pass
+			# while measure():
+			# 	use_item(FERTILIZER)
 		scan_south()
 		scan_east()
 		scan_west()
@@ -130,8 +130,8 @@ def scan_west():
 			TREASURE_POS[0] = pos
 			# harvest if treasure is found
 			# TREASURE_POS[0] = measure()
-			# while not use_item(FERTILIZER):
-			# 	pass
+			# while measure():
+			# 	use_item(FERTILIZER)
 		scan_west()
 		scan_north()
 		scan_south()

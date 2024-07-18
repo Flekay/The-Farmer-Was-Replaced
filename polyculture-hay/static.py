@@ -4,6 +4,7 @@ MOVES = generate_moves()
 FERTILIZER = Items.Fertilizer
 BUSH = Entities.Bush
 BUSH_SET = {Entities.Bush}
+ENTITY = {Entities.Tree, Entities.Carrots}
 
 for direction in MOVES:
 	plant(BUSH)
@@ -15,13 +16,14 @@ for i in range(0,1,0):
 		use_item(FERTILIZER)
 		harvest()
 	harvest()
+
 for i in range(0,1,0):
 	if get_companion()[0] in BUSH_SET:
 		use_item(FERTILIZER)
 	harvest()
 
-ENTITY = {Entities.Tree, Entities.Carrots}
-while get_companion()[0] in ENTITY:
+for i in range(0,1,0):
+	while get_companion()[0] in ENTITY:
+		harvest()
+	use_item(FERTILIZER)
 	harvest()
-use_item(FERTILIZER)
-harvest()
