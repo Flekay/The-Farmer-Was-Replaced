@@ -8,7 +8,7 @@
 | hugger.py     |        |         |         |      |
 | vehn.py       | 38.64s | 132.33s | 87.92s  |      |
 | dfs.py        | 78.56s | 275.09s | 191.06s |      |
-| pro-max.py    | 34.33s | 999.99s | 83.88s  |      |
+| pro-max.py    | 29.40s | 999.99s | 999.99s |      |
 
 
 ## farm-gold.py
@@ -29,10 +29,5 @@ This script uses a depth first search algorithm to find the tresure.
 This script moves randomly until the tresure is found.
 
 ## pro-max.py
-This is an optimized version of the vehn.py script. It uses the same logic. pro-max/pro-max.py is the main script. The rest is just helper code.
-So much time waisted for such a small improvement :/
-
-10x20 min time was insane lucky but is invalid because i resetted the maze outside of the timer.\
-40 runs @ 1x100 | min: 34.33 max: 51.19 median: 39.22 avg: 40.01\
-30 runs @ 1x300 | min: 83.88 max: 102.94 median: 92.19 avg: 92.67\
-999999 @ 10x20 | min: 101.02 max: 163.42 median: 129.55 avg: 129.42
+This is an optimized version of the vehn.py script. It uses the same logic. pro-max/pro-max.py is the main script. The rest is just helper code. Havn't tested 10x20, 1x300 yet.\
+1x100 | min: 29.4016 max: 45.65 median: 37.55 avg: 37.69\

@@ -136,11 +136,3 @@ def scan_west():
 		scan_north()
 		scan_south()
 		move(East)
-
-
-# Start the maze mapping
-def pro_max_scan():
-	scan_north()
-	scan_east()
-	scan_south()
-	scan_west()

@@ -10,14 +10,21 @@ TILE_WEST = tile_west()
 
 # globals bfs
 BASE = (4, 4)
-# PATH = init_path()
-DIR_TO_BASE = {BASE: None}
+PATH = init_path()
+DIR_TO_BASE = {(4, 4): None}
 DIST_TO_BASE = init_dist_to_base()
-queuex = []
+queuepos = []
+queued = {}
 
 # globals path
-DX = {North: 0, South: 0, East: 1, West: -1}
-DY = {North: 1, South: -1, East: 0, West: 0}
+DPOS = generate_dpos()
+
+def generate_dpos():
+	dpos = {}
+	for x in range(get_world_size()):
+		for y in range(get_world_size()):
+			dpos[(x, y)] = {North: (x, y + 1), South: (x, y - 1), East: (x + 1, y), West: (x - 1, y)}
+	return dpos
 
 # globals pro-max
 OPP = {North: South, East: West, South: North, West: East}
@@ -28,55 +35,81 @@ TREASURE = Entities.Treasure
 
 
 
-# This is not Vehn's code, but implements the core idea.
-def pro_max(iterations=300):
+def pro_max(iterations=100):
 	# Map the maze
-	pro_max_scan()
-	pro_max_bfs(BASE[0], BASE[1])
+	scan_north()
+	scan_east()
+	scan_south()
+	scan_west()
+	pro_max_bfs(BASE)
+
 
 	# Solve the maze
 	goal = TREASURE_POS[0]
-	while True:
-		# Recycle or harvest treasure if it's here
-		while get_entity_type() == TREASURE:
-			goal = measure()
-			iterations -= 1
-			if iterations == 0:
-				harvest()
-				return
-			while not use_item(FERTILIZER):
-				pass
+	gpath = []
+	ddpath = []
+	dir = DIR_TO_BASE[goal]
+	while dir:
+		gpath.insert(0, OPP[dir])
+		ddpath.append(dir)
+		goal = DPOS[goal][dir]
+		dir = DIR_TO_BASE[goal]
 
-		# Compute paths from drone and goal to base
-		dpath = pro_max_path(get_pos_x(), get_pos_y())
-		gpath = pro_max_path(goal[0], goal[1])
+	# Follow the goal path backward
+	for step in gpath:
+		move(step)
+
+
+
+	for i in range(iterations - 2):
+		# Compute paths from drone to base
+		dpath = ddpath
+		# Recycle treasure
+		goal = measure()
+		while measure():
+			use_item(FERTILIZER)
+		# Compute paths from goal to base
+		gpath = []
+		dir = DIR_TO_BASE[goal]
+		while dir:
+			gpath.append(dir)
+			goal = DPOS[goal][dir]
+			dir = DIR_TO_BASE[goal]
+		ddpath = gpath + []
 		# Cancel the final moves if they're the same
 		while dpath and gpath and dpath[-1] == gpath[-1]:
 			gpath.pop()
 			dpath.pop()
 		# Follow the drone path forward
 		for step in dpath:
-			move_n_break(step)
+			move(step)
+			for func in WALL[get_pos_x(), get_pos_y()]:
+				func()
 		# Follow the goal path backward
 		for step in gpath[::-1]:
-			move_n_break(OPP[step])
+			move(OPP[step])
+			for func in WALL[get_pos_x(), get_pos_y()]:
+				func()
+	# Harvest the treasure
+	harvest()
 
 
 timings = []
 for i in range(10000):
+	time = get_time()
 	# setup the maze!
 	clear()
+	move_to(4, 4)
 	plant(BUSH)
 	while get_entity_type() == BUSH:
 		use_item(FERTILIZER)
 	# run the timed pro-max algorithm
-	time = get_time()
 	pro_max()
-	time = get_time() - time
+	time = (get_time() - time)*10
 	insort(timings, time)
-	quick_print("#", i, "min:", timings[0], "max:", timings[-1], "median:", median(timings), "avg:", average(timings), "time:", time)
+	quick_print("#", i, "min:", str(timings[0]), "max:", timings[-1], "median:", median(timings), "avg:", average(timings), "time:", time)
 	# reset
 	PATH = init_path()
 	WALL = init_wall()
 	DIST_TO_BASE = init_dist_to_base()
-	DIR_TO_BASE = {BASE: None}
+	DIR_TO_BASE = {(4, 4): None}
