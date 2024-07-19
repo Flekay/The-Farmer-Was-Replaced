@@ -6,7 +6,6 @@ current_dir=0
 clear()
 
 for i in range(0,1,0):
-	till()
 	plant(BUSH)
 	while get_entity_type() == BUSH:
 		use_item(FERTILIZER)

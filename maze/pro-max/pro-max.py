@@ -11,7 +11,7 @@ TILE_WEST = tile_west()
 # globals bfs
 BASE = (4, 4)
 PATH = init_path()
-DIR_TO_BASE = {(4, 4): None}
+DIR_TO_BASE = {BASE: None}
 DIST_TO_BASE = init_dist_to_base()
 queuepos = []
 queued = {}
@@ -29,22 +29,23 @@ def generate_dpos():
 # globals pro-max
 OPP = {North: South, East: West, South: North, West: East}
 BUSH = Entities.Bush
-FERTILIZER = Items.Fertilizer
-TREASURE = Entities.Treasure
 
 
 
 
-def pro_max(iterations=100):
-	# Map the maze
+def pro_max(iterations):
+	# scan the maze
 	scan_north()
 	scan_east()
 	scan_south()
 	scan_west()
+
+	# map the map
 	pro_max_bfs(BASE)
 
 
-	# Solve the maze
+	# get_path_to_base
+	# only works if you move to BASE befor the maze is initialized
 	goal = TREASURE_POS[0]
 	gpath = []
 	ddpath = []
@@ -90,26 +91,26 @@ def pro_max(iterations=100):
 			move(OPP[step])
 			for func in WALL[get_pos_x(), get_pos_y()]:
 				func()
-	# Harvest the treasure
-	harvest()
 
 
 timings = []
-for i in range(10000):
-	time = get_time()
-	# setup the maze!
+for i in range(133337):
 	clear()
-	move_to(4, 4)
+	time = get_op_count()
+	# setup the maze!
+	move_to(BASE)
 	plant(BUSH)
 	while get_entity_type() == BUSH:
 		use_item(FERTILIZER)
 	# run the timed pro-max algorithm
-	pro_max()
-	time = get_time() - time
+	pro_max(300)
+	# Harvest the treasure
+	harvest()
+	time = (get_op_count() - time)/16800
 	insort(timings, time)
 	quick_print("#", i, "min:", str(timings[0]), "max:", timings[-1], "median:", median(timings), "avg:", average(timings), "time:", time)
 	# reset
 	PATH = init_path()
 	WALL = init_wall()
 	DIST_TO_BASE = init_dist_to_base()
-	DIR_TO_BASE = {(4, 4): None}
+	DIR_TO_BASE = {BASE: None}
