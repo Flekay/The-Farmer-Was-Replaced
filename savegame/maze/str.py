@@ -13,7 +13,7 @@ def str(number, precision = 4):
 	for i in range(precision):
 		string = n[number %10] + string
 		number //= 10
-	if precision > 0:
+	if precision != 0:
 		string = "."+string
 	while number > 0:
 		string = n[number% 10] + string
@@ -25,3 +25,4 @@ def str(number, precision = 4):
 	if negative:
 			return "-0" + string
 	return  "0" + string
+	

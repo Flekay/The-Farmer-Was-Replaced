@@ -42,6 +42,9 @@ This script calculates the moves to a specific position on the fly. Does not wra
 ### navi-map.py
 This script pre-calculates the moves to the next tile for each tile. Not position aware.
 
+### navi-world.py
+This script pre-calculates the moves to the next tile for each tile. Withouth using world wraping. Currently only works for even sized maps.
+
 ### move-to-next-tile.py
 This script calculates the moves to the next tile on the fly. Always follows the same path.
 

@@ -1,5 +1,8 @@
+# Savegames
+This folder contains savegames for the game The Farmer Was Replaced. You can use them to test scripts or to have fun. The savegames are stored in the savegame folder of the game.
 
 ## savegame path:
+You can find your savegame folder at the following path:
 ```
 %USERPROFILE%/AppData\LocalLow\TheFarmerWasReplaced\TheFarmerWasReplaced\Saves
 ```
@@ -11,5 +14,5 @@ This is a savegame with infinite resources and everything unlocked. You can use 
 ## speedrun WIP
 This is a savegame with only coding unlocks 0 resources. Its purpose is to hold all the scripts for the speedrun.
 
-## antirng WIP
-This savegame is used to rng based scripts. It uses the speed-up mechanic from timed_reset() to speed up each try.
+## maze
+This savegame is used to test maze scripts. It runs at 100x speed, has everything unlocked and infinite resources. It also contains the example scripts from the leaderboards.
