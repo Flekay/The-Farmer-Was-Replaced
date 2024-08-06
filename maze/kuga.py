@@ -192,8 +192,8 @@ def navi_maze():
 
     start = ((get_pos_x(), get_pos_y()))
     frontier = [start]
-    came_from = {start:None} # Stores path (with direction) A--B[1]-->B[0]
-    came_from_dir = {start:None}
+    came_from = {start:None} # Stores path A-->B
+    came_from_dir = {start:None} # Stores direction ?--DIRECTION-->B
 
     # A* to fill came_from
     while len(frontier) != 0:
