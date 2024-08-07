@@ -13,6 +13,17 @@ MINUTES_TO_RUN = 10          # Run for at least this many minutes
 # This code is run once at the start of the run
 BUSH = Entities.Bush
 FERTILIZER = Items.Fertilizer
+OPEN = 'O' # Open direction will remain open
+WALL = 'W' # Wall can open and need to be checked
+BORDER = 'B' # Fixed border. Will never open, no need to check
+directions = [North, East, South, West]
+back       = [South, West, North, East]
+move_x     = [0,     +1,   0,     -1]
+move_y     = [+1,    0,    -1,    0]
+s = get_world_size()
+l = s - 1
+treasure = [None]
+maze = {} # a map of lists with OPEN, WALL or BORDER for each dir.
 
 
 #===============================================================================
@@ -122,12 +133,6 @@ while get_time() - runtime < MINUTES_TO_RUN * 60:
 		## Reset code or custom statistics code goes here!
 
 
-
-
-
-
-
-
 #===============================================================================
 ## Helper functions
 def do_maze(iterations=100):
@@ -137,97 +142,88 @@ def do_maze(iterations=100):
 		use_item(FERTILIZER)
 
 	# scout the maze
-	maze, treasure = scout_maze()
+	scout_maze()
 
 	# navi the maze x times
 	for i in range(iterations-1):
-		navi_maze(maze, treasure)
-		treasure = measure()
+		navi_maze()
+		treasure[0] = measure()
 
 		# recycle treasure
 		while measure():
 			use_item(FERTILIZER)
-	navi_maze(maze, treasure)
+	navi_maze()
 	harvest()
 
+def scout_tile(recursive = False):
+    pos = (get_pos_x(), get_pos_y())
+    for i in range(len(directions)):
+        if maze[pos][i] == WALL: # Try if open.
+            if move(directions[i]):
+                maze[pos][i] = OPEN
+                probed_tile = (get_pos_x(), get_pos_y())
+                maze[probed_tile][(i+2)%4] = OPEN
+                if recursive:
+                    scout_tile(recursive)
+                move(back[i])
+    if Entities.Treasure == get_entity_type():
+        treasure[0] = pos
+
 def scout_maze():
-	map = {}
-	tiles_left  = get_world_size()**2
-	direction   = 0
-	directions  = [North, East, South, West]
-	back        = [South, West, North, East]
-	treasure    = None
+    # Init maze
+    for x in range(s):
+        for y in range(s):
+                      #  [North, East, South, West]
+            maze[(x,y)] = [WALL, WALL, WALL, WALL]
+            if y == 0: # bottom row
+                maze[(x,y)][2] = BORDER
+            elif y == l: # top row
+                maze[(x,y)][0] = BORDER
+            if x == 0: # left column
+                maze[(x,y)][3] = BORDER
+            elif x == l: # right column
+                maze[(x,y)][1] = BORDER
+    treasure[0] = None
+    scout_tile(True)
 
-	while tiles_left > 0:
-		pos = (get_pos_x(), get_pos_y())
-		if measure():
-			treasure = pos
-		if not pos in map:
-			map[pos] = []
-			for i in range(len(directions)):
-				is_open = move(directions[i])
-				if is_open:
-					move(back[i])
-				# quick_print('Scanning', directions[i], 'is wall:', not is_open)
-				map[pos].append(not is_open)
-			tiles_left -= 1
-		for next in [1, 0, 3, 2]:
-			new = (direction + next) % 4 # 4 directions
-			if move([North, East, South, West][new]):
-				direction = new
-				break
-	return map, treasure
+def navi_maze():
+    # Check for disappeared wall in start position!
+    scout_tile(False)
 
-def navi_maze(maze, treasure):
-	directions  = [North, East, South, West]
-	move_x      = [0,     +1,   0,     -1]
-	move_y      = [+1,    0,    -1,    0]
-	backwards   =  [South, West, North, East]
-	world_size  = get_world_size()
+    start = ((get_pos_x(), get_pos_y()))
+    frontier = [start]
+    came_from = {start:None} # Stores path A-->B
+    came_from_dir = {start:None} # Stores direction ?--DIRECTION-->B
 
-	# Check for disappeared wall in start position!
-	for i in range(len(directions)):
-		if maze[(get_pos_x(), get_pos_y())][i] == True:
-			# Wall was here
-			if move(directions[i]):
-				maze[(get_pos_x(), get_pos_y())][(i+2)%4] = False # Wall is gone
-				move(backwards[i])
-				maze[(get_pos_x(), get_pos_y())][i] = False # Wall is gone
+    # A* to fill came_from
+    while len(frontier) != 0:
+        current = frontier.pop()
+        for i in range(len(directions)):
+            if maze[current][i] != OPEN:
+                continue # We can go that way
+            next = ((current[0]+move_x[i])%s, (current[1]+move_y[i])%s)
+            if next not in came_from:
+                came_from[next] = current
+                came_from_dir[next] = directions[i]
+                if next == treasure[0]:
+                    # We found goal. Break loops
+                    frontier = []
+                    break
+                frontier.insert(0, next)
 
-	start = ((get_pos_x(), get_pos_y()))
-	frontier = [start]
-	came_from = {start:None} # Stores path (with direction) A--B[1]-->B[0]
-	came_from_dir = {start:None}
+    # draw_maze(maze, start, treasure[0], came_from, came_from_dir)
 
-	# A* to fill came_from
-	while len(frontier) != 0:
-		current = frontier.pop()
-		for i in range(len(directions)):
-			if maze[current][i] == True:
-				continue # We still cannot go that way
-			next = ((current[0]+move_x[i])%world_size, (current[1]+move_y[i])%world_size)
-			if next not in came_from:
-				frontier.insert(0, next)
-				came_from[next] = current
-				came_from_dir[next] = directions[i]
-	# draw_maze(maze, start, treasure, came_from, came_from_dir)
+    # Follow the path back
+    current = treasure[0]
+    path = []
+    while current != start:
+        path.append(came_from_dir[current])
+        current = came_from[current]
+    path = reverse(path)
 
-	# Follow the path back
-	current = treasure
-	path = []
-	while current != start:
-		path.append(came_from_dir[current])
-		current = came_from[current]
-
-	# Start moving
-	for d in path[::-1]:
-		move(d)
-		# Check for disappeared walls while we are moving
-		for i in range(len(directions)):
-			if maze[get_pos_x(), get_pos_y()][i] == True:
-				# Wall was here
-				if move(directions[i]):
-					maze[(get_pos_x(), get_pos_y())][(i+2)%4] = False # Wall is gone
-					move(backwards[i])
-					maze[(get_pos_x(), get_pos_y())][i] = False # Wall is gone
-					
+    # Start moving
+    for d in path:
+        move(d)
+        # Check for disappeared walls while we are moving
+        scout_tile(False)
+        # TODO we could replan once we find a new open path
