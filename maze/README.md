@@ -82,7 +82,7 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 20 treas
 | 0 | hugger.py       |           |           |           |           |
 | 0 | tiny-hugger.py  |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         | 26.9105s  | 37.0566s  | 30.9114s  | 31.0826s  |
+| 0 | kuga.py         | 13.7586s  | 28.1829s  | 19.3870s  | 19.3799s  |
 
 
 ## Mid Maze Leaderboard 1x100 (10x10)
@@ -97,7 +97,7 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 100 trea
 | 0 | hugger.py       |           |           |           |           |
 | 0 | tiny-hugger.py  |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         | 111.4583s | 123.6947s | 115.8458s | 116.0371s |
+| 0 | kuga.py         | 59.3612s  | 91.5717s  | 70.8799s  | 70.9983s  |
 
 ## Late Maze Leaderboard 1x300 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 300 treasures.
@@ -111,7 +111,7 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 300 trea
 | 0 | hugger.py       |           |           |           |           |
 | 0 | tiny-hugger.py  |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         | 326.1511s | 343.9965s | 333.7336s | 333.4588s |
+| 0 | kuga.py         | 188.1239s | 224.2446s | 202.1719s | 202.8242s |
 
 ## Speedrun Maze Leaderboard 1x151 (8x8)
 This leaderboard changes over time based on the current meta for timed resets.
@@ -125,7 +125,7 @@ This leaderboard changes over time based on the current meta for timed resets.
 | 0 | hugger.py       |           |           |           |           |
 | 0 | tiny-hugger.py  |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         | 113.1489s | 124.3384s | 118.3982s | 118.9357s |
+| 0 | kuga.py         | 69.0233s  | 86.1773s  | 76.1809s  | 74.7847s  |
 
 
 ## farm-gold.py
