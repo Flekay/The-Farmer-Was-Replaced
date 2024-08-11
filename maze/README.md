@@ -159,3 +159,8 @@ The code employs a hybrid strategy that combines DFS for initial exploration and
 
 ## kuga.py
 This script uses an astar algorithm to calculate the shortest path to the tresure.
+
+## nogo.py
+This script never even tries to solve the maze it just counts on your luck to spawn above the teasure. stupid but works.
+(60/((202 + 206/0.1 + 201)/0.01 / 16800))*500 = 2046,2850 gold/min
+peaked at 6,5k/min
