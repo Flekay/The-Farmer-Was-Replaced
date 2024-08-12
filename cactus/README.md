@@ -17,6 +17,7 @@ Current record is 47.5k items/min by @Danielrab with 6 cactus strat but i cant r
 | inner.py       | 18.4k     | <0.3s      | 90%+            |
 | oneshot.py     | 8k        | 0s         | 10%             |
 | SwedishChef.py | 20k       | 0s         | 100%            |
+| CYR.py         | 29.5k     | 0s         | 33.3%           |
 
 
 ## cacti3.py
@@ -45,3 +46,11 @@ This script plants the entire farm and then sorts the inner cactus. (world size 
 
 ## oneshot.py
 This script plants the entire farm in one go, with only 1 growing stage.
+
+## SwedishChef.py
+made by @SwedishChef
+This script plants the entire farm and then sorts the cactus.
+
+## CYR.py
+This script tries to get the highest possible cactus per minute per character. (minified cacti3 script)
+Currently 196 characters excluding clear() = 29520/196 = 150.6 cactus per minute per character

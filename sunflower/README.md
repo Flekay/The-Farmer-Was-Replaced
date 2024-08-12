@@ -21,3 +21,4 @@ This plants the full field and harvests from 15-9 pallets skipping 8 and 7s sunf
 
 ## CYR.py
 This script tries to get the highest possible sunflowers per minute per character.
+Currently 185 characters excluding clear() = 59900/185 = ~323,78 sunflowers per minute per character
