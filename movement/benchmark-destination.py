@@ -64,3 +64,23 @@ for pos in SPOTS:
 
 run_ops = get_op_count() - run_ops - 32800 - 450 - 3
 quick_print("navi-map.py, Setup time:", str(boot_time), ", ops:", run_ops)
+
+
+# navi-to-func.py
+clear()
+boot_time = get_time()
+navi_to_func_pos = generate_path_func_map(get_world_size())
+boot_time = get_time() - boot_time
+current_pos = (get_pos_x(), get_pos_y())
+
+run_ops = get_op_count()
+
+for pos in SPOTS:
+	navi_to_func_pos[current_pos][pos]()
+	current_pos = pos
+	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
+		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
+		break
+
+run_ops = get_op_count() - run_ops - 32800 - 450 - 3
+quick_print("navi-map.py, Setup time:", str(boot_time), ", ops:", run_ops)

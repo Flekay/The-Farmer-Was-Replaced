@@ -8,6 +8,7 @@ This folder contains movement related functions. These functions are used to mov
 | file                       | setup time | ops per bench | ops per move |
 | -------------------------- | ---------- | ------------- | ------------ |
 | navi-to-pos.py             | 9.4829s    |  539          |  3.2865      |
+| navi-to-func.py            | 10.1986s   |  540          |  3,2926      |
 | navi-to.py                 | 0.0806s    |  869          |  5.2987      |
 | move-to.py                 | 0s         | 1769          | 10.7865      |
 | goto.py                    | 0s         | 1241          |  6.204       |
@@ -26,6 +27,10 @@ This folder contains movement related functions. These functions are used to mov
 
 ### navi-to-pos.py
 This script pre-calculates the moves form each position to each position.
+
+### navi-to-func.py
+Slighly modified version of けろびー code.
+This script pre-calculates the moves form each position to each position. Similar to navi-to-pos.py but uses functions instead of a dictionary.
 
 ### navi-to.py
 This script pre-calculates the moves form each x,y coordinate to each x,y coordinate.
