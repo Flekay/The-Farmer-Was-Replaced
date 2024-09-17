@@ -53,14 +53,3 @@ def powerFart():
 
 while True:
 	powerFart()
-
-
-
-
-
-
-
-
-op = get_op_count()
-use_item(FERTILIZER)
-quick_print("Time:", get_op_count() - op)

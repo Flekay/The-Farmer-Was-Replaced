@@ -79,7 +79,6 @@ def popwood():
 
 
 	companions = {(1,1):BUSH, (3,6):BUSH, (6,3):BUSH, (9,6):BUSH, (6,9):BUSH}
-	start = get_time()
 	for dir in MOVES_ONE_MIN:
 		coords = (get_pos_x(), get_pos_y())
 		if coords in companions:
@@ -98,6 +97,7 @@ def popwood():
 				plant(TREE)
 				companion, x, y = get_companion()
 				# while (x,y) in companions:
+				# 	companions.pop((x,y))
 				# 	harvest()
 				# 	plant(TREE)
 				# 	companion, x, y = get_companion()
@@ -105,7 +105,6 @@ def popwood():
 				companions[(x,y)] = companion
 				move(dir)
 
-	quick_print("Time taken: " + str(get_time() - start))
 
 for i in range(0,1,0):
 	popwood()

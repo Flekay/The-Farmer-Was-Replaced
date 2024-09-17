@@ -26,11 +26,11 @@ This folder contains movement related functions. These functions are used to mov
 ## move to a specific position
 
 ### navi-to-pos.py
-This script pre-calculates the moves form each position to each position.
+This script pre-calculates the moves form each position to each position. You can also dump the compiled functions to a file which will reduce the setup time to ~5.3s.
 
 ### navi-to-func.py
 Slighly modified version of けろびー code.
-This script pre-calculates the moves form each position to each position. Similar to navi-to-pos.py but uses functions instead of a dictionary.
+This script pre-calculates the moves form each position to each position. Similar to navi-to-pos.py but uses functions instead of a dictionary. You can also dump the compiled functions to a file which will reduce the setup time to ~2.4s.
 
 ### navi-to.py
 This script pre-calculates the moves form each x,y coordinate to each x,y coordinate.

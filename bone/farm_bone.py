@@ -1,5 +1,4 @@
-def farm_bone(num_bone=2000):
-	bone = num_items(Items.Bones)
+def farm_bone():
 	EGG = Items.Egg
 
 	# Functions for black dino
@@ -14,7 +13,7 @@ def farm_bone(num_bone=2000):
 		swap(East)
 		move(South)
 		operations[0] = swap_black2
-	
+
 	def swap_black2():
 		swap(North)
 		operations[0] = harvest_black
@@ -35,8 +34,8 @@ def farm_bone(num_bone=2000):
 		swap(South)
 		move(West)
 		operations[1] = swap_brown2
-	
-	def swap_brown2():  
+
+	def swap_brown2():
 		swap(East)
 		operations[1] = harvest_brown
 
@@ -56,7 +55,7 @@ def farm_bone(num_bone=2000):
 		swap(West)
 		move(North)
 		operations[2] = swap_white2
-	
+
 	def swap_white2():
 		swap(South)
 		operations[2] = harvest_white
@@ -77,7 +76,7 @@ def farm_bone(num_bone=2000):
 		swap(North)
 		move(East)
 		operations[3] = swap_grey2
-	
+
 	def swap_grey2():
 		swap(West)
 		operations[3] = harvest_grey
@@ -88,12 +87,13 @@ def farm_bone(num_bone=2000):
 
 	operations = [swap_black, swap_brown, swap_white, swap_grey]
 
-	# Setup 
+	# Setup
 	# setup_bone()
-	# pre_plant()
+	pre_plant()
 
 	# Main loop
-	while num_items(Items.Bones) < num_bone + bone:
+	harvest()
+	for i in range(1650): # ~60s
 		use_item(EGG)
 		operations[measure()]()
 
@@ -144,3 +144,8 @@ def pre_plant():
 			use_item(Items.Egg)
 		move_to_next_tile()
 	move_to(2,2)
+
+
+while True:
+	clear()
+	farm_bone()

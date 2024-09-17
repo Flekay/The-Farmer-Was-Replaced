@@ -4,7 +4,7 @@ This is a script that are used to farm Wood using polyculture. Current world rec
 ## Benchmarks
 | file          | items/min | note |
 | ------------- | --------- | ---- |
-| popwood.py    | 440k      |      |
+| popwood.py    | 444k      |      |
 | diesel.py     | 356k      |      |
 | haylectric.py | 291k      |      |
 

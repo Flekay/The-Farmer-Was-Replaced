@@ -4,7 +4,7 @@ This is a collection of scripts that are used to farm carrots using polyculture.
 ## Benchmarks
 | file          | items/min | note |
 | ------------- | --------- | ---- |
-| popcarrot.py  | 298k      |      |
+| popcarrot.py  | 299k      |      |
 | babymoehre.py | 187k      |      |
 
 ## popcarrot.py
