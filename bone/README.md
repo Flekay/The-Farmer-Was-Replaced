@@ -1,23 +1,27 @@
-# Bones
-This is a collection of bones scripts that are used to farm dinos.
-
-## Nice to know
-- Dinos can be harvested before they are fully grown
+# Bone / Snake
+This will be a collection of snake scripts that are used to farm bone.
 
 ## Benchmarks
-| file           | items/min | setup time | note                         |
-| -------------- | --------- | ---------- | ---------------------------- |
-| abomination.py | 20.9k     | 30s        | best for stats and speedruns |
-| farm_bone.py   | 20.8k     | 0s         | easy to use                  |
-| CYR.py         | 7488      | 0s         |                              |
+| file         | items/min |
+| -----------  | --------- |
+| greedy.py    | ?         |
+| almighty.py  | ?         |
+| timon.py     | ?         |
+| hybrid.py    | ?         |
+| checkered.py | ?         |
 
-## abomination.py
-Created by: @Danielrab
-This file contains a function factory that creates functions that can be used to farm dinos very efficiently at the cost of readability, maintainability, and sanity.
 
-## farm_bone.py
-This file contains a function that can be used to farm dinos efficiently.
+## greedy.py
+This Greedy Best-First Search algorithm has a one-move horizon and only considers moving the snake to the position on the board that appears to be closest to the goal
 
-## CYR.py
-This script tries to get the highest possible bones per minute per character.
-Currently 37 characters excluding clear() = 7488/37 = ~202.38 bones per minute per character
+## almighty.py
+Almighty makes the snake move in a circular pattern around the board
+
+## timon.py
+Timon uses a stack based almighty algorithm to move the snake in a circular pattern around the board with some shortcuts.
+
+## hybrid.py
+This script is a combination of greedy.py and almighty.py. It uses the Greedy Best-First Search algorithm to move the snake to the position on the board that appears to be closest to the goal until the snake reaches a certain length, then it switches to the circular pattern around the board.
+
+## checkered.py
+This checks for dead ends before moving the snake. If there is a dead end, it will move the snake in a different direction.
