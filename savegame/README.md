@@ -4,7 +4,7 @@ This folder contains savegames for the game The Farmer Was Replaced. You can use
 ## savegame path:
 You can find your savegame folder at the following path:
 ```
-%USERPROFILE%/AppData\LocalLow\TheFarmerWasReplaced\TheFarmerWasReplaced\Saves
+%USERPROFILE%\AppData\LocalLow\TheFarmerWasReplaced\TheFarmerWasReplaced\Saves
 ```
 
 

@@ -1,4 +1,4 @@
-# The-Farmer-Was-Replaced Scripts
+# The-Farmer-Was-Replaced Scripts for the BETA VERSION
 
 The largest collection of community scripts for the game "The Farmer Was Replaced", including multiple #1 record holders.
 
