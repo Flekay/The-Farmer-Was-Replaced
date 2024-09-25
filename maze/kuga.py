@@ -63,7 +63,7 @@ while get_time() - runtime < MINUTES_TO_RUN * 60:
 		#===============================================================================
 		## DO NOT CHANGE
 		gold_at_start = num_items(Items.Gold)
-		timer_start = get_op_count()
+		timer_start = get_tick_count()
 		clear()
 		#===============================================================================
 		## Maze solving code here!
@@ -74,7 +74,7 @@ while get_time() - runtime < MINUTES_TO_RUN * 60:
 
 		#===============================================================================
 		## DO NOT CHANGE
-		lap_time = (get_op_count() - timer_start) / OPS
+		lap_time = (get_tick_count() - timer_start) / OPS
 		actual_gold = num_items(Items.Gold) - gold_at_start
 		if actual_gold != EXPECTED_GOLD:
 			quick_print("Expected to get", EXPECTED_GOLD, "gold, actually got", actual_gold, "gold.")

@@ -11,7 +11,7 @@ class Items:
     """Obtained by harvesting carrots."""
 
     Carrot_Seed: Item
-    """Used to grow carrots by calling `plant(Entities.Carrots)` on empty soil."""
+    """Used to grow carrots by calling `plant(Entities.Carrot)` on empty soil."""
 
     Empty_Tank: Item
     """Empty tanks automatically turn into water tanks over time."""
@@ -517,7 +517,7 @@ def get_time() -> float:
 
 
 # -------------------------------------------------------------------------------
-def get_op_count() -> float:
+def get_tick_count() -> float:
     """
     Used to measure the number of operations performed.
 
@@ -529,7 +529,7 @@ def get_op_count() -> float:
     ```
     do_something()
 
-    print(get_op_count())
+    print(get_tick_count())
     ```
     """
     ...

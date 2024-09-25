@@ -156,9 +156,14 @@ def farm_cacti_once_v5():
 	harvest()
 
 
+MOVES = generate_moves()
+
 clear()
-tillAll()
-for i in range(0, 1, 0):
+for direction in MOVES:
+	till()
+	move(direction)
+
+while True:
 	times, sum = [], 0
 	t1 = get_time()
 	farm_cacti_once_v5()

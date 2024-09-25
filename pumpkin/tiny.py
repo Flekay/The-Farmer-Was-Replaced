@@ -1,17 +1,18 @@
 MOVES = generate_moves()
-PUMPKIN = Entities.Pumpkin
-FERTILIZER = Items.Fertilizer
-WATER = Items.Water_Tank
 
 clear()
 for direction in MOVES:
 	till()
+	use_item(Items.Water_Tank)
+	use_item(Items.Water_Tank)
+	use_item(Items.Water_Tank)
+	use_item(Items.Water_Tank)
 	move(direction)
 
-for i in range(0, 1, 0):
+while True:
 	for direction in MOVES:
 		harvest()
-		plant(PUMPKIN)
+		plant(Entities.Pumpkin)
 		if get_water() < 0.25:
-			use_item(WATER)
+			use_item(Items.Water_Tank)
 		move(direction)

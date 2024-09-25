@@ -42,11 +42,11 @@ for algo in sorting_functions:
 	quick_print("##", algo)
 	quick_print("*********************************")
 	for case in test_cases:
-		ops = get_op_count()
+		ops = get_tick_count()
 
 		sorted_arr = sorting_functions[algo](test_cases[case])
 
-		ops = get_op_count() - ops
+		ops = get_tick_count() - ops
 		if sorted_arr == None:
 			sorted_arr = test_cases[case]
 		if is_sorted(sorted_arr):

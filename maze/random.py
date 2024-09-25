@@ -1,13 +1,11 @@
 DIRECTION = [North, South, West, East]
-BUSH = Entities.Bush
-FERTILIZER = Items.Fertilizer
+AMOUNT = get_world_size() * num_unlocked(Unlocks.Mazes)
 clear()
 
-for i in range(0,1,0):
-	till()
-	plant(BUSH)
-	while get_entity_type() == BUSH:
-		use_item(FERTILIZER)
+while True:
+	plant(Entities.Bush)
+	use_item(Items.Fertilizer)
+	use_item(Items.Weird_Substance, AMOUNT)
 	while not measure():
 		move(DIRECTION[random()*4])
 	harvest()

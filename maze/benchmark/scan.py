@@ -76,9 +76,9 @@ def init_walls_reverse():
 
 # Benchmark function
 def benchmark_scan(scan_function, name):
-	time = get_op_count()
+	time = get_tick_count()
 	scan_function()
-	quick_print(name + ":", get_op_count() - time)
+	quick_print(name + ":", get_tick_count() - time)
 	# return_to_start()
 	# quick_print(TREASURE_POS)
 
@@ -113,9 +113,9 @@ def gen_reverse_walls():
 			if dir not in PRE_WALLS_REVERSE_POS[pos]:
 				wllz[pos].append(dir)
 	return wllz
-op = get_op_count()
+op = get_tick_count()
 WALL_FUNC = gen_reverse_walls()
-quick_print("gen_reverse_walls:", get_op_count() - op)
+quick_print("gen_reverse_walls:", get_tick_count() - op)
 # results:
 # Vehn: 45734 ops
 # vehn_scan_prewalls_four_directions_treasure: 43343 ops

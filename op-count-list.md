@@ -128,7 +128,7 @@
   - Fail: 1 op
 
 ### Debug Functions
-- `get_op_count()`: 1 op
+- `get_tick_count()`: 1 op
 - `get_time()`: 1 op
 - `quick_print()`: 1 op
 - `set_execution_speed()`: 200 ops

@@ -67,9 +67,9 @@ def gen_reverse_walls():
 
 # Benchmark function
 def benchmark_mapping(scan_function, name):
-	time = get_op_count()
+	time = get_tick_count()
 	scan_function(BASE[0], BASE[1])
-	quick_print(name + ":", get_op_count() - time)
+	quick_print(name + ":", get_tick_count() - time)
 
 # create the maze
 clear()

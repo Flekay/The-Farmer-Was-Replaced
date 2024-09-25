@@ -51,5 +51,6 @@ def powerFart():
 		move(dir)
 
 
+clear()
 while True:
 	powerFart()

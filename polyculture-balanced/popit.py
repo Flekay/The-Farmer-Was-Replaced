@@ -1,6 +1,6 @@
 MOVES = generate_moves()
 MOVES_ONE_MIN = generate_moves(2500)
-CARROT = Entities.Carrots
+CARROT = Entities.Carrot
 BUSH = Entities.Bush
 GRASS = Entities.Grass
 TREE = Entities.Tree
@@ -26,13 +26,13 @@ def popit():
 			plant(companions.pop(coords))
 		else:
 			plant(GRASS)
-		companion, x, y = get_companion()
-		companions[(x,y)] = companion
+		companion, pos = get_companion()
+		companions[pos] = companion
 		move(dir)
 
 
 
-for i in range(133337):
+while True:
 	clear()
 	pregrow()
 	start = get_time()

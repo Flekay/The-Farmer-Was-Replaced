@@ -1,12 +1,11 @@
 
 MOVES = generate_moves()
-SUNFLOWER = Entities.Sunflower
 
-for i in range(0,1,0):
+while True:
 	for direction in MOVES:
 		harvest()
-		plant(SUNFLOWER)
+		plant(Entities.Sunflower)
 		while measure() != 15:
 			till()
-			plant(SUNFLOWER)
+			plant(Entities.Sunflower)
 		move(direction)

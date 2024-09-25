@@ -232,7 +232,7 @@
         "set_execution_speed",
         "set_farm_size",
         "benchmark",
-        "get_op_count",
+        "get_tick_count",
         "trees",
         "sunflowers",
         "tree",

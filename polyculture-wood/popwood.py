@@ -1,7 +1,7 @@
 MOVES = generate_moves()
 MOVES_ONE_MIN = generate_moves(2500)
 GRID_SIZE = get_world_size()**2
-CARROT = Entities.Carrots
+CARROT = Entities.Carrot
 BUSH = Entities.Bush
 GRASS = Entities.Grass
 TREE = Entities.Tree
@@ -47,11 +47,12 @@ def popwood():
 				plant(BUSH)
 			else:
 				plant(TREE)
-				companion, x, y = get_companion()
-				while not (x, y) in BUSH_LOCATIONS:
+				# companion, x, y = get_companion()
+				companion, pos = get_companion()
+				while not pos in BUSH_LOCATIONS:
 					harvest()
 					plant(TREE)
-					companion, x, y = get_companion()
+					companion, pos = get_companion()
 			use_item(WATER)
 			use_item(WATER)
 			use_item(WATER)
@@ -95,16 +96,16 @@ def popwood():
 				move(dir)
 			else:
 				plant(TREE)
-				companion, x, y = get_companion()
+				companion, pos = get_companion()
 				# while (x,y) in companions:
 				# 	companions.pop((x,y))
 				# 	harvest()
 				# 	plant(TREE)
 				# 	companion, x, y = get_companion()
 
-				companions[(x,y)] = companion
+				companions[pos] = companion
 				move(dir)
 
 
-for i in range(0,1,0):
+while True:
 	popwood()

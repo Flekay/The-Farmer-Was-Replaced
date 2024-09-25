@@ -39,7 +39,7 @@ def go_to_target2(goal_x, goal_y, curr_x = get_pos_x(), curr_y = get_pos_y()):
 			move(West)
 
 def solving_mazes(solves_lol):
-	start = get_op_count()
+	start = get_tick_count()
 	backwards = {North:South, East:West, South:North, West:East}
 	direction_x = {North: 0, South: 0, East: 1, West: -1}
 	direction_y = {North: 1, South: -1, East: 0, West: 0}
@@ -176,7 +176,7 @@ def solving_mazes(solves_lol):
 
 
 	harvest()
-	end = get_op_count()
+	end = get_tick_count()
 	return end-start
 
 	#quick_print(end-start,"seconds")

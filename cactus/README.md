@@ -11,33 +11,9 @@ Current record is 47.5k items/min by @Danielrab with 6 cactus strat but i cant r
 
 | file           | items/min | setup time | seed efficiency |
 | -------------- | --------- | ---------- | --------------- |
-| cacti3.py      | 29.5k     | 0s         | 33.3%           |
-| cacti6dict.py  | 34.7k     | 182.34s    | 50%             |
-| cacti6.py      | 38.7k     | 0s         | 50%             |
-| inner.py       | 18.4k     | <0.3s      | 90%+            |
-| oneshot.py     | 8k        | 0s         | 10%             |
-| SwedishChef.py | 20k       | 0s         | 100%            |
-| CYR.py         | 29.5k     | 0s         | 33.3%           |
-
-
-## cacti3.py
-This script plants 3 cactus in the corner without moving the player.
-```plaintext
-2
-1 3
-```
-
-## cacti6dict.py + cacti6dict-helper.py
-This script plants 6 cactus in the corner like this:
-```plaintext
-1
-3 2
-4 5 6
-```
-
-## cacti6.py
-made by @Josh
-This script uses the 6 cactus strat but without the dictionary.
+| inner.py       | 537k      | <0.3s      | 90%+            |
+| oneshot.py     | 190k      | 0s         | 10%             |
+| SwedishChef.py | 500k      | 0s         | 100%            |
 
 
 ## inner.py
@@ -50,7 +26,3 @@ This script plants the entire farm in one go, with only 1 growing stage.
 ## SwedishChef.py
 made by @SwedishChef
 This script plants the entire farm and then sorts the cactus.
-
-## CYR.py
-This script tries to get the highest possible cactus per minute per character. (minified cacti3 script)
-Currently 196 characters excluding clear() = 29520/196 = 150.6 cactus per minute per character

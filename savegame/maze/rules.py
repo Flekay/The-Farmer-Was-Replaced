@@ -21,7 +21,7 @@
 4. The last action before the timer ends must be the `harvest()` function.
 5. The time must have a precision of 4 digits; missing digits will be counted as 9's.
 6. You must verify the collected gold (this can be done outside the timer).
-7. You must use `get_time()` or `get_op_count()` for time measurement.
+7. You must use `get_time()` or `get_tick_count()` for time measurement.
 8. Your code must be public for verification.
 9. Your file or folder must include all functions used in the maze.
 10. You are only allowed to analyze the source code of mazes that are slower than yours.

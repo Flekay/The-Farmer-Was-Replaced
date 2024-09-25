@@ -1,7 +1,7 @@
 MOVES = generate_moves()
 MOVES_ONE_MIN = generate_moves(2500)
 PUMPKIN = Entities.Pumpkin
-CARROT = Entities.Carrots
+CARROT = Entities.Carrot
 FERTILIZER = Items.Fertilizer
 WATER = Items.Water_Tank
 BUSH = Entities.Bush
@@ -17,11 +17,11 @@ def poly_carrots():
 				plant(BUSH)
 			else:
 				plant(CARROT)
-				companion, x, y = get_companion()
-				while not (x, y) in BUSH_LOCATIONS:
+				companion, pos = get_companion()
+				while not pos in BUSH_LOCATIONS:
 					harvest()
 					plant(CARROT)
-					companion, x, y = get_companion()
+					companion, pos = get_companion()
 			use_item(WATER)
 			use_item(WATER)
 			use_item(WATER)
@@ -57,13 +57,13 @@ def poly_carrots():
 
 			harvest()
 			plant(CARROT)
-			companion, x, y = get_companion()
-			# while (x,y) in companions:
+			companion, pos = get_companion()
+			# while pos in companions:
 			# 	harvest()
 			# 	plant(CARROT)
-			# 	companion, x, y = get_companion()
+			# 	companion, pos = get_companion()
 
-			companions[(x,y)] = companion
+			companions[pos] = companion
 			move(dir)
 	# quick_print("Time taken: " + str(get_time() - start))
 
@@ -72,5 +72,5 @@ def poly_carrots():
 			harvest()
 		move(dir)
 
-for i in range(0,1,0):
+while True:
 	poly_carrots()

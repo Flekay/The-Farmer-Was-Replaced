@@ -1,4 +1,4 @@
-def full_harvest():
+def harvest_polyhay():
 	move(South)
 	move(East)
 	move(East)

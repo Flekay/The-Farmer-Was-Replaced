@@ -10,7 +10,7 @@ class Items:
 
     @property
     def Carrot_Seed(self):
-        """Used to grow carrots by calling `plant(Entities.Carrots)` on empty soil."""
+        """Used to grow carrots by calling `plant(Entities.Carrot)` on empty soil."""
         ...
 
     @property
@@ -616,7 +616,7 @@ def get_time() -> float:
 
 
 # -------------------------------------------------------------------------------
-def get_op_count() -> float:
+def get_tick_count() -> float:
     """
     Used to measure the number of operations performed.
 
@@ -628,7 +628,7 @@ def get_op_count() -> float:
     ```
     do_something()
 
-    print(get_op_count())
+    print(get_tick_count())
     ```
     """
     ...

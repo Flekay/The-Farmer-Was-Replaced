@@ -1,8 +1,8 @@
-BUSH = Entities.Bush
-FERTILIZER = Items.Fertilizer
 clear()
-for i in range(0,1,0):
-    plant(BUSH)
-    while get_entity_type() == BUSH:
-        use_item(FERTILIZER)
-    harvest()
+AMOUNT = get_world_size() * num_unlocked(Unlocks.Mazes)
+while True:
+	plant(Entities.Bush)
+	use_item(Items.Fertilizer)
+	use_item(Items.Weird_Substance, AMOUNT)
+	harvest()
+	

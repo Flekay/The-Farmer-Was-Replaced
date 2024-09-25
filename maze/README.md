@@ -20,7 +20,7 @@ This is a small competition to find the fastest script to solve a maze. The goal
 4. The last action before the timer ends must be the `harvest()` function.
 5. The time must have a precision of 4 digits; missing digits will be counted as 9's.
 6. You must verify the collected gold (this can be done outside the timer).
-7. You must use `get_time()` or `get_op_count()` for time measurement.
+7. You must use `get_time()` or `get_tick_count()` for time measurement.
 8. Your code must be public for verification.
 9. Your file or folder must include all functions used in the maze.
 10. You are only allowed to analyze the source code of mazes that are slower than yours.
@@ -70,72 +70,68 @@ For i = 1 to MAZE_COUNT:
 ```
 
 
+## Benchmarks
+| file             |  gold/min  | notes        |
+| ---------------- | ---------- | ------------ |
+| nogo.py          |  53k       |              |
+| tiny-hugger.py   |  50k       | bugged stats |
+
+
 ## Early Maze Leaderboard 1x20 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 20 treasures.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | /pro-max        | 8.5139s   | 18.1323s  | 11.2679s  | 11.2679s  |
+| 0 | /pro-max        |           |           |           |           |
 | 0 | meorin.py       |           |           |           |           |
-| 0 | vehn.py         | 10.3037s  | 20.7707s  | 12.8393s  | 12.9266s  |
-| 0 | dfs.py          | 14.9768s  | 42.6155s  | 27.4407s  | 27.1052s  |
+| 0 | vehn.py         |           |           |           |           |
+| 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
-| 0 | hugger.py       |           |           |           |           |
-| 0 | tiny-hugger.py  |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         | 13.7586s  | 28.1829s  | 19.3870s  | 19.3799s  |
+| 0 | kuga.py         |           |           |           |           |
 
 
 ## Mid Maze Leaderboard 1x100 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 100 treasures.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | /pro-max        | 29.1330s  | 49.9307s  | 32.5036s  | 32.5036s  |
+| 0 | /pro-max        |           |           |           |           |
 | 0 | meorin.py       |           |           |           |           |
-| 0 | vehn.py         | 35.0286s  | 51.9207s  | 39.7101s  | 39.5643s  |
-| 0 | dfs.py          | 66.4129s  | 128.0101s | 83.6680s  | 86.5905s  |
+| 0 | vehn.py         |           |           |           |           |
+| 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
-| 0 | hugger.py       |           |           |           |           |
-| 0 | tiny-hugger.py  |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         | 59.3612s  | 91.5717s  | 70.8799s  | 70.9983s  |
+| 0 | kuga.py         |           |           |           |           |
 
 ## Late Maze Leaderboard 1x300 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 300 treasures.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | /pro-max        | 77.2243s  | 110.5291s | 87.8430s  | 88.4174s  |
+| 0 | /pro-max        |           |           |           |           |
 | 0 | meorin.py       |           |           |           |           |
-| 0 | vehn.py         | 86.2768s  | 110.0054s | 94.6180s  | 94.7839s  |
-| 0 | dfs.py          | 131.7877s | 249.2588s | 163.0861s | 163.7300s |
+| 0 | vehn.py         |           |           |           |           |
+| 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
-| 0 | hugger.py       |           |           |           |           |
-| 0 | tiny-hugger.py  |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         | 188.1239s | 224.2446s | 202.1719s | 202.8242s |
+| 0 | kuga.py         |           |           |           |           |
 
 ## Speedrun Maze Leaderboard 1x151 (8x8)
 This leaderboard changes over time based on the current meta for timed resets.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | /pro-max        | 34.4651s  | 53.0905s  | 40.6385s  | 40.6385s  |
+| 0 | /pro-max        |           |           |           |           |
 | 0 | meorin.py       |           |           |           |           |
-| 0 | vehn.py         | 38.1625s  | 55.3636s  | 41.9679s  | 43.1850s  |
-| 0 | dfs.py          | 58.5108s  | 106.6305s | 72.6535s  | 73.4470s  |
+| 0 | vehn.py         |           |           |           |           |
+| 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
-| 0 | hugger.py       |           |           |           |           |
-| 0 | tiny-hugger.py  |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         | 69.0233s  | 86.1773s  | 76.1809s  | 74.7847s  |
+| 0 | kuga.py         |           |           |           |           |
 
 
 ## farm-gold.py
 dont know how this works. just copyed it from the internet.
 
 ## hugger.py
-Old script that was used to farm gold befor fertilizer was a thing. Huggs the wall until the tresure is found.
-
-## tiny-hugger.py
-This script is a optimized version of the hugger.py script. It uses the same logic but is faster and way shorter.
+This a super short hugger script.
 
 ## vehn.py
 code by @Zapakh strat by @Vehn.
@@ -162,5 +158,3 @@ This script uses an astar algorithm to calculate the shortest path to the tresur
 
 ## nogo.py
 This script never even tries to solve the maze it just counts on your luck to spawn above the teasure. stupid but works.
-(60/((202 + 206/0.1 + 201)/0.01 / 16800))*500 = 2046,2850 gold/min
-peaked at 6,5k/min

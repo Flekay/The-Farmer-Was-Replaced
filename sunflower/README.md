@@ -4,10 +4,10 @@
 ## Benchmarks
 | file          | items/min | setup time |
 | ------------- | --------- | ---------- |
-| power-fart.py | 66.9k     | 0s         |
-| power-till.py | 11.5k     | 0s         |
-| power-skip.py | 31.8k     | 0s         |
-| CYR.py        | 59.9k     | 0s         |
+| power-fart.py | 3760      | 0s         |
+| power-till.py | 1020      | 0s         |
+| power-skip.py | 1845      | 0s         |
+| CYR.py        |  552      | 0s         |
 
 
 ## power-fart.py

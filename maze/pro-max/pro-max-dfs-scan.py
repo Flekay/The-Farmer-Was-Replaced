@@ -50,6 +50,6 @@ def dfs_explore(current_pos):
 
 
 # Main execution
-ops = get_op_count()
+ops = get_tick_count()
 dfs_explore((get_pos_x(), get_pos_y()))
-quick_print("DFS scan completed in", get_op_count() - ops, "operations")
+quick_print("DFS scan completed in", get_tick_count() - ops, "operations")

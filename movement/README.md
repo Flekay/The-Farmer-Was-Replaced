@@ -7,20 +7,19 @@ This folder contains movement related functions. These functions are used to mov
 ### benchmark-destination.py | move to a specific position
 | file                       | setup time | ops per bench | ops per move |
 | -------------------------- | ---------- | ------------- | ------------ |
-| navi-to-pos.py             | 9.4829s    |  539          |  3.2865      |
-| navi-to-func.py            | 10.1986s   |  540          |  3,2926      |
-| navi-to.py                 | 0.0806s    |  869          |  5.2987      |
-| move-to.py                 | 0s         | 1769          | 10.7865      |
-| goto.py                    | 0s         | 1241          |  6.204       |
+| navi-to-pos.py             | 9.3369s    |  539          |  3.2865      |
+| navi-to-func.py            | 7.3332s    | 1414          |  8,6219      |
+| navi-to.py                 | 0.8305s    | 1583          |  9,6524      |
+| move-to.py                 | 0s         | 1594          |  9,7195      |
 
 
 ### benchmark-loop.py | traverse the map
-| file                        | setup time | ops per map |
-| --------------------------- | ---------- | ----------- |
-| navi-map.py                 | 0.0944s    | 301         |
-| move-to-next-tile.py inline | 0s         | 903         |
-| navi-to-next-tile.py        | 0.0090s    | 903         |
-| move-to-next-tile.py        | 0s         | 1003        |
+| file                        | setup time | ops per map | ops per move |
+| --------------------------- | ---------- | ----------- | ------------ |
+| navi-map.py                 | 0.0744s    |  338        |  3.38        |
+| navi-to-next-tile.py        | 0.0624s    |  991        |  9.91        |
+| move-to-next-tile.py inline | 0s         | 1002        | 10.02        |
+| move-to-next-tile.py        | 0s         | 1113        | 11.13        |
 
 
 ## move to a specific position
