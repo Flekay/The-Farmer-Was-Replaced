@@ -120,6 +120,7 @@ and getting the following unlocks:
     Carrots 4
     Speed 6
         water level switches to 0.85
+    Carrots 5
     Speed 7
         water level switches to 0.94
     expected time: 11m 40s
