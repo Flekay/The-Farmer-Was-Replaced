@@ -18,7 +18,7 @@ for dir in MOVES:
 	move(dir)
 
 # main loop
-while True:
+def hay():
 	# preplant
 	for direction in MOVES:
 		if (get_pos_x(), get_pos_y()) not in BUSH_TILES:
@@ -30,9 +30,10 @@ while True:
 
 	# spam fertilizer
 	harvest()
-	for i in range(4200):
+	for i in range(3000):
 		if Entities.Bush in get_companion():
 			use_item(Items.Fertilizer)
+			use_item(Items.Weird_Substance)
 		harvest()
 
 	# harvest
@@ -40,7 +41,12 @@ while True:
 
 	# spam fertilizer
 	harvest()
-	for i in range(4200):
+	for i in range(3000):
 		if Entities.Bush in get_companion():
 			use_item(Items.Fertilizer)
+			use_item(Items.Weird_Substance)
 		harvest()
+
+
+while True:
+	hay()

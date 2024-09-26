@@ -10,4 +10,5 @@ harvest()
 while True:
 	if Entities.Bush in get_companion():
 		use_item(Items.Fertilizer)
+		use_item(Items.Weird_Substance)
 	harvest()
