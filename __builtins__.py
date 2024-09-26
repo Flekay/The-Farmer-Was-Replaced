@@ -1,4 +1,8 @@
-from typing import Any, Optional
+# This file gives Python type definitions to TFWR builtins to allow editing code with Python editors.
+# Note that the games language is not Python and these definitions are only an approximation.
+# Contributed by @Noon, @KlingonDragon and @dieckie on the TFWR Discord server.
+
+from typing import Any, Optional, Iterable
 
 
 # -------------------------------------------------------------------------------
@@ -9,12 +13,6 @@ class Item:
 class Items:
     Carrot: Item
     """Obtained by harvesting carrots."""
-
-    Carrot_Seed: Item
-    """Used to grow carrots by calling `plant(Entities.Carrot)` on empty soil."""
-
-    Empty_Tank: Item
-    """Empty tanks automatically turn into water tanks over time."""
 
     Fertilizer: Item
     """Call `use_item(Items.Fertilizer)` to instantly grow the plant under the drone by 2s."""
@@ -31,14 +29,13 @@ class Items:
     Pumpkin: Item
     """Obtained when harvesting pumpkins."""
 
-    Pumpkin_Seed: Item
-    """Used to grow pumpkins by calling `plant(Entities.Pumpkin)` on empty soil."""
 
-    Sunflower_Seed: Item
-    """Used to grow sunflowers by calling `plant(Entities.Sunflower)` on empty soil."""
 
     Water_Tank: Item
     """Used to water the ground by calling `use_item(Items.Water_Tank)`."""
+
+    Weird_Substance: Item
+    """Call `use_item(Items.Weird_Substance)` on a bush to grow a maze."""
 
     Wood: Item
     """Obtained from bushes and trees."""
@@ -46,22 +43,30 @@ class Items:
     Cactus: Item
     """Obtained when harvesting sorted cacti."""
 
-    Cactus_Seed: Item
-    """Used to grow cacti by calling `plant(Entities.Cactus)` on empty soil."""
-
-    Egg: Item
-    """Call `use_item(Items.Egg)` to hatch a majestic dinosaur."""
-
-    Bones: Item
+    Bone: Item
     """The bones of an ancient creature."""
+
+
+# -------------------------------------------------------------------------------
+class Hat:
+    """A member of the Hats class"""
+
+class Hats:
+    Straw_Hat: Hat
+    """The default hat."""
+
+    Dinosaur_Hat: Hat
+    """Equip it to start the dinosaur game."""
 
 
 # -------------------------------------------------------------------------------
 class Entity:
     """A member of the Entities Class"""
 
-
 class Entities:
+    Apple: Entity
+    """Dinosaurs love them apparently."""
+
     Grass: Entity
     """
     Grows automatically. Harvest it to obtain `Items.Hay`.
@@ -86,7 +91,7 @@ class Entities:
     Grows on: turf or soil
     """
 
-    Carrots: Entity
+    Carrot: Entity
     """
     Carrots!
 
@@ -184,7 +189,7 @@ class Unlocks:
     Pumpkins: Unlock
     """
     Unlock: Pumpkins!
-    Upgrade: Increases the yield of pumpkins and the cost of pumpkin seeds.
+    Upgrade: Increases the yield and cost of pumpkins.
     """
 
     Variables: Unlock
@@ -199,7 +204,7 @@ class Unlocks:
     Carrots: Unlock
     """
     Unlock: Till the soil and plant carrots.
-    Upgrade: Increases the yield of carrots and the cost of carrot seeds.
+    Upgrade: Increases the yield and cost of carrots.
     """
 
     Lists: Unlock
@@ -262,7 +267,7 @@ class Unlocks:
     Dinosaurs: Unlock
     """
     Unlock: Majestic ancient creatures.
-    Upgrade: Increases the yield of dinosaurs and the cost of eggs.
+    Upgrade: Increases the yield and cost of dinosaurs.
     """
 
 
@@ -300,7 +305,7 @@ def harvest() -> bool:
 
     returns `True` if an entity was removed, `False` otherwise.
 
-    takes the time of `200` operations to execute if an entity was removed, `1` operation otherwise.
+    takes the time of `200` ticks to execute if an entity was removed, `1` tick otherwise.
 
     example usage:
     ```
@@ -317,7 +322,7 @@ def can_harvest() -> bool:
 
     returns `True` if there is an entity under the drone that is ready to be harvested, `False` otherwise.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -331,12 +336,12 @@ def can_harvest() -> bool:
 # -------------------------------------------------------------------------------
 def plant(entity: Entity) -> bool:
     """
-    Plants the specified `entity` under the drone if it can be planted.
-    Otherwise it just does nothing.
+    Spends the cost of the specified `entity` and plants it under the drone.
+    It fails if you can't afford the plant, the ground type is wrong or there's already a plant there.
 
     returns `True` if it succeeded, `False` otherwise.
 
-    takes the time of `200` operations to execute if it succeeded, `1` operation otherwise.
+    takes the time of `200` ticks to execute if it succeeded, `1` tick otherwise.
 
     example usage:
     ```
@@ -359,7 +364,7 @@ def move(direction: Direction) -> bool:
 
     returns `True` if the drone has moved, `False` otherwise.
 
-    takes the time of `200` operations to execute if the drone has moved, `1` operation otherwise.
+    takes the time of `200` ticks to execute if the drone has moved, `1` tick otherwise.
 
     example usage:
     ```
@@ -378,7 +383,7 @@ def swap(direction: Direction) -> bool:
 
     returns `True` if it succeeded, `False` otherwise.
 
-    takes the time of `200` operations to execute on success, `1` operation otherwise.
+    takes the time of `200` ticks to execute on success, `1` tick otherwise.
 
     example usage:
     ```
@@ -395,7 +400,7 @@ def till() -> None:
 
     returns `None`
 
-    takes the time of `200` operations to execute.
+    takes the time of `200` ticks to execute.
 
     example usage:
     ```
@@ -413,7 +418,7 @@ def get_pos_x() -> int:
 
     returns a number representing the current x coordinate of the drone.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -431,7 +436,7 @@ def get_pos_y() -> int:
 
     returns a number representing the current y coordinate of the drone.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -448,7 +453,7 @@ def get_world_size() -> int:
 
     returns the side length of the grid in the north to south direction.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -466,7 +471,7 @@ def get_entity_type() -> Entity | None:
 
     returns `None` if the tile is empty, otherwise returns the type of the entity under the drone.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -484,7 +489,7 @@ def get_ground_type() -> Ground:
 
     returns the type of the ground under the drone.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -502,7 +507,7 @@ def get_time() -> float:
 
     returns the time in seconds since the start of the game.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -519,11 +524,11 @@ def get_time() -> float:
 # -------------------------------------------------------------------------------
 def get_tick_count() -> float:
     """
-    Used to measure the number of operations performed.
+    Used to measure the number of ticks performed.
 
-    returns the number of operations performed since the start of execution.
+    returns the number of ticks performed since the start of execution.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -547,7 +552,7 @@ def trade(item: Item, n: Optional[float] = None) -> bool:
 
     returns `True` if it was able to buy the item(s), `False` otherwise.
 
-    takes the time of `200` operations to execute if it succeeded, `1` operation otherwise.
+    takes the time of `200` ticks to execute if it succeeded, `1` tick otherwise.
 
     example usage:
     ```
@@ -568,7 +573,7 @@ def use_item(item: Item) -> bool:
 
     returns `True` if an item was used, `False` otherwise.
 
-    takes the time of `200` operations to execute if it succeeded, `1` operation otherwise.
+    takes the time of `200` ticks to execute if it succeeded, `1` tick otherwise.
 
     example usage:
     ```
@@ -585,7 +590,7 @@ def get_water() -> float:
 
     returns the water level under the drone as a number between `0` and `1`.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -648,7 +653,7 @@ def set_execution_speed(speed: float) -> None:
 
     returns `None`
 
-    takes the time of `200` operations to execute.
+    takes the time of `200` ticks to execute.
 
     example usage:
     ```
@@ -670,7 +675,7 @@ def set_farm_size(size: float) -> None:
 
     returns `None`
 
-    takes the time of `200` operations to execute.
+    takes the time of `200` ticks to execute.
 
     example usage:
     ```
@@ -687,7 +692,7 @@ def num_items(item: Item) -> float:
 
     returns the number of `item` currently in your inventory.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -710,7 +715,7 @@ def get_cost(thing: Entity | Item | Unlock) -> dict[Item, float] | None:
     - returns a dictionary with items as keys and numbers as values. Each item is mapped to how much of it is needed.
     - returns `None` when used on an upgradeable unlock that is already at the max level.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -730,7 +735,7 @@ def clear() -> None:
 
     returns `None`
 
-    takes the time of `200` operations to execute.
+    takes the time of `200` ticks to execute.
 
     example usage:
     ```
@@ -741,13 +746,13 @@ def clear() -> None:
 
 
 # -------------------------------------------------------------------------------
-def get_companion() -> tuple[Entity, float, float] | None:
+def get_companion() -> tuple[Entity, tuple[int, int]] | None:
     """
     Get the companion preference of the plant under the drone.
 
     returns a list of the form `[companion_type, companion_x_position, companion_y_position]`
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -766,7 +771,7 @@ def unlock(unlock: Unlock) -> bool:
 
     returns `True` if the unlock was successful, `False` otherwise.
 
-    takes the time of `200` operations to execute if it succeeded, `1` operation otherwise.
+    takes the time of `200` ticks to execute if it succeeded, `1` tick otherwise.
 
     example usage:
     ```
@@ -777,13 +782,13 @@ def unlock(unlock: Unlock) -> bool:
 
 
 # -------------------------------------------------------------------------------
-def num_unlocked(thing: Unlock | Entity | Ground | Item) -> float:
+def num_unlocked(thing: Unlock | Entity | Ground | Item) -> int:
     """
     Used to check if an unlock, entity, ground or item is already unlocked.
 
     returns `1` plus the number of times `thing` has been upgraded if `thing` is upgradable. Otherwise returns `1` if `thing` is unlocked, `0` otherwise.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -798,7 +803,7 @@ def num_unlocked(thing: Unlock | Entity | Ground | Item) -> float:
 
 
 # -------------------------------------------------------------------------------
-def measure(direction: Optional[Direction] = None) -> float | None:
+def measure(direction: Optional[Direction] = None) -> float | tuple[int, int] | None:
     """
     Can measure some values on some entities. The effect of this depends on the entity.
 
@@ -812,7 +817,7 @@ def measure(direction: Optional[Direction] = None) -> float | None:
     Dinosaur: returns the number corresponding to the type.
     All other entities: returns `None`.
 
-    takes the time of `1` operation to execute.
+    takes the time of `1` tick to execute.
 
     example usage:
     ```
@@ -823,17 +828,52 @@ def measure(direction: Optional[Direction] = None) -> float | None:
 
 
 # -------------------------------------------------------------------------------
-def timed_reset() -> None:
+def timed_reset(file_name: str, speedup: float) -> None:
     """
-    Starts a timed run for the leaderboard. Saves the game before the run and then loads that save afterwards so you can't gain any items during the run.
+    Starts a timed run for the leaderboard using the specified `file_name` as a starting point.
+    `speedup` sets the starting speedup.
 
     returns `None`
 
-    takes the time of `200` operations to execute.
+    takes the time of `200` ticks to execute.
 
     example usage:
     ```
-    timed_reset()
+    timed_reset("full_run", 256)
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def simulate(filename: str, sim_unlocks: dict[Unlocks, float] | Iterable[Unlocks], sim_items: dict[Items, float], sim_globals: dict[str, Any], seed: float, speedup: float) -> None:
+    """
+    Starts a simulation for the leaderboard using the specified `file_name` as a starting point.
+
+    `sim_unlocks`: A sequence containing the starting unlocks.
+
+    `sim_items`: A dict mapping items to amounts. The simulation starts with these items.
+
+    `sim_globals`: A dict mapping variable names to values. The simulation starts with these variables in the global scope.
+
+    `seed`: The random seed of the simulation. Must be a positive integer.
+
+    `speedup`: The starting speedup.
+
+    returns the time it took to run the simulation.
+
+    takes the time of `200` ticks to execute.
+
+    example usage:
+
+    ```
+    filename = "f1"
+    sim_unlocks = Unlocks
+    sim_items = {Items.Carrot : 10000, Items.Hay : 50}
+    sim_globals = {"a" : 13}
+    seed = 0
+    speedup = 64
+    run_time = simulate(filename, sim_unlocks, sim_items, sim_globals, seed, speedup)
     ```
     """
     ...
@@ -846,7 +886,7 @@ def quick_print(*something: Any) -> None:
 
     returns `None`
 
-    takes the time of `1` operations to execute.
+    takes the time of `1` ticks to execute.
 
     example usage:
     ```
@@ -863,7 +903,7 @@ def random() -> float:
 
     returns the random number.
 
-    takes the time of `1` operations to execute.
+    takes the time of `1` ticks to execute.
 
     example usage:
     ```

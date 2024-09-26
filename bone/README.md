@@ -6,7 +6,7 @@ This will be a collection of snake scripts that are used to farm bone.
 | -----------  | --------- |
 | greedy.py    | ?         |
 | almighty.py  |   197 470 |
-| timon.py     | ?         |
+| timon.py     |   294 280 |
 | hybrid.py    | ?         |
 | checkered.py | ?         |
 | brainlet.py  |     8 560 |
