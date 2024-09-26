@@ -5,10 +5,11 @@ This will be a collection of snake scripts that are used to farm bone.
 | file         | items/min |
 | -----------  | --------- |
 | greedy.py    | ?         |
-| almighty.py  | ?         |
+| almighty.py  |   197 470 |
 | timon.py     | ?         |
 | hybrid.py    | ?         |
 | checkered.py | ?         |
+| brainlet.py  |     8 560 |
 
 
 ## greedy.py
