@@ -3,9 +3,9 @@
 CATEGORY = "early"           # early, mid, late, speedrun
 MAZE_COUNT = 100             # minimum 100 for leaderboard submission
 TRIM = True                  # Shifts current window to the right
-ONLY_PRINT_HIGHSCORE = True  # Only print if it's a new highscore
-PRINT_CURRENT_LAPS = True    # Print the current laps for each maze
-MINUTES_TO_RUN = 10          # Run for at least this many minutes
+ONLY_PRINT_HIGHSCORE = False # Only print if it's a new highscore
+PRINT_CURRENT_LAPS = False   # Print the current laps for each maze
+MINUTES_TO_RUN = 1000        # Run for at least this many minutes
 
 
 #===============================================================================
@@ -23,11 +23,13 @@ queued = {}
 WALL = init_wall()
 PATH = init_path()
 TREASURE_POS = {0: BASE}
-FERTILIZER = Items.Fertilizer
+AMOUNT = {0: get_world_size() * num_unlocked(Unlocks.Mazes)}
 TILE_NORTH = tile_north()
 TILE_EAST = tile_east()
 TILE_SOUTH = tile_south()
 TILE_WEST = tile_west()
+VISITED = set()
+MISSING = init_missing()
 
 # globals path
 DPOS = generate_dpos()
@@ -89,8 +91,7 @@ while get_time() - runtime < MINUTES_TO_RUN * 60:
 		## Build maze
 		move_to_pos(BASE)
 		plant(BUSH)
-		while get_entity_type() == BUSH:
-			use_item(FERTILIZER)
+		use_item(Items.Weird_Substance, AMOUNT[0])
 
 		## Maze solving code here!
 		pro_max(CHEST_COUNT)
@@ -168,7 +169,8 @@ def pro_max(iterations=300):
 	scan_east()
 	scan_south()
 	scan_west()
-	pro_max_bfs(BASE)
+	pro_max_bfs(BASE, 0)
+
 
 
 	# Solve the maze
@@ -191,8 +193,7 @@ def pro_max(iterations=300):
 		dpath = ddpath
 		# Recycle treasure
 		goal = measure()
-		while measure():
-			use_item(FERTILIZER)
+		use_item(Items.Weird_Substance, AMOUNT[0])
 		# Compute paths from goal to base
 		gpath = []
 		dir = DIR_TO_BASE[goal]
@@ -208,12 +209,12 @@ def pro_max(iterations=300):
 		# Follow the drone path forward
 		for step in dpath:
 			move(step)
-			for func in WALL[get_pos_x(), get_pos_y()]:
-				func()
+			for mfunc in set(WALL[get_pos_x(), get_pos_y()]):
+				mfunc()
 		# Follow the goal path backward
 		for step in gpath[::-1]:
 			move(OPP[step])
-			for func in WALL[get_pos_x(), get_pos_y()]:
-				func()
+			for mfunc in set(WALL[get_pos_x(), get_pos_y()]):
+				mfunc()
 	# Harvest the treasure
 	harvest()

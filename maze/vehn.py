@@ -1,8 +1,6 @@
-BUSH = Entities.Bush
-FERTILIZER = Items.Fertilizer
-TREASURE = Entities.Treasure
 # This is not Vehn's code, but implements the core idea.
 def vehn(iterations=100):
+	AMOUNT = get_world_size() * num_unlocked(Unlocks.Mazes)
 	BASE = (4, 4)
 
 	# Geometry tables
@@ -19,7 +17,7 @@ def vehn(iterations=100):
 
 	# Helper recursive function to find walls and treasure
 	def scan_maze(back=None):
-		if get_entity_type() == TREASURE:
+		if get_entity_type() == Entities.Treasure:
 			TREASURE_POS.append((get_pos_x(), get_pos_y()))
 		WALLS[(get_pos_x(), get_pos_y())] = set()
 		for dir in [North, East, South, West]:
@@ -60,7 +58,7 @@ def vehn(iterations=100):
 	# Helper to look for missing walls
 	def move_and_break_walls(step):
 		move(step)
-		for dir in WALLS[get_pos_x(), get_pos_y()]:
+		for dir in list(WALLS[get_pos_x(), get_pos_y()]):
 			if move(dir):
 				new_x = get_pos_x()
 				new_y = get_pos_y()
@@ -72,31 +70,11 @@ def vehn(iterations=100):
 				do_bfs(get_pos_x(), get_pos_y())
 				do_bfs(new_x, new_y)
 
-	# Helper to look for missing walls
-	# fix by @Braam
-	def move_and_break_walls_fix(step):
-		move(step)
-		removes = []
-		for dir in WALLS[get_pos_x(), get_pos_y()]:
-			if move(dir):
-				new_x = get_pos_x()
-				new_y = get_pos_y()
-				move(OPP[dir])
-				#add to remove queue
-				removes.append((dir,new_x,new_y, get_pos_x(), get_pos_y()))
-		for dir in removes:
-			WALLS[dir[3], dir[4]].remove(dir[0])
-			WALLS[dir[1], dir[2]].remove(OPP[dir[0]])
-			# Update the flowfield
-			do_bfs(dir[3], dir[4])
-			do_bfs(dir[1], dir[2])
-
 
 	# Start the maze!
 	clear()
-	plant(BUSH)
-	while get_entity_type() == BUSH:
-		use_item(FERTILIZER)
+	plant(Entities.Bush)
+	use_item(Items.Weird_Substance, AMOUNT)
 
 	# Map the maze
 	scan_maze()
@@ -106,14 +84,13 @@ def vehn(iterations=100):
 	goal = TREASURE_POS[0]
 	while True:
 		# Recycle or harvest treasure if it's here
-		while get_entity_type() == TREASURE:
+		while get_entity_type() == Entities.Treasure:
 			goal = measure()
 			iterations -= 1
 			if iterations == 0:
 				harvest()
 				return
-			while not use_item(FERTILIZER):
-				pass
+			use_item(Items.Weird_Substance, AMOUNT)
 
 		# Compute paths from drone and goal to base
 		dpath = get_path_to_base(get_pos_x(), get_pos_y())

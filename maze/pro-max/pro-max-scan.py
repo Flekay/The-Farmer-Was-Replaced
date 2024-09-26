@@ -2,11 +2,21 @@
 PATH = init_path()
 WALL = init_wall()
 TREASURE_POS = {0: (0, 0)}
-FERTILIZER = Items.Fertilizer
+AMOUNT = {0: get_world_size() * num_unlocked(Unlocks.Mazes)}
 TILE_NORTH = tile_north()
 TILE_EAST = tile_east()
 TILE_SOUTH = tile_south()
 TILE_WEST = tile_west()
+VISITED = set()
+MISSING = init_missing()
+
+def init_missing():
+	ws = get_world_size()
+	MISSING = set()
+	for x in range(ws):
+		for y in range(ws):
+			MISSING.add((x, y))
+	return MISSING
 
 # Initialize WALL with empty sets
 def init_path():
@@ -24,7 +34,6 @@ def init_wall():
 	for x in range(ws):
 		for y in range(ws):
 			WALLL[(x, y)] = {mnb_north, mnb_east, mnb_south, mnb_west}
-			# WALL[(x, y)] = {North, East, South, West}
 	return WALLL
 
 def tile_north():
@@ -68,13 +77,16 @@ def scan_north():
 		PATH[pos].add(bfs_south)
 		PATH[TILE_SOUTH[pos]].add(bfs_north)
 		if measure():
-			# explore first
+			# option 1
+			# explore the maze first
 			TREASURE_POS[0] = pos
-			# harvest if treasure is found
+
+			# option 2
+			# harvest treasure immediately
 			# fails 1/3 of the time
+			# because i dont have a list of visited tiles
 			# TREASURE_POS[0] = measure()
-			# while measure():
-			# 	use_item(FERTILIZER)
+			# use_item(Items.Weird_Substance, AMOUNT[0])
 		scan_north()
 		scan_east()
 		scan_west()
@@ -88,12 +100,9 @@ def scan_east():
 		PATH[pos].add(bfs_west)
 		PATH[TILE_WEST[pos]].add(bfs_east)
 		if measure():
-			# explore first
 			TREASURE_POS[0] = pos
-			# harvest if treasure is found
 			# TREASURE_POS[0] = measure()
-			# while measure():
-			# 	use_item(FERTILIZER)
+			# use_item(Items.Weird_Substance, AMOUNT[0])
 		scan_east()
 		scan_north()
 		scan_south()
@@ -107,12 +116,9 @@ def scan_south():
 		PATH[pos].add(bfs_north)
 		PATH[TILE_NORTH[pos]].add(bfs_south)
 		if measure():
-			# explore first
 			TREASURE_POS[0] = pos
-			# harvest if treasure is found
 			# TREASURE_POS[0] = measure()
-			# while measure():
-			# 	use_item(FERTILIZER)
+			# use_item(Items.Weird_Substance, AMOUNT[0])
 		scan_south()
 		scan_east()
 		scan_west()
@@ -126,12 +132,9 @@ def scan_west():
 		PATH[pos].add(bfs_east)
 		PATH[TILE_EAST[pos]].add(bfs_west)
 		if measure():
-			# explore first
 			TREASURE_POS[0] = pos
-			# harvest if treasure is found
 			# TREASURE_POS[0] = measure()
-			# while measure():
-			# 	use_item(FERTILIZER)
+			# use_item(Items.Weird_Substance, AMOUNT[0])
 		scan_west()
 		scan_north()
 		scan_south()

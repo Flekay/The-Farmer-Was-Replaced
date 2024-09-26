@@ -81,9 +81,9 @@ For i = 1 to MAZE_COUNT:
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 20 treasures.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | /pro-max        |           |           |           |           |
+| 0 | /pro-max        |   6.8815s |  13.8376s |   9.0502s |   9.2787s |
 | 0 | meorin.py       |           |           |           |           |
-| 0 | vehn.py         |           |           |           |           |
+| 0 | vehn.py         |   8.6299s |  14.6499s |  10.9099s |  10.9299s |
 | 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
@@ -94,9 +94,9 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 20 treas
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 100 treasures.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | /pro-max        |           |           |           |           |
+| 0 | /pro-max        |  19.2318s |  37.0693s |  24.9337s |  25.5051s |
 | 0 | meorin.py       |           |           |           |           |
-| 0 | vehn.py         |           |           |           |           |
+| 0 | vehn.py         |  23.3799s |  40.3199s |  28.5699s |  28.5399s |
 | 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
@@ -106,9 +106,9 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 100 trea
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 300 treasures.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | /pro-max        |           |           |           |           |
+| 0 | /pro-max        |  47.5013s |  69.6955s |  53.6171s |  53.8510s |
 | 0 | meorin.py       |           |           |           |           |
-| 0 | vehn.py         |           |           |           |           |
+| 0 | vehn.py         |  50.9299s |  73.5099s |  59.7399s |  59.9699s |
 | 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
@@ -118,9 +118,9 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 300 trea
 This leaderboard changes over time based on the current meta for timed resets.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | /pro-max        |           |           |           |           |
+| 0 | /pro-max        |  20.1024s |  32.2629s |  24.5705s |  24.7239s |
 | 0 | meorin.py       |           |           |           |           |
-| 0 | vehn.py         |           |           |           |           |
+| 0 | vehn.py         |  22.6899s |  34.8999s |  26.4699s |  26.7899s |
 | 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
 | 0 | random.py       |           |           |           |           |

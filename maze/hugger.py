@@ -5,7 +5,6 @@ clear()
 
 while True:
 	plant(Entities.Bush)
-	use_item(Items.Fertilizer)
 	use_item(Items.Weird_Substance, AMOUNT)
 	while not measure():
 		dir = (dir + 2 * move(DIRECTION[dir]) - 1) % 4
