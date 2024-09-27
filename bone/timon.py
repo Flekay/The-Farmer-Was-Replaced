@@ -45,12 +45,6 @@ def timon(ws=get_world_size()):
 							apple_x, apple_y = measure()
 							apple_y = apple_y + (not apple_y % 2)
 							length += 1
-			# else:
-				# stuck in top right corner
-				# [] = [],[]
-				# break
-
-
 
 
 
