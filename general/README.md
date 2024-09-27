@@ -130,7 +130,7 @@ rounded_number = round(number, decimal_places) # 3.14
 ```
 
 ## sleep_ops.py
-This file contains a function that pauses the execution of the script for a given number of operations. Minimum 7 operations.
+This file contains a function that pauses the execution of the script for a given number of operations. Minimum 13 operations. Needs to be warmed up before use :/
 ```python
 operations = 100
 sleep_ops(operations) # script pauses for 100 operations
