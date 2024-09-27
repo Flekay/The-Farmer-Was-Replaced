@@ -17,7 +17,7 @@ for pos in SPOTS:
 		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
 		break
 
-run_ops = get_tick_count() - run_ops - 32800 - 450 - 3 # minus mandatory operations (164 moves, verify position, op count)
+run_ops = get_tick_count() - run_ops - 32800 - 388 - 8 # minus mandatory operations (164 moves, verify position, op count)
 quick_print("move-to.py, ops:", run_ops)
 
 
@@ -32,8 +32,8 @@ run_ops = get_tick_count()
 for pos in SPOTS:
 
 	# this is the same as
-	pos_x, pos_y = pos
-	navi_to(pos_x, pos_y)
+	# pos_x, pos_y = pos
+	# navi_to(pos_x, pos_y)
 	# this
 	navi_to_pos(pos)
 
@@ -41,8 +41,57 @@ for pos in SPOTS:
 		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
 		break
 
-run_ops = get_tick_count() - run_ops - 32800 - 450 - 3
+run_ops = get_tick_count() - run_ops - 32800 - 388 - 8
 quick_print("navi-to.py, Setup time:", str(boot_time), ", ops:", run_ops)
+
+
+# navi-to-list.py
+clear()
+boot_time = get_time()
+move_data_x, move_data_y = loadDataList(get_world_size())
+boot_time = get_time() - boot_time
+
+run_ops = get_tick_count()
+
+for pos in SPOTS:
+
+	# this is the same as
+	# pos_x, pos_y = pos
+	# navi_to_list(pos_x, pos_y)
+	# this
+	navi_to_list_pos(pos)
+
+	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
+		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
+		break
+
+run_ops = get_tick_count() - run_ops - 32800 - 388 - 8
+quick_print("navi-to-list.py, Setup time:", str(boot_time), ", ops:", run_ops)
+
+
+# navi-to-list.py - inline
+clear()
+# boot_time = get_time()
+# move_data_x, move_data_y = loadDataList(get_world_size())
+# boot_time = get_time() - boot_time
+
+run_ops = get_tick_count()
+
+for pos in SPOTS:
+
+	# 801
+	for fx in move_data_x[get_pos_x()][pos[0]]:
+		move(fx)
+	for fy in move_data_y[get_pos_y()][pos[1]]:
+		move(fy)
+
+	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
+		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
+		break
+
+run_ops = get_tick_count() - run_ops - 32800 - 388 - 8
+quick_print("navi-to-list.py - inline, Setup time:", str(boot_time), ", ops:", run_ops)
+
 
 
 # navi-to-pos.py
@@ -62,7 +111,7 @@ for pos in SPOTS:
 		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
 		break
 
-run_ops = get_tick_count() - run_ops - 32800 - 450 - 3
+run_ops = get_tick_count() - run_ops - 32800 - 388 - 8
 quick_print("navi-to-pos.py, Setup time:", str(boot_time), ", ops:", run_ops)
 
 
@@ -82,5 +131,5 @@ for pos in SPOTS:
 		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
 		break
 
-run_ops = get_tick_count() - run_ops - 32800 - 450 - 3
+run_ops = get_tick_count() - run_ops - 32800 - 388 - 8
 quick_print("navi-to-func.py, Setup time:", str(boot_time), ", ops:", run_ops)

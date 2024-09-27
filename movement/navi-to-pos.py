@@ -1,5 +1,21 @@
 def generate_path_map(ws=get_world_size()):
+	def generate_paths(delta):
+		if delta == 0:
+			return [], []
+		elif delta > 0:
+			x_path, y_path = generate_paths(delta - 1)
+			return x_path + [East], y_path + [North]
+		else:
+			x_path, y_path = generate_paths(delta + 1)
+			return x_path + [West], y_path + [South]
+
+	# Precompute paths for all possible delta values
 	hws = ws // 2
+	precomputed_paths = {}
+
+	for delta in range(-hws, hws + 1):
+		precomputed_paths[delta] = generate_paths(delta)
+
 	ranges = range(ws)
 	x_paths = {}
 	y_paths = {}
@@ -9,16 +25,9 @@ def generate_path_map(ws=get_world_size()):
 		x_paths[i] = {}
 		y_paths[i] = {}
 		for j in ranges:
-			x_paths[i][j] = []
-			y_paths[i][j] = []
-			map_paths[(i, j)] = {}
 			delta = (j - i + hws) % ws - hws
-			for k in range(delta):
-				x_paths[i][j].append(East)
-				y_paths[i][j].append(North)
-			for k in range(-delta):
-				x_paths[i][j].append(West)
-				y_paths[i][j].append(South)
+			x_paths[i][j], y_paths[i][j] = precomputed_paths[delta]
+			map_paths[(i, j)] = {}
 
 	for start_pos in map_paths:
 		sx, sy = start_pos

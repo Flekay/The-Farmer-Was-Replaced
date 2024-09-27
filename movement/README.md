@@ -5,21 +5,23 @@ This folder contains movement related functions. These functions are used to mov
 ## Benchmark
 
 ### benchmark-destination.py | move to a specific position
-| file                       | setup time | ops per bench | ops per move |
-| -------------------------- | ---------- | ------------- | ------------ |
-| navi-to-pos.py             | 9.3369s    |  539          |  3.2865      |
-| navi-to-func.py            | 7.3332s    | 1414          |  8,6219      |
-| navi-to.py                 | 0.8305s    |  949          |  9,6524      |
-| move-to.py                 | 0s         | 1594          |  9,7195      |
+| file                       | setup time | ops per bench |
+| -------------------------- | ---------- | ------------- |
+| move-to.py                 |            |          1594 |
+| navi-to.py                 |    0.8305s |          1006 |
+| navi-to-list.py            |    0.1057s |           842 |
+| navi-to-list.py inline     |    0.1057s |           801 |
+| navi-to-pos.py             |    9.3369s |           596 |
+| navi-to-func.py            |    7.3332s |          1471 |
 
 
 ### benchmark-loop.py | traverse the map
-| file                        | setup time | ops per map | ops per move |
-| --------------------------- | ---------- | ----------- | ------------ |
-| navi-map.py                 | 0.0744s    |  338        |  3.38        |
-| navi-to-next-tile.py        | 0.0624s    |  991        |  9.91        |
-| move-to-next-tile.py inline | 0s         | 1002        | 10.02        |
-| move-to-next-tile.py        | 0s         | 1113        | 11.13        |
+| file                        | setup time | ops per map |
+| --------------------------- | ---------- | ----------- |
+| navi-map.py                 |    0.0744s |         338 |
+| navi-to-next-tile.py        |    0.0624s |         991 |
+| move-to-next-tile.py inline |            |        1002 |
+| move-to-next-tile.py        |            |        1113 |
 
 
 ## move to a specific position
@@ -33,6 +35,9 @@ This script pre-calculates the moves form each position to each position. Simila
 
 ### navi-to.py
 This script pre-calculates the moves form each x,y coordinate to each x,y coordinate.
+
+### navi-to-list.py
+This script is the same as navi-to.py but uses a list instead of a dictionary. Setup time can potentially be reduced by using navi-to-pos.py's generator method.
 
 ### move-to.py
 This script calculates the moves to a specific position on the fly. Wraps around the map if shorter.
