@@ -9,7 +9,7 @@ This folder contains movement related functions. These functions are used to mov
 | -------------------------- | ---------- | ------------- | ------------ |
 | navi-to-pos.py             | 9.3369s    |  539          |  3.2865      |
 | navi-to-func.py            | 7.3332s    | 1414          |  8,6219      |
-| navi-to.py                 | 0.8305s    | 1583          |  9,6524      |
+| navi-to.py                 | 0.8305s    |  949          |  9,6524      |
 | move-to.py                 | 0s         | 1594          |  9,7195      |
 
 
