@@ -1,54 +1,44 @@
-NAVI_TO_NEXT_TILE = navi_to_next_tile()
 MOVES = generate_moves()
-WATER = Items.Water_Tank
-FERTILIZER = Items.Fertilizer
-SUNFLOWER = Entities.Sunflower
+MOVES_ONE_MIN = generate_moves(1250)
 
 def powerFart():
-
-	def plant7s():
-		for direction in MOVES:
-			if get_ground_type() != Grounds.Soil:
+	# preplant
+	for direction in MOVES:
+		if get_ground_type() != Grounds.Soil:
+			till()
+		plant(Entities.Sunflower)
+		while measure() != 7:
+			plant(Entities.Sunflower)
+			if measure() != 7:
 				till()
-			plant(SUNFLOWER)
-			while measure() != 7:
-				plant(SUNFLOWER)
-				if measure() != 7:
-					till()
-				else:
-					break
-			move(direction)
+			else:
+				break
+		move(direction)
 
-	def water():
-		for direction in MOVES:
-			use_item(WATER)
-			use_item(WATER)
-			use_item(WATER)
-			use_item(WATER)
-			move(direction)
-		for direction in MOVES:
-			use_item(WATER)
-			move(direction)
+	# prewater
+	for direction in MOVES:
+		while get_water() != 1:
+			use_item(Items.Water_Tank)
+		move(direction)
+	for direction in MOVES:
+		use_item(Items.Water_Tank)
+		move(direction)
 
-
-	plant7s()
-	water()
-
-	for i in range(1067):
+	# spam
+	for direction in MOVES_ONE_MIN:
 		harvest()
-		plant(SUNFLOWER)
+		plant(Entities.Sunflower)
 		if measure() == 7:
-			move(NAVI_TO_NEXT_TILE[get_pos_x()][get_pos_y()])
-		elif get_water():
-			use_item(FERTILIZER)
-		else:
-			use_item(WATER)
-			use_item(WATER)
-			use_item(FERTILIZER)
+			move(direction)
+		if get_water() < 0.5:
+			use_item(Items.Water_Tank)
+		use_item(Items.Fertilizer)
+		use_item(Items.Weird_Substance)
 
-	for dir in MOVES:
+	# post harvest
+	for direction in MOVES:
 		harvest()
-		move(dir)
+		move(direction)
 
 
 clear()
