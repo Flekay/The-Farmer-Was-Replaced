@@ -1,5 +1,5 @@
 MOVES = generate_moves()
-MOVES_ONE_MIN = generate_moves(1250)
+MOVES_ONE_MIN = generate_moves(200)
 
 def powerFart():
 	# preplant
@@ -25,15 +25,20 @@ def powerFart():
 		move(direction)
 
 	# spam
+	i = 1
+	time = get_time()
 	for direction in MOVES_ONE_MIN:
-		harvest()
-		plant(Entities.Sunflower)
-		if measure() == 7:
-			move(direction)
-		if get_water() < 0.5:
-			use_item(Items.Water_Tank)
-		use_item(Items.Fertilizer)
-		use_item(Items.Weird_Substance)
+		while True:
+			harvest()
+			plant(Entities.Sunflower)
+			if measure() == 7 and i % 2:
+				break
+			use_item(Items.Fertilizer)
+			use_item(Items.Weird_Substance)
+			i += 1
+		if get_time() - time > 60:
+			break
+		move(direction)
 
 	# post harvest
 	for direction in MOVES:

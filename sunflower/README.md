@@ -4,7 +4,7 @@
 ## Benchmarks
 | file          | items/min |
 | ------------- | --------- |
-| power-fart.py |      4850 |
+| power-fart.py |      5380 |
 | power-till.py |      1020 |
 | power-skip.py |      1845 |
 | CYR.py        |       552 |
