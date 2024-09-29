@@ -1,10 +1,10 @@
 # You can only test one sorting algorithm at a time
 # because arrays are passed by reference
+# and some sorting algorithms modify the original array
 
 sorting_functions = {
-	# "Bitonic Sort": bitonic_sort, # not working
 	# "Bubble Sort": bubble_sort,
-	"Bucket Sort": bucket_sort,
+	# "Bucket Sort": bucket_sort,
 	# "Cocktail Sort": cocktail_sort,
 	# "Comb Sort": comb_sort,
 	# "Counting Sort": counting_sort,
@@ -16,18 +16,18 @@ sorting_functions = {
 	# "Radix Sort": radix_sort,
 	# "Selection Sort": selection_sort,
 	# "Shell Sort": shell_sort,
-	# "Tim Sort": tim_sort,
+	"Tim Sort": tim_sort,
 }
 test_cases = {
-	"Original test case": [3, 6, 8, 10, 1, 2, 1],
-	"Already sorted": [1, 2, 3, 4, 5],
-	"Reverse sorted": [5, 4, 3, 2, 1],
-	"All elements the same": [1, 1, 1, 1],
+	"Original test case": [3, 6, 8, 10, 1, 2, 1, 4, 5, 7],
+	"Already sorted": [1, 2, 3, 4, 5, 6, 7, 8, 10],
+	"Reverse sorted": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
+	"All elements the same": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 	"Empty list": [],
 	"Single element": [42],
-	"Mixed positive and negative": [10, -1, 3, 9, -4, 0, 6],
-	"Floating point numbers": [3.14, 2.71, 1.41, 0.58],
-	"Duplicate elements": [99, 99, 98, 97, 98, 99],
+	"Mixed positive and negative": [10, -1, 3, 9, -4, 0, 6, 4, -5, -2, 8, 7, 1, -3, 5, 2],
+	"Floating point numbers": [3.14, 2.71, 1.41, 0.58, 1.61, 2.72, 1.41, 1.73],
+	"Duplicate elements": [99, 99, 98, 97, 98, 99, 97, 98, 97, 99],
 	"Large reverse sorted list": list(range(100, 0, -1)),
 	# "Large random list": [randint(1, 1000) for _ in range(100)],
 }
