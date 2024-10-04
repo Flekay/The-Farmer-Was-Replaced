@@ -8,7 +8,7 @@
 | power-hash.py |      3470 |
 | power-path.py |      3640 |
 | power-runs.py |      2600 |
-| power-spam.py |      6200 |
+| power-spam.py |      6280 |
 | power-till.py |      1020 |
 | CYR.py        |       552 |
 

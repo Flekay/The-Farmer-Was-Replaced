@@ -12,12 +12,13 @@ for direction in MOVES:
 
 # spam
 harvest()
+use_item(Items.Water_Tank)
+use_item(Items.Water_Tank)
+use_item(Items.Water_Tank)
 while True:
-	if get_water() < 0.8:
-		use_item(Items.Water_Tank)
-	plant(Entities.Sunflower)
-	while not can_harvest():
+	use_item(Items.Water_Tank)
+	for _ in range(562): # get_water <= 0.76
+		plant(Entities.Sunflower)
 		use_item(Items.Fertilizer)
-	use_item(Items.Weird_Substance)
-	harvest()
-	
+		use_item(Items.Weird_Substance)
+		harvest()
