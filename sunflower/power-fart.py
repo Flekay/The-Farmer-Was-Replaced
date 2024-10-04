@@ -1,7 +1,7 @@
 MOVES = generate_moves()
 MOVES_ONE_MIN = generate_moves(200)
 
-def powerFart():
+def power_fart():
 	# preplant
 	for direction in MOVES:
 		if get_ground_type() != Grounds.Soil:
@@ -48,4 +48,4 @@ def powerFart():
 
 clear()
 while True:
-	powerFart()
+	power_fart()

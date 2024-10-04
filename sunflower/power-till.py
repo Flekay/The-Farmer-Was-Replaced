@@ -1,7 +1,7 @@
 
 MOVES = generate_moves()
 
-while True:
+def power_till():
 	for direction in MOVES:
 		harvest()
 		plant(Entities.Sunflower)
@@ -9,3 +9,6 @@ while True:
 			till()
 			plant(Entities.Sunflower)
 		move(direction)
+
+while True:
+	power_till()
