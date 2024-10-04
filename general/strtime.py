@@ -8,7 +8,7 @@ def strtime(seconds):
 		min_str = '  ' + "0123456789"[seconds // 60]
 
 	# Format seconds
-	sec_str = "0123456789"[seconds * 0.1 % 10] + "0123456789"[seconds % 10]
+	sec_str = "0123456789"[seconds // 10 % 6] + "0123456789"[seconds % 10]
 
 	# Format fraction
 	frac_str = "0123456789"[seconds * 10 % 10] + "0123456789"[seconds * 100 % 10]
