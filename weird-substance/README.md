@@ -4,8 +4,8 @@ This is a script that are used to farm weird substance.
 ## Benchmarks
 | file        | items/min |
 | ----------- | --------- |
-| pine.py     | 286k      |
-| maple.py    | 298k      |
+| pine.py     | 292k      |
+| maple.py    | 310k      |
 
 ## pine.py
 This script just spams tree/fertilizer and harvest in the middle of a grass field. Heavily luck based. preplanting might be better.

@@ -13,7 +13,9 @@ clear()
 move_to(4,4)
 
 # main loop
-def maple():
+while True:
+	range3 = range(3)
+	range888 = range(888)
 	# preplant
 	for direction in MOVES:
 		if (get_pos_x(), get_pos_y()) not in GRASS_TILES:
@@ -33,34 +35,26 @@ def maple():
 	use_item(Items.Water_Tank)
 	use_item(Items.Water_Tank)
 	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
 
 	# spam trees
 	harvest()
-	for _ in range(2100): # 60 seconds
-		plant(Entities.Tree)
-		if Entities.Grass in get_companion():
-			while not can_harvest():
+	for _ in range3:
+		use_item(Items.Water_Tank)
+		for _ in range888: # get_water <= 0.78
+			plant(Entities.Tree)
+			if Entities.Grass in get_companion():
 				use_item(Items.Fertilizer)
-		harvest()
+			harvest()
 
 	# harvest
 	# function can be found in the poly-hay folder `harvest_polyhay.py`
 	harvest_polyhay()
 
-	# refill water
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
-
 	# spam trees
-	harvest()
-	for _ in range(2100): # 60 seconds
-		plant(Entities.Tree)
-		if Entities.Grass in get_companion():
-			while not can_harvest():
+	for _ in range3:
+		use_item(Items.Water_Tank)
+		for _ in range888: # get_water <= 0.78
+			plant(Entities.Tree)
+			if Entities.Grass in get_companion():
 				use_item(Items.Fertilizer)
-		harvest()
-
-
-while True:
-	maple()
+			harvest()

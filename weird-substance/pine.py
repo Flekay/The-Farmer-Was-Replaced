@@ -1,33 +1,15 @@
 clear()
-move_to(4, 4)
+move_to(4,4)
 till()
+use_item(Items.Water_Tank)
+use_item(Items.Water_Tank)
+use_item(Items.Water_Tank)
 
-def pine():
-	# water to save fertilizer
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
-
-	# spam trees
-	for _ in range(1050): # ~30 seconds
-		plant(Entities.Tree)
-		if Entities.Grass in get_companion():
-			while not can_harvest():
-				use_item(Items.Fertilizer)
-		harvest()
-
-	# refill water
-	use_item(Items.Water_Tank)
-
-	# spam trees
-	for _ in range(1050): # ~30 seconds
-		plant(Entities.Tree)
-		if Entities.Grass in get_companion():
-			while not can_harvest():
-				use_item(Items.Fertilizer)
-		harvest()
-
-
+# spam trees
 while True:
-	pine()
+	use_item(Items.Water_Tank)
+	for i in range(888): # get_water <= 0.78
+		plant(Entities.Tree)
+		if Entities.Grass in get_companion():
+			use_item(Items.Fertilizer)
+		harvest()
