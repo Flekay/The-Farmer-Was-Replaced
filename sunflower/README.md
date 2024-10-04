@@ -4,7 +4,7 @@
 ## Benchmarks
 | file          | items/min |
 | ------------- | --------- |
-| power-fart.py |      5380 |
+| power-fart.py |      6570 |
 | power-hash.py |      3470 |
 | power-path.py |      3640 |
 | power-runs.py |      2600 |
