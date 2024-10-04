@@ -6,7 +6,6 @@ This is a collection of pumpkin scripts that are used to farm pumpkins.
 | -----------  | --------- | ---------- |
 | rerun.py     |  68.6k    | low        |
 | oneshot.py   |  32.5k    | high       |
-| CYR.py       |  30k      | high       |
 | schindler.py |  55k      | no         |
 | tiny.py      |  32.4k    | no         |
 
@@ -22,7 +21,3 @@ This script will keep planting pumpkins until every tile is filled. It has a lis
 
 ## tiny.py
 This script just runs and harvests at the same time. Ain't nobody got time for gigant pumpkins.
-
-## CYR.py
-This script tries to get the highest possible pumpkins per minute per character.
-Currently 193 characters excluding clear() = 120k/193 = 621.76 pumpkins per minute per character

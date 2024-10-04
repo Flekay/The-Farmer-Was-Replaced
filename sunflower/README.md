@@ -9,8 +9,6 @@
 | power-path.py |      3640 |
 | power-runs.py |      2600 |
 | power-spam.py |      6280 |
-| power-till.py |      1020 |
-| CYR.py        |       552 |
 
 
 ## power-fart.py
@@ -27,10 +25,3 @@ This replants directly after harvesting.
 
 ## power-spam.py
 This just boringsly spams sunflowers without moving.
-
-## power-till.py
-This harvests only 15s sunflowers.
-
-## CYR.py
-This script tries to get the highest possible sunflowers per minute per character.
-Currently 185 characters excluding clear() = 59900/185 = ~323,78 sunflowers per minute per character

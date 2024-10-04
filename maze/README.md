@@ -71,10 +71,13 @@ For i = 1 to MAZE_COUNT:
 
 
 ## Benchmarks
-| file             |  gold/min  | notes        |
-| ---------------- | ---------- | ------------ |
-| nogo.py          |  53k       |              |
-| tiny-hugger.py   |  50k       | bugged stats |
+The gold stat is currently a bit broken. So the stats might be a off.
+
+| file             |  gold/min  |
+| ---------------- | ---------- |
+| nogo.py          |  53k       |
+| pro-max.py       | 351k       |
+| tiny-hugger.py   |  50k       |
 
 
 ## Early Maze Leaderboard 1x20 (10x10)
@@ -82,12 +85,10 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 20 treas
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
 | 0 | /pro-max        |   6.8815s |  13.8376s |   9.0502s |   9.2787s |
-| 0 | meorin.py       |           |           |           |           |
 | 0 | vehn.py         |   8.6299s |  14.6499s |  10.9099s |  10.9299s |
 | 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         |           |           |           |           |
 
 
 ## Mid Maze Leaderboard 1x100 (10x10)
@@ -95,36 +96,30 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 100 trea
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
 | 0 | /pro-max        |  19.2318s |  37.0693s |  24.9337s |  25.5051s |
-| 0 | meorin.py       |           |           |           |           |
 | 0 | vehn.py         |  23.3799s |  40.3199s |  28.5699s |  28.5399s |
 | 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         |           |           |           |           |
 
 ## Late Maze Leaderboard 1x300 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 300 treasures.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
 | 0 | /pro-max        |  47.5013s |  69.6955s |  53.6171s |  53.8510s |
-| 0 | meorin.py       |           |           |           |           |
 | 0 | vehn.py         |  50.9299s |  73.5099s |  59.7399s |  59.9699s |
 | 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         |           |           |           |           |
 
 ## Speedrun Maze Leaderboard 1x151 (8x8)
 This leaderboard changes over time based on the current meta for timed resets.
 | # | file            | min       | max       | median    | avg       |
 | - | --------------- | --------- | --------- | --------- | --------- |
 | 0 | /pro-max        |  20.1024s |  32.2629s |  24.5705s |  24.7239s |
-| 0 | meorin.py       |           |           |           |           |
 | 0 | vehn.py         |  22.6899s |  34.8999s |  26.4699s |  26.7899s |
 | 0 | dfs.py          |           |           |           |           |
 | 0 | farm-gold.py    |           |           |           |           |
 | 0 | random.py       |           |           |           |           |
-| 0 | kuga.py         |           |           |           |           |
 
 
 ## farm-gold.py
@@ -149,12 +144,6 @@ possible improvements:
 - greedy pathfinding after x treasures
 - collect treasures while phase 1 (maze exploration) WIP
 - better wall/path data structure
-
-## meorin.py
-The code employs a hybrid strategy that combines DFS for initial exploration and BFS for efficient pathfinding. This approach allows for thorough exploration of the maze while ensuring the shortest path is found to the goal. The integration of backtracking ensures that dead ends are handled gracefully, allowing the algorithm to find valid paths through the maze.
-
-## kuga.py
-This script uses an astar algorithm to calculate the shortest path to the tresure.
 
 ## nogo.py
 This script never even tries to solve the maze it just counts on your luck to spawn above the teasure. stupid but works.
