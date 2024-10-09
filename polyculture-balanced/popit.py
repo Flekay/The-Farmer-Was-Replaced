@@ -5,7 +5,7 @@ BUSH = Entities.Bush
 GRASS = Entities.Grass
 TREE = Entities.Tree
 FERTILIZER = Items.Fertilizer
-WATER = Items.Water_Tank
+WATER = Items.Water
 companions = {}
 
 def pregrow():

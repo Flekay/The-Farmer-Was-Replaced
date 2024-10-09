@@ -10,7 +10,7 @@ def tiny():
 	# prewater
 	for direction in MOVES:
 		while get_water() != 1:
-			use_item(Items.Water_Tank)
+			use_item(Items.Water)
 		move(direction)
 
 	time = get_time()
@@ -24,4 +24,3 @@ def tiny():
 
 while True:
 	tiny()
-	

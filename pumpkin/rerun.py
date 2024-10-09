@@ -10,7 +10,7 @@ def rerun():
 	# prewater
 	for direction in MOVES:
 		while get_water() != 1:
-			use_item(Items.Water_Tank)
+			use_item(Items.Water)
 		move(direction)
 
 	for _ in range(15): # 60 seconds

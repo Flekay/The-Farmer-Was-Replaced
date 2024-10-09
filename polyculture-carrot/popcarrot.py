@@ -3,7 +3,7 @@ MOVES_ONE_MIN = generate_moves(2500)
 PUMPKIN = Entities.Pumpkin
 CARROT = Entities.Carrot
 FERTILIZER = Items.Fertilizer
-WATER = Items.Water_Tank
+WATER = Items.Water
 BUSH = Entities.Bush
 BUSH_LOCATIONS = [(1,1),(3,6),(6,3),(9,6),(6,9)]
 

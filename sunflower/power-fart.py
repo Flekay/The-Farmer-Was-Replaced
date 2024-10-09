@@ -4,7 +4,7 @@ MOVES = generate_moves()
 while True:
 	# pre plant
 	for direction in MOVES:
-		if get_ground_type() == Grounds.Turf:
+		if get_ground_type() == Grounds.Grassland:
 			till()
 		while measure() != 7:
 			harvest()
@@ -14,16 +14,16 @@ while True:
 	# pre water
 	for _ in range(10):
 		move(North)
-		use_item(Items.Water_Tank)
-		use_item(Items.Water_Tank)
-		use_item(Items.Water_Tank)
-		use_item(Items.Water_Tank)
+		use_item(Items.Water)
+		use_item(Items.Water)
+		use_item(Items.Water)
+		use_item(Items.Water)
 
 	# main loop
 	time = get_time()
 	while get_time() - time < 60:
 		if get_water() <= 0.78:
-			use_item(Items.Water_Tank)
+			use_item(Items.Water)
 		harvest()
 		plant(Entities.Sunflower)
 		while measure() != 7:

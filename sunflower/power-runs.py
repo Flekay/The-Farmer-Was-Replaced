@@ -1,19 +1,19 @@
 def power_runs():
 	# pre plant
 	for direction in MOVES:
-		if get_ground_type() == Grounds.Turf:
+		if get_ground_type() == Grounds.Grassland:
 			till()
 		while measure() != 7:
 			harvest()
 			plant(Entities.Sunflower)
-		use_item(Items.Water_Tank)
-		use_item(Items.Water_Tank)
+		use_item(Items.Water)
+		use_item(Items.Water)
 		move(direction)
 
 	# pre water
 	for direction in MOVES:
 		while get_water() != 1:
-			use_item(Items.Water_Tank)
+			use_item(Items.Water)
 		move(direction)
 
 	# harvest and plant

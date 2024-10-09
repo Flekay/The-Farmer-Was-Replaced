@@ -32,14 +32,14 @@ while True:
 
 
 	# water to save fertilizer
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
+	use_item(Items.Water)
+	use_item(Items.Water)
+	use_item(Items.Water)
 
 	# spam trees
 	harvest()
 	for _ in range3:
-		use_item(Items.Water_Tank)
+		use_item(Items.Water)
 		for _ in range888: # get_water <= 0.78
 			plant(Entities.Tree)
 			if Entities.Grass in get_companion():
@@ -52,7 +52,7 @@ while True:
 
 	# spam trees
 	for _ in range3:
-		use_item(Items.Water_Tank)
+		use_item(Items.Water)
 		for _ in range888: # get_water <= 0.78
 			plant(Entities.Tree)
 			if Entities.Grass in get_companion():

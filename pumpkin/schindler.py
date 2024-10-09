@@ -5,10 +5,10 @@ pumpkin_set = []
 clear()
 for direction in MOVES:
 	till()
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
-	use_item(Items.Water_Tank)
+	use_item(Items.Water)
+	use_item(Items.Water)
+	use_item(Items.Water)
+	use_item(Items.Water)
 	move(direction)
 
 
@@ -18,7 +18,7 @@ while True:
 	for direction in MOVES:
 		plant(Entities.Pumpkin)
 		if get_water() < 0.75:
-			use_item(Items.Water_Tank)
+			use_item(Items.Water)
 		move(direction)
 	# 2. plant and append to dict
 	for direction in MOVES:

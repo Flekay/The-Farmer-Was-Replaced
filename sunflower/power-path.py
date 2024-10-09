@@ -42,7 +42,7 @@ def power_skip(ws = get_world_size()):
 	# pre water
 	for direction in SMALL_MOVES:
 		while get_water() != 1:
-			use_item(Items.Water_Tank)
+			use_item(Items.Water)
 		move(direction)
 
 	for _ in range(9): # ~1min

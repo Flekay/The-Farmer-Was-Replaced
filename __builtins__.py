@@ -31,8 +31,8 @@ class Items:
 
 
 
-    Water_Tank: Item
-    """Used to water the ground by calling `use_item(Items.Water_Tank)`."""
+    Water: Item
+    """Used to water the ground by calling `use_item(Items.Water)`."""
 
     Weird_Substance: Item
     """Call `use_item(Items.Weird_Substance)` on a bush to grow a maze."""
@@ -569,7 +569,7 @@ def trade(item: Item, n: Optional[float] = None) -> bool:
 # -------------------------------------------------------------------------------
 def use_item(item: Item) -> bool:
     """
-    Attempts to use the specified `item`. Can only be used with some items including `Items.Water_Tank`, `Items.Fertilizer` and `Items.Egg`.
+    Attempts to use the specified `item`. Can only be used with some items including `Items.Water`, `Items.Fertilizer` and `Items.Egg`.
 
     returns `True` if an item was used, `False` otherwise.
 
@@ -595,7 +595,7 @@ def get_water() -> float:
     example usage:
     ```
     if get_water() < 0.5:
-        use_item(Items.Water_Tank)
+        use_item(Items.Water)
     ```
     """
     ...
