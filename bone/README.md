@@ -4,25 +4,36 @@ This will be a collection of snake scripts that are used to farm bone.
 ## Benchmarks
 | file         | items/min |
 | -----------  | --------- |
-| greedy.py    | ?         |
-| almighty.py  |   197 470 |
+| greedy.py    |    61 800 |
+| almighty.py  |   196 000 |
 | timon.py     |   294 280 |
-| hybrid.py    | ?         |
-| checkered.py | ?         |
+| hybrid.py    |   304 000 |
+| astar.py     |    50 900 |
+| rando.py     |     1 810 |
+| stack.py     |   196 000 |
 | brainlet.py  |     8 560 |
 
 
 ## greedy.py
-This Greedy Best-First Search algorithm has a one-move horizon and only considers moving the snake to the position on the board that appears to be closest to the goal
+This Script tries to move to the apple in a straight line.
 
 ## almighty.py
 Almighty makes the snake move in a circular pattern around the board
 
 ## timon.py
-Timon uses a stack based almighty algorithm to move the snake in a circular pattern around the board with some shortcuts.
+This is a recreation of Timon's script shown in the first snake video. It is a switches at length 34 from the stack.py script to the almighty.py script.
 
 ## hybrid.py
-This script is a combination of greedy.py and almighty.py. It uses the Greedy Best-First Search algorithm to move the snake to the position on the board that appears to be closest to the goal until the snake reaches a certain length, then it switches to the circular pattern around the board.
+This script switches from greedy.py to stack.py at length 20 and switches to almighty.py at length 34.
 
-## checkered.py
-This checks for dead ends before moving the snake. If there is a dead end, it will move the snake in a different direction.
+## astar.py
+This script uses the A* algorithm to find the shortest path to the goal.
+
+## rando.py
+This script moves in a random direction until it gets stuck.
+
+## stack.py
+This script is a modified version of the almighty.py script. It moves in a circular pattern around the board and tries make shortcuts when possible.
+
+## brainlet.py
+This script is the simplest script that possible. It only harvest one apple before restarting.

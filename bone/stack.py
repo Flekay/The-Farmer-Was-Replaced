@@ -1,6 +1,10 @@
-def timon():
+clear()
+stack()
+def stack():
+	change_hat(Hats.Dinosaur_Hat)
 	goto_pos(measure(), (0, 0))
 	apple_x, apple_y = measure()
+	move_order = [West, South, East]
 	apple_y = apple_y + (not apple_y % 2)
 	forbidden_moves = {(1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (1,7), (1,8), (1,9)}
 	length = 1
@@ -26,7 +30,7 @@ def timon():
 						apple_y = apple_y + (not apple_y % 2)
 						length += 1
 		else:
-			if length > 34: # 34 seems to be the fastest
+			if length > 100:
 				break
 			while move(North):
 				if measure():
@@ -45,19 +49,6 @@ def timon():
 							apple_x, apple_y = measure()
 							apple_y = apple_y + (not apple_y % 2)
 							length += 1
-
-
-
-
-move_order = [West, South, East]
-ALMIGHTY_MOVES = almighty()
-while True:
-	mighty = True
-	clear()
-	change_hat(Hats.Dinosaur_Hat)
-	timon()
-	while mighty:
-		for dir in ALMIGHTY_MOVES:
-			if not move(dir):
-				mighty = False
+			else:
 				break
+	clear()
