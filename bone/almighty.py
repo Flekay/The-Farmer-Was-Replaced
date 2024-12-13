@@ -69,10 +69,14 @@ def allmighty_offset(path, new_start_pos):
 	# Append the moved part to the end of the remaining path
 	return remaining_path + moved_path
 
+
 MOVES = almighty()
 while True:
+	can_move = True
 	clear()
 	change_hat(Hats.Dinosaur_Hat)
-	for dir in MOVES:
-		if not move(dir):
-			break
+	while can_move:
+		for dir in MOVES:
+			if not move(dir):
+				can_move = False
+				break

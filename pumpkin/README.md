@@ -4,10 +4,10 @@ This is a collection of pumpkin scripts that are used to farm pumpkins.
 ## Benchmarks
 | file         | items/min | fertilizer |
 | -----------  | --------- | ---------- |
-| rerun.py     |  68.6k    | low        |
-| oneshot.py   |  32.5k    | high       |
+| rerun.py     |  67.9k    | low        |
+| oneshot.py   |  37.5k    | high       |
 | schindler.py |  55k      | no         |
-| tiny.py      |  32.4k    | no         |
+| tiny.py      |  32.2k    | no         |
 
 
 ## oneshot.py

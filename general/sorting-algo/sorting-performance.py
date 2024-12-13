@@ -3,20 +3,19 @@
 # and some sorting algorithms modify the original array
 
 sorting_functions = {
-	# "Bubble Sort": bubble_sort,
-	# "Bucket Sort": bucket_sort,
-	# "Cocktail Sort": cocktail_sort,
-	# "Comb Sort": comb_sort,
-	# "Counting Sort": counting_sort,
-	# "Gnome Sort": gnome_sort,
-	# "Heap Sort": heap_sort,
-	# "Insertion Sort": insertion_sort,
-	# "Merge Sort": merge_sort,
-	# "Quick Sort": quick_sort,
-	# "Radix Sort": radix_sort,
-	# "Selection Sort": selection_sort,
-	# "Shell Sort": shell_sort,
-	"Tim Sort": tim_sort,
+	"Bubble Sort": bubble_sort,
+	"Bucket Sort": bucket_sort,
+	"Cocktail Sort": cocktail_sort,
+	"Comb Sort": comb_sort,
+	"Counting Sort": counting_sort,
+	"Gnome Sort": gnome_sort,
+	"Heap Sort": heap_sort,
+	"Insertion Sort": insertion_sort,
+	"Merge Sort": merge_sort,
+	"Quick Sort": quick_sort,
+	"Radix Sort": radix_sort,
+	"Selection Sort": selection_sort,
+	"Shell Sort": shell_sort,
 }
 test_cases = {
 	"Original test case": [3, 6, 8, 10, 1, 2, 1, 4, 5, 7],
@@ -42,13 +41,14 @@ for algo in sorting_functions:
 	quick_print("##", algo)
 	quick_print("*********************************")
 	for case in test_cases:
+		list_copy = list(test_cases[case])
 		ops = get_tick_count()
 
-		sorted_arr = sorting_functions[algo](test_cases[case])
+		sorted_arr = sorting_functions[algo](list_copy)
 
 		ops = get_tick_count() - ops
 		if sorted_arr == None:
-			sorted_arr = test_cases[case]
+			sorted_arr = list_copy
 		if is_sorted(sorted_arr):
 			quick_print(case, "passed successfully in **", ops, "** ops")
 		else:

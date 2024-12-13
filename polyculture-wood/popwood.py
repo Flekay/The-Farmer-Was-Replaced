@@ -1,5 +1,5 @@
 MOVES = generate_moves()
-MOVES_ONE_MIN = generate_moves(2500)
+MOVES_ONE_MIN = generate_moves(2300)
 GRID_SIZE = get_world_size()**2
 CARROT = Entities.Carrot
 BUSH = Entities.Bush
@@ -15,7 +15,7 @@ companion_by_index = {}
 INDEX_MAP = {}
 BUSH_LOCATIONS = [(1,1),(3,6),(6,3),(9,6),(6,9)]
 
-def popwood():
+while True:
 	for i in range(GRID_SIZE):
 		companion_by_index[i] = 0
 		if not i % 2:
@@ -63,7 +63,8 @@ def popwood():
 	def pregrow():
 		for dir in MOVES:
 			while not can_harvest():
-				use_item(FERTILIZER)
+				pass
+				# use_item(FERTILIZER)
 			use_item(WATER)
 			use_item(WATER)
 			use_item(WATER)
@@ -80,6 +81,7 @@ def popwood():
 
 
 	companions = {(1,1):BUSH, (3,6):BUSH, (6,3):BUSH, (9,6):BUSH, (6,9):BUSH}
+	time = get_time()
 	for dir in MOVES_ONE_MIN:
 		coords = (get_pos_x(), get_pos_y())
 		if coords in companions:
@@ -105,7 +107,4 @@ def popwood():
 
 				companions[pos] = companion
 				move(dir)
-
-
-while True:
-	popwood()
+	quick_print("Time: " + str(get_time() - time))

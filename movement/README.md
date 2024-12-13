@@ -7,21 +7,22 @@ This folder contains movement related functions. These functions are used to mov
 ### benchmark-destination.py | move to a specific position
 | file                       | setup time | ops per bench |
 | -------------------------- | ---------- | ------------- |
-| move-to.py                 |            |          1594 |
-| navi-to.py                 |    0.8305s |          1006 |
-| navi-to-list.py            |    0.1057s |           842 |
-| navi-to-list.py inline     |    0.1057s |           801 |
-| navi-to-pos.py             |    9.3369s |           596 |
-| navi-to-func.py            |    7.3332s |          1471 |
+| move-to.py                 |          - |           540 |
+| navi-to.py                 |    0.0915s |           300 |
+| navi-to-list.py            |    0.0302s |           240 |
+| navi-to-list.py inline     |    0.0302s |           240 |
+| navi-to-pos.py             |    6.6664s |           210 |
+| navi-to-func.py            |    4.8000s |           211 |
+| gen-move-to.py             |    0.0049s |           300 |
 
 
 ### benchmark-loop.py | traverse the map
 | file                        | setup time | ops per map |
 | --------------------------- | ---------- | ----------- |
-| navi-map.py                 |    0.0744s |         338 |
-| navi-to-next-tile.py        |    0.0624s |         991 |
-| move-to-next-tile.py inline |            |        1002 |
-| move-to-next-tile.py        |            |        1113 |
+| navi-map.py                 |    0.0362s |           0 |
+| move-to-next-tile.py        |          - |         401 |
+| move-to-next-tile.py inline |          - |         401 |
+| navi-to-next-tile.py        |    0.0076s |         401 |
 
 
 ## move to a specific position
@@ -44,6 +45,9 @@ This script calculates the moves to a specific position on the fly. Wraps around
 
 ### goto.py
 This script calculates the moves to a specific position on the fly. Does not wrap around the map.
+
+### gen-move-to.py
+This script only exists because @ThatMerlinGuy insisted on having a not completely hard-coded version of move-to.py. It generates a function with inlined worldsize.
 
 
 ## traverse the map

@@ -4,7 +4,7 @@ This is a script that are used to farm Wood using polyculture. Current world rec
 ## Benchmarks
 | file          | items/min |
 | ------------- | --------- |
-| popwood.py    | 548k      |
+| popwood.py    | 556k      |
 
 ## popwood.py
 This script is the same as `popcarrot.py` but for wood.

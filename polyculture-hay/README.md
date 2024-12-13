@@ -4,8 +4,8 @@ This is a script that are used to farm hay using polyculture. Current record is 
 ## Benchmarks
 | file        | items/min | note |
 | ----------- | --------- | ---- |
-| static.py   | 223k      |      |
-| preplant.py | 240k      |      |
+| static.py   | 236k      |      |
+| preplant.py | 246k      |      |
 
 ## static.py
 This script just spams fertilizer and harvest in the middle of a bush field. Heavily luck based. preplanting might be better, but i accidentally deleted that script and i'm too lazy to rewrite it. It's also very luck based.

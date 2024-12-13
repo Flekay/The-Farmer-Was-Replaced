@@ -4,14 +4,14 @@ This will be a collection of snake scripts that are used to farm bone.
 ## Benchmarks
 | file         | items/min |
 | -----------  | --------- |
-| greedy.py    |    61 800 |
+| greedy.py    |    55 000 |
 | almighty.py  |   196 000 |
 | timon.py     |   294 280 |
 | hybrid.py    |   304 000 |
-| astar.py     |    50 900 |
+| astar.py     |    39 900 |
 | rando.py     |     1 810 |
 | stack.py     |   196 000 |
-| brainlet.py  |     8 560 |
+| brainlet.py  |     8 590 |
 
 
 ## greedy.py

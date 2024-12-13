@@ -8,18 +8,6 @@ list_of_numbers = [1, 2, 3, 4, 5]
 average = average(list_of_numbers) # 3
 ```
 
-## bell-curve.py
-This file contains a function that prints an ASCII bell curve in the console based on a given list of numbers.
-Optionally, you can pass the width and height of the bell curve as a second and third argument.
-```python
-list_of_numbers = [1, 2, 3, 4, 5]
-bell_curve(list_of_numbers)
-
-height = 10
-width = 50
-bell_curve(list_of_numbers, height, width)
-```
-
 ## ceil.py
 This file contains a function that rounds a number up to the nearest integer.
 ```python
@@ -172,10 +160,6 @@ This file contains a function that calculates the sum of a given list of numbers
 list_of_numbers = [1, 2, 3, 4, 5]
 sum_of_numbers = sum(list_of_numbers) # 15
 ```
-
-## time-series.py WIP
-This file contains a function that prints an ASCII time series graph in the console based on a given list of numbers.
-Optionally, you can pass the width and height of the time series as a second and third argument.
 
 ## tuncate.py
 This file contains a function that truncates a number to a given number of decimal places.

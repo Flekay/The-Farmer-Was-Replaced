@@ -1,7 +1,3 @@
-# This file gives Python type definitions to TFWR builtins to allow editing code with Python editors.
-# Note that the games language is not Python and these definitions are only an approximation.
-# Contributed by @Noon, @KlingonDragon and @dieckie on the TFWR Discord server.
-
 from typing import Any, Optional, Iterable
 
 
@@ -11,40 +7,74 @@ class Item:
 
 
 class Items:
-    Carrot: Item
-    """Obtained by harvesting carrots."""
-
-    Fertilizer: Item
-    """Call `use_item(Items.Fertilizer)` to instantly grow the plant under the drone by 2s."""
-
-    Gold: Item
-    """Found in treasure chests in mazes."""
-
-    Hay: Item
-    """Obtained by cutting grass."""
-
-    Power: Item
-    """Obtained by harvesting sunflowers. The drone automatically uses this to move twice as fast."""
-
-    Pumpkin: Item
-    """Obtained when harvesting pumpkins."""
-
-
-
-    Water: Item
-    """Used to water the ground by calling `use_item(Items.Water)`."""
-
-    Weird_Substance: Item
-    """Call `use_item(Items.Weird_Substance)` on a bush to grow a maze."""
-
-    Wood: Item
-    """Obtained from bushes and trees."""
+    Bone: Item
+    """
+    Obtained by the dinosaur minigame.\n
+    Used for upgrades.
+    """
 
     Cactus: Item
-    """Obtained when harvesting sorted cacti."""
+    """
+    Obtained by harvesting sorted cacti.\n
+    Used for upgrades.
+    """
 
-    Bone: Item
-    """The bones of an ancient creature."""
+    Carrot: Item
+    """
+    Obtained by harvesting fully grown carrots.\n
+    Used to plant `Entities.Pumpkin` and `Entities.Sunflower`. Also used for upgrades.
+    """
+
+    Fertilizer: Item
+    """
+    Obtained over time after unlocking the `Unlocks.Fertilizer` upgrade.\n
+    Used to reduce the remaining growing time of the plant under the drone by 2 seconds.\n
+    Note: Plants speed up with fertilizer will be infected with `Items.Weird_Substance`.
+    """
+
+    Gold: Item
+    """
+    Obtained by harvesting treasure chests in mazes.\n
+    Used for upgrades.
+    """
+
+    Hay: Item
+    """
+    Obtained by harvesting grass.\n
+    Used to plant `Entities.Carrot`. Also used for upgrades.
+    """
+
+    Power: Item
+    """
+    Obtained by harvesting sunflowers.\n
+    Automatically used by the drone to speed up the execution by 100%.
+    """
+
+    Pumpkin: Item
+    """
+    Obtained by harvesting pumpkins.\n
+    Used to plant `Entities.Cactus`. Also used for upgrades. Also used for Apples in the Dinosaur game.
+    """
+
+    Water: Item
+    """
+    Obtained over time after unlocking the `Unlocks.Watering` upgrade.\n
+    Increases water level under the drone by 0.25 per use. The water level is capped at 1.
+    """
+
+    Weird_Substance: Item
+    """
+    Obtained by harvesting infected plants.\n
+    Used on bushes to spawn a maze.\n
+    e.g.\n
+    `use_item(Items.Weird_Substance, n)` where `n` determines the size of the maze.
+    """
+
+    Wood: Item
+    """
+    Obtained by harvesting bushes and trees.\n
+    Used to plant `Entities.Carrot`. Also used for upgrades.
+    """
 
 
 # -------------------------------------------------------------------------------
@@ -58,6 +88,110 @@ class Hats:
     Dinosaur_Hat: Hat
     """Equip it to start the dinosaur game."""
 
+# -------------------------------------------------------------------------------
+class Leaderboard:
+    """A member of the Leaderboards class"""
+
+class Leaderboards:
+    Cactus: Leaderboard
+    """
+    Goal: Farm 100000 cacti efficiently
+    Success: num_items(Items.Cactus) >= 100000
+    Starting Conditions:
+    - All unlocks available
+    - Required growing resources
+    - Lots of power
+    """
+
+    Carrots: Leaderboard
+    """
+    Goal: Farm 100000 carrots efficiently
+    Success: num_items(Items.Carrot) >= 100000
+    Starting Conditions:
+    - All unlocks available
+    - Required growing resources
+    - Lots of power
+    """
+
+    Dinosaur10x10: Leaderboard
+    """
+    Goal: Farm 98010 bones (fill 10x10 area with tail)
+    Success: num_items(Items.Bone) >= 98010
+    Starting Conditions:
+    - All unlocks available
+    - 1000000 Pumpkin
+    - 1000000 Power
+    """
+
+    Fastest_Reset: Leaderboard
+    """
+    Goal: Automate game progression from start to unlocking Leaderboards
+    Success: num_unlocked(Unlocks.Leaderboard) > 0
+    Starting Conditions:
+    - Empty farm
+    - No unlocks
+    - No items
+    """
+
+    Hay: Leaderboard
+    """
+    Goal: Farm 100000 hay efficiently
+    Success: num_items(Items.Hay) >= 100000
+    Starting Conditions:
+    - All unlocks available
+    - Required growing resources
+    - Lots of power
+    """
+
+    Maze10x10: Leaderboard
+    """
+    Goal: Farm 300000 gold (equivalent to solving 300 mazes)
+    Success: num_items(Items.Gold) >= 300000
+    Starting Conditions:
+    - All unlocks available
+    - 1000000 Weird_Substance
+    - 1000000 Power
+    """
+
+    Polyculture: Leaderboard
+    """
+    Goal: Farm 100000 of each polyculture resource
+    Success: num_items() >= 100000 for all polyculture resources
+    Starting Conditions:
+    - All unlocks available
+    - Required growing resources
+    - Lots of power
+    """
+
+    Pumpkins: Leaderboard
+    """
+    Goal: Farm 100000 pumpkins efficiently
+    Success: num_items(Items.Pumpkin) >= 100000
+    Starting Conditions:
+    - All unlocks available
+    - Required growing resources
+    - Lots of power
+    """
+
+    Sunflowers: Leaderboard
+    """
+    Goal: Farm 2400 power efficiently
+    Success: num_items(Items.Power) >= 2400
+    Starting Conditions:
+    - All unlocks available
+    - Required growing resources
+    - No starting power
+    """
+
+    Wood: Leaderboard
+    """
+    Goal: Farm 100000 wood efficiently
+    Success: num_items(Items.Wood) >= 100000
+    Starting Conditions:
+    - All unlocks available
+    - Required growing resources
+    - Lots of power
+    """
 
 # -------------------------------------------------------------------------------
 class Entity:
@@ -65,79 +199,109 @@ class Entity:
 
 class Entities:
     Apple: Entity
-    """Dinosaurs love them apparently."""
-
-    Grass: Entity
     """
-    Grows automatically. Harvest it to obtain `Items.Hay`.
+    Food for dinosaurs
 
-    Average seconds to grow: 0.5
-    Grows on: turf or soil
+    Growth time: 0.2s fixed
+    Grows on: Grassland or soil
+    Plant cost: 2 Pumpkins
+    Drops: None (consumed by dinosaurs)
+    Note: Can be collected before fully grown
     """
 
     Bush: Entity
     """
-    A small bush that drops `Items.Wood`.
+    Basic wood source
 
-    Average seconds to grow: 4
-    Grows on: turf or soil
-    """
-
-    Tree: Entity
-    """
-    Trees drop more wood than bushes. They take longer to grow if other trees grow next to them.
-
-    Average seconds to grow: 7
-    Grows on: turf or soil
-    """
-
-    Carrot: Entity
-    """
-    Carrots!
-
-    Average seconds to grow: 6
-    Grows on: soil
-    """
-
-    Pumpkin: Entity
-    """
-    Pumpkins grow together when they are next to other fully grown pumpkins. About 1 in 5 pumpkins dies when it grows up.
-     When you harvest a pumpkin you get `Items.Pumpkin` equal to the number of pumpkins in the mega pumpkin cubed.
-
-    Average seconds to grow: 2
-    Grows on: soil
-    """
-
-    Sunflower: Entity
-    """
-    Sunflowers collect the power from the sun. Harvesting them will give you `Items.Power` equal to the number of sunflowers in the farm.
-     If you harvest a sunflower that doesn't have the maximum number of petals all the sunflowers will die.
-
-    Average seconds to grow: 5
-    Grows on: soil
+    Growth time: 3.2-4.8s
+    Grows on: Grassland or soil
+    Plant cost: None
+    Drops: Items.Wood
     """
 
     Cactus: Entity
     """
-    Cacti come in 10 different sizes. When harvested, all cacti on the field will be harvested. Only those that are in sorted order will drop `Items.Cactus`.
+    Grows in 10 different sizes
+    Must be harvested in sorted order for drops
 
-    Average seconds to grow: 1
-    Grows on: soil
+    Growth time: 0.9-1.1s
+    Grows on: Soil only
+    Plant cost: 20 Pumpkins
+    Drops: Items.Cactus
+    """
+
+    Carrot: Entity
+    """
+    Basic crop resource
+
+    Growth time: 4.8-7.2s
+    Grows on: Soil only
+    Plant cost: 1 Wood + 1 Hay
+    Drops: Items.Carrot
+    """
+
+    Grass: Entity
+    """
+    Base resource that grows automatically on grassland
+    Can be manually planted on soil
+
+    Growth time: 0.5s fixed
+    Grows on: Grassland or soil
+    Plant cost: None
+    Drops: Items.Hay
     """
 
     Hedge: Entity
-    """Part of the maze. Grow a maze by fertilizing a fully grown bush."""
+    """
+    Maze wall. Created by fertilizing grown bush.
+
+    Growth time: N/A
+    Grows on: N/A
+    Plant cost: N/A
+    Drops: None
+    """
+
+    Pumpkin: Entity
+    """
+    Forms mega-pumpkins with adjacent ripe pumpkins
+    20% chance to die when grown
+
+    Growth time: 0.2-3.8s
+    Grows on: Soil only
+    Plant cost: 1 Carrot
+    Drops: Items.Pumpkin
+    """
+
+    Sunflower: Entity
+    """
+    Power generator. Harvesting the sunflower with the most petals gives you bonus yield.
+
+    Growth time: 5.6-8.4s
+    Grows on: Soil only
+    Plant cost: 1 Carrot
+    Drops: Items.Power
+    """
 
     Treasure: Entity
-    """A treasure that contains gold equal to the side length of the maze in which it is hidden. It can be harvested like a plant."""
-
-    Dinosaur: Entity
     """
-    A majestic dinosaur. It moves around randomly but won't move for a while after being measured. Harvesting it harvests all adjacent dinosaurs of the same type and makes them drop `Items.Bones`.
+    Found in mazes. Gold amount = maze size.
 
-    Average seconds to grow: 0.2
-    Grows on: turf or soil
+    Growth time: N/A
+    Grows on: N/A
+    Plant cost: N/A
+    Drops: Items.Gold
     """
+
+    Tree: Entity
+    """
+    Advanced wood source. Growth slowed by adjacent trees.
+
+    Growth time: 5.6-8.4s (longer with adjacent trees)
+    Grows on: Grassland or soil
+    Plant cost: None
+    Drops: Items.Wood
+    """
+
 
 
 # -------------------------------------------------------------------------------
@@ -146,11 +310,11 @@ class Ground:
 
 
 class Grounds:
-    Turf: Ground
+    Grassland: Ground
     """The default ground. Grass will automatically grow on it."""
 
     Soil: Ground
-    """Calling `till()` turns the ground into this. Calling `till()` again changes it back to turf."""
+    """Calling `till()` turns the ground into this. Calling `till()` again changes it back to grassland."""
 
 
 # -------------------------------------------------------------------------------
@@ -159,116 +323,195 @@ class Unlock:
 
 
 class Unlocks:
-    Trees: Unlock
-    """
-    Unlock: Unlocks trees.
-    Upgrade: Increases the yield of bushes and trees.
-    """
-
-    Speed: Unlock
-    """Increases the speed of the drone."""
-
-    Plant: Unlock
-    """Unlocks planting."""
-
-    Loops: Unlock
-    """Unlocks a simple while loop."""
-
-    Senses: Unlock
-    """The drone can see what's under it and where it is."""
-
-    Expand: Unlock
-    """
-    Unlock: Expands the farm land and unlocks movement.
-    Upgrade: Expands the farm. This also clears the farm.
-    """
-
-    Operators: Unlock
-    """Arithmetic, comparison and logic operators."""
-
-    Pumpkins: Unlock
-    """
-    Unlock: Pumpkins!
-    Upgrade: Increases the yield and cost of pumpkins.
-    """
-
-    Variables: Unlock
-    """Assign values to variables."""
-
-    Functions: Unlock
-    """Define your own functions."""
-
-    Watering: Unlock
-    """Water the plants to make them grow faster."""
-
-    Carrots: Unlock
-    """
-    Unlock: Till the soil and plant carrots.
-    Upgrade: Increases the yield and cost of carrots.
-    """
-
-    Lists: Unlock
-    """Use lists to store lots of values."""
-
-    Costs: Unlock
-    """Allows access to the cost of things."""
-
-    Fertilizer: Unlock
-    """Reduces the remaining growing time of the plant under the drone by 2 seconds."""
-
-    Mazes: Unlock
-    """
-    Unlock: A maze with a treasure in the middle.
-    Upgrade: Increases the gold in treasure chests.
-    """
-
-    Debug: Unlock
-    """Tools to help with debugging programs."""
-
-    Debug_2: Unlock
-    """Functions to temporarily slow down the execution and make the grid smaller."""
-
-    Benchmark: Unlock
-    """Functions to help measure performance."""
-
-    Grass: Unlock
-    """Increases the yield of grass."""
-
-    Multi_Trade: Unlock
-    """Trade multiple items at once."""
-
     Auto_Unlock: Unlock
-    """Automatically unlock things."""
-
-    Polyculture: Unlock
-    """Use companion planting to increase the yield."""
-
-    Sunflowers: Unlock
     """
-    Unlock: Sunflowers and Power.
-    Upgrade: Increases the power gained from sunflowers.
+    Unlock: Automatically unlock new abilities
+    Upgrade: None
     """
-
-    Leaderboard: Unlock
-    """Join the leaderboard for the fastest reset time."""
-
-    Dictionaries: Unlock
-    """Get access to dictionaries and sets."""
-
-    Utilities: Unlock
-    """Unlocks the `min()`, `max()` and `abs()` functions."""
 
     Cactus: Unlock
     """
-    Unlock: Cactus!
-    Upgrade: Increases the yield of cactus and the cost of cactus seeds.
+    Unlock: Plant and harvest cacti
+    Cost: 4000 Pumpkins
+    Upgrade: Increases cactus yield and seed cost
+    """
+
+    Carrots: Unlock
+    """
+    Unlock: Till soil and plant carrots
+    Cost: 100 Wood
+    Upgrade: Increases carrot yield and cost
+    """
+
+    Costs: Unlock
+    """
+    Unlock: Access to get_cost() function
+    Upgrade: None
+    """
+
+    Debug: Unlock
+    """
+    Unlock: Basic debugging tools
+    Upgrade: None
+    """
+
+    Debug_2: Unlock
+    """
+    Unlock: Advanced debugging features
+    Upgrade: None
+    """
+
+    Dictionaries: Unlock
+    """
+    Unlock: Use Python dictionaries and sets
+    Upgrade: None
     """
 
     Dinosaurs: Unlock
     """
-    Unlock: Majestic ancient creatures.
-    Upgrade: Increases the yield and cost of dinosaurs.
+    Unlock: Dinosaur minigame access
+    Cost: 4000 Pumpkins
+    Upgrade: Increases dinosaur yield and costs
     """
+
+    Expand: Unlock
+    """
+    Unlock: Larger farm and movement
+    Cost: 30 Hay
+    Upgrade: Increases farm size (clears farm)
+    """
+
+    Fertilizer: Unlock
+    """
+    Unlock: Speed up plant growth
+    Cost: 1000 Wood
+    Note: Creates Weird_Substance when used
+    """
+
+    Functions: Unlock
+    """
+    Unlock: Define custom functions
+    Upgrade: None
+    """
+
+    Grass: Unlock
+    """
+    Unlock: Enhanced grass operations
+    Cost: 300 Hay
+    Upgrade: Increases grass yield
+    """
+
+    Leaderboard: Unlock
+    """
+    Unlock: Access to leaderboards
+    Cost: 300000 Gold + 500000 Cactus + 400000 Bone
+    Upgrade: None
+    """
+
+    Lists: Unlock
+    """
+    Unlock: Use Python lists
+    Upgrade: None
+    """
+
+    Loops: Unlock
+    """
+    Unlock: Use while loops
+    Upgrade: None
+    """
+
+    Mazes: Unlock
+    """
+    Unlock: Generate and solve mazes
+    Cost: 3000 Pumpkins
+    Upgrade: Increases treasure gold amounts
+    """
+
+    Operators: Unlock
+    """
+    Unlock: Use arithmetic/logic operators
+    Upgrade: None
+    """
+
+    Plant: Unlock
+    """
+    Unlock: Basic planting ability
+    Cost: 50 Hay
+    Upgrade: None
+    """
+
+    Polyculture: Unlock
+    """
+    Unlock: Companion planting bonuses
+    Cost: 800 Gold
+    Upgrade: None
+    """
+
+    Pumpkins: Unlock
+    """
+    Unlock: Plant and harvest pumpkins
+    Cost: 500 Wood + 350 Carrot
+    Upgrade: Increases pumpkin yield
+    """
+
+    Senses: Unlock
+    """
+    Unlock: Drone position/tile awareness
+    Upgrade: None
+    """
+
+    Simulation: Unlock
+    """
+    Unlock: Access to simulation mode
+    Upgrade: None
+    """
+
+    Speed: Unlock
+    """
+    Unlock: Basic drone speed
+    Cost: 20 Hay
+    Upgrade: Further increases speed
+    """
+
+    Sunflowers: Unlock
+    """
+    Unlock: Power generation
+    Cost: 200 Carrot
+    Upgrade: Increases power yield
+    """
+
+    Timing: Unlock
+    """
+    Unlock: Performance measurement
+    Upgrade: None
+    """
+
+    Trees: Unlock
+    """
+    Unlock: Tree farming
+    Cost: 50 Wood + 70 Carrot
+    Upgrade: Increases wood yield
+    """
+
+    Utilities: Unlock
+    """
+    Unlock: min(), max(), abs() functions
+    Upgrade: None
+    """
+
+    Variables: Unlock
+    """
+    Unlock: Use variables
+    Upgrade: None
+    """
+
+    Watering: Unlock
+    """
+    Unlock: Water plants
+    Cost: 50 Wood
+    Upgrade: None
+    """
+
 
 
 # -------------------------------------------------------------------------------
@@ -305,7 +548,7 @@ def harvest() -> bool:
 
     returns `True` if an entity was removed, `False` otherwise.
 
-    takes the time of `200` ticks to execute if an entity was removed, `1` tick otherwise.
+    takes `200` ticks to execute if an entity was removed, `1` tick otherwise.
 
     example usage:
     ```
@@ -322,7 +565,7 @@ def can_harvest() -> bool:
 
     returns `True` if there is an entity under the drone that is ready to be harvested, `False` otherwise.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -341,7 +584,7 @@ def plant(entity: Entity) -> bool:
 
     returns `True` if it succeeded, `False` otherwise.
 
-    takes the time of `200` ticks to execute if it succeeded, `1` tick otherwise.
+    takes `200` ticks to execute if it succeeded, `1` tick otherwise.
 
     example usage:
     ```
@@ -364,7 +607,7 @@ def move(direction: Direction) -> bool:
 
     returns `True` if the drone has moved, `False` otherwise.
 
-    takes the time of `200` ticks to execute if the drone has moved, `1` tick otherwise.
+    takes `200` ticks to execute if the drone has moved, `1` tick otherwise.
 
     example usage:
     ```
@@ -383,7 +626,7 @@ def swap(direction: Direction) -> bool:
 
     returns `True` if it succeeded, `False` otherwise.
 
-    takes the time of `200` ticks to execute on success, `1` tick otherwise.
+    takes `200` ticks to execute on success, `1` tick otherwise.
 
     example usage:
     ```
@@ -396,11 +639,11 @@ def swap(direction: Direction) -> bool:
 # -------------------------------------------------------------------------------
 def till() -> None:
     """
-    Tills the ground under the drone into soil. If it's already soil it will change the ground back to turf.
+    Tills the ground under the drone into soil. If it's already soil it will change the ground back to grassland.
 
     returns `None`
 
-    takes the time of `200` ticks to execute.
+    takes `200` ticks to execute.
 
     example usage:
     ```
@@ -418,7 +661,7 @@ def get_pos_x() -> int:
 
     returns a number representing the current x coordinate of the drone.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -436,7 +679,7 @@ def get_pos_y() -> int:
 
     returns a number representing the current y coordinate of the drone.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -453,7 +696,7 @@ def get_world_size() -> int:
 
     returns the side length of the grid in the north to south direction.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -471,7 +714,7 @@ def get_entity_type() -> Entity | None:
 
     returns `None` if the tile is empty, otherwise returns the type of the entity under the drone.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -489,7 +732,7 @@ def get_ground_type() -> Ground:
 
     returns the type of the ground under the drone.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -507,7 +750,7 @@ def get_time() -> float:
 
     returns the time in seconds since the start of the game.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -528,7 +771,7 @@ def get_tick_count() -> float:
 
     returns the number of ticks performed since the start of execution.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -541,39 +784,13 @@ def get_tick_count() -> float:
 
 
 # -------------------------------------------------------------------------------
-def trade(item: Item, n: Optional[float] = None) -> bool:
+def use_item(item: Item, n: int = 1) -> bool:
     """
-    Tries to buy the specified `item`.
-     If the `item` cannot be bought or you don't have the required resources it simply does nothing.
-
-    overloads:
-    `trade(item)`: Buy the `item` once.
-    `trade(item, n)`: If `Unlocks.Multi_Trade` is unlocked, this will buy the `item` `n` times immediately. If you can't afford all `n` items, it won't buy any at all. If `Unlocks.Multi_Trade` is not unlocked, it throws an error.
-
-    returns `True` if it was able to buy the item(s), `False` otherwise.
-
-    takes the time of `200` ticks to execute if it succeeded, `1` tick otherwise.
-
-    example usage:
-    ```
-    if num_unlocked(Unlocks.Multi_Trade) > 0:
-        trade(Items.Carrot_Seed, 10)
-    else:
-        for i in range(10):
-            trade(Items.Carrot_Seed)
-    ```
-    """
-    ...
-
-
-# -------------------------------------------------------------------------------
-def use_item(item: Item) -> bool:
-    """
-    Attempts to use the specified `item`. Can only be used with some items including `Items.Water`, `Items.Fertilizer` and `Items.Egg`.
+    Attempts to use the specified `item` `n` times. Can only be used with some items including `Items.Water`, `Items.Fertilizer` and `Items.Egg`.
 
     returns `True` if an item was used, `False` otherwise.
 
-    takes the time of `200` ticks to execute if it succeeded, `1` tick otherwise.
+    takes `200` ticks to execute if it succeeded, `1` tick otherwise.
 
     example usage:
     ```
@@ -590,7 +807,7 @@ def get_water() -> float:
 
     returns the water level under the drone as a number between `0` and `1`.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -653,7 +870,7 @@ def set_execution_speed(speed: float) -> None:
 
     returns `None`
 
-    takes the time of `200` ticks to execute.
+    takes `200` ticks to execute.
 
     example usage:
     ```
@@ -675,7 +892,7 @@ def set_farm_size(size: float) -> None:
 
     returns `None`
 
-    takes the time of `200` ticks to execute.
+    takes `200` ticks to execute.
 
     example usage:
     ```
@@ -692,7 +909,7 @@ def num_items(item: Item) -> float:
 
     returns the number of `item` currently in your inventory.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -715,7 +932,7 @@ def get_cost(thing: Entity | Item | Unlock) -> dict[Item, float] | None:
     - returns a dictionary with items as keys and numbers as values. Each item is mapped to how much of it is needed.
     - returns `None` when used on an upgradeable unlock that is already at the max level.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -731,11 +948,11 @@ def get_cost(thing: Entity | Item | Unlock) -> dict[Item, float] | None:
 # -------------------------------------------------------------------------------
 def clear() -> None:
     """
-    Removes everything from the farm, and moves the drone back to position `(0,0)`.
+    Removes everything from the farm, moves the drone back to position `(0,0)` and changes the hat back to the default.
 
     returns `None`
 
-    takes the time of `200` ticks to execute.
+    takes `200` ticks to execute.
 
     example usage:
     ```
@@ -750,9 +967,9 @@ def get_companion() -> tuple[Entity, tuple[int, int]] | None:
     """
     Get the companion preference of the plant under the drone.
 
-    returns a list of the form `[companion_type, companion_x_position, companion_y_position]`
+    returns a list of the form `(companion_type, (companion_x_position, companion_y_position))`
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -771,7 +988,7 @@ def unlock(unlock: Unlock) -> bool:
 
     returns `True` if the unlock was successful, `False` otherwise.
 
-    takes the time of `200` ticks to execute if it succeeded, `1` tick otherwise.
+    takes `200` ticks to execute if it succeeded, `1` tick otherwise.
 
     example usage:
     ```
@@ -788,7 +1005,7 @@ def num_unlocked(thing: Unlock | Entity | Ground | Item) -> int:
 
     returns `1` plus the number of times `thing` has been upgraded if `thing` is upgradable. Otherwise returns `1` if `thing` is unlocked, `0` otherwise.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -817,7 +1034,7 @@ def measure(direction: Optional[Direction] = None) -> float | tuple[int, int] | 
     Dinosaur: returns the number corresponding to the type.
     All other entities: returns `None`.
 
-    takes the time of `1` tick to execute.
+    takes `1` tick to execute.
 
     example usage:
     ```
@@ -828,18 +1045,18 @@ def measure(direction: Optional[Direction] = None) -> float | tuple[int, int] | 
 
 
 # -------------------------------------------------------------------------------
-def timed_reset(file_name: str, speedup: float) -> None:
+def leaderboard_run(leaderboard: Leaderboard, file_name: str, speedup: float) -> None:
     """
-    Starts a timed run for the leaderboard using the specified `file_name` as a starting point.
+    Starts a timed run for the `leaderboard` using the specified `file_name` as a starting point.
     `speedup` sets the starting speedup.
 
     returns `None`
 
-    takes the time of `200` ticks to execute.
+    takes `200` ticks to execute.
 
     example usage:
     ```
-    timed_reset("full_run", 256)
+    leaderboard_run(Leaderboards.Fastest_Reset, "full_run", 256)
     ```
     """
     ...
@@ -862,7 +1079,7 @@ def simulate(filename: str, sim_unlocks: dict[Unlocks, float] | Iterable[Unlocks
 
     returns the time it took to run the simulation.
 
-    takes the time of `200` ticks to execute.
+    takes `200` ticks to execute.
 
     example usage:
 
@@ -886,7 +1103,7 @@ def quick_print(*something: Any) -> None:
 
     returns `None`
 
-    takes the time of `1` ticks to execute.
+    takes `1` ticks to execute.
 
     example usage:
     ```
@@ -903,7 +1120,7 @@ def random() -> float:
 
     returns the random number.
 
-    takes the time of `1` ticks to execute.
+    takes `1` ticks to execute.
 
     example usage:
     ```
@@ -911,5 +1128,23 @@ def random() -> float:
         index = random() * len(list) // 1
         return list[index]
     ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def change_hat(hat: Hat) -> None:
+    """
+    Changes the hat of the drone to the specified `hat`.
+
+    returns `None`
+
+    takes `200` ticks to execute.
+
+    example usage:
+    ```
+    change_hat(Hats.Dinosaur_Hat)
+    ```
+    ...
     """
     ...

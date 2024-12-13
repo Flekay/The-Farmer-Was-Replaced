@@ -1,10 +1,6 @@
-# The-Farmer-Was-Replaced Scripts for the BETA VERSION
+# The-Farmer-Was-Replaced Scripts Collection
 
-The largest collection of community scripts for the game "The Farmer Was Replaced", including multiple #1 record holders.
-
-## About
-
-This repository contains a variety of scripts created by the community to enhance gameplay and achieve high scores in "The Farmer Was Replaced". Our goal is to compile the most efficient and effective scripts for the game.
+The largest collection of community scripts for the game "The Farmer Was Replaced". This repository tries to gather the most efficient of each strategy in each category and rank them by performance.
 
 ## Repository Structure
 
@@ -26,27 +22,7 @@ Most scripts in this collection require the base movement scripts. Follow these 
 
 ## Contributing
 
-We welcome and encourage contributions from all players! If you have a more efficient approach or a new script to share:
-
-1. Fork this repository
-2. Create a new branch for your script
-3. Add your script to the appropriate folder
-4. Update the folder's README.md with benchmarks and functionality description
-5. Submit a pull request with a clear description of your changes
-
-Please ensure your code is well-commented and include any necessary instructions for use.
-
-Important notes for contributors:
-- Please use the style defined in `style.md`.
-- You can also send your code or ask any questions on Discord: **flekay**
-
-## Record Holders
-
-This collection includes scripts that have achieved #1 records in various categories. Check the individual folder READMEs for detailed benchmarks and performance information.
-
-## Disclaimer
-
-These scripts are community-created content and are not officially affiliated with or endorsed by the creators of "The Farmer Was Replaced". Use at your own discretion and in accordance with the game's terms of service.
+We welcome and encourage contributions from all players! If you have a more efficient approach or a new strategy, please submit a pull request or reach out to us on Discord.
 
 ## License
 

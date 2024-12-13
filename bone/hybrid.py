@@ -2,16 +2,16 @@ ALMIGHTY_MOVES = almighty()
 while True:
 	clear()
 	mighty = True
-	pos = greedy()
+	pos = greedy2()
 	if pos:
-		stack(pos)
+		stack2(pos)
 		while mighty:
 			for dir in ALMIGHTY_MOVES:
 				if not move(dir):
 					mighty = False
 					break
 
-def greedy():
+def greedy2():
 	change_hat(Hats.Dinosaur_Hat)
 	can_move = True
 	length = 1
@@ -46,8 +46,7 @@ def greedy():
 
 
 
-
-def stack(pos):
+def stack2(pos):
 	apple_x, apple_y = pos
 	apple_y = apple_y + (not apple_y % 2)
 	forbidden_moves = {(1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (1,7), (1,8), (1,9)}

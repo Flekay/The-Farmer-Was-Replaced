@@ -4,11 +4,11 @@
 ## Benchmarks
 | file          | items/min |
 | ------------- | --------- |
-| power-fart.py |      6570 |
+| power-fart.py |      6600 |
 | power-hash.py |      3470 |
-| power-path.py |      3640 |
-| power-runs.py |      2600 |
-| power-spam.py |      6280 |
+| power-path.py |      3840 |
+| power-runs.py |      2540 |
+| power-spam.py |      6310 |
 
 
 ## power-fart.py

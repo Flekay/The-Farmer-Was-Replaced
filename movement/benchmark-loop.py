@@ -9,7 +9,7 @@ run_ops = get_tick_count()
 for direction in MOVES:
 	till()
 	move(direction)
-run_ops = get_tick_count() - run_ops - 3 - 40000
+run_ops = get_tick_count() - run_ops - 40000
 quick_print("navi-map.py, Setup time:", str(boot_time), ", ops:", run_ops)
 
 
@@ -20,7 +20,7 @@ run_ops = get_tick_count()
 for i in range(SIZE):
 	till()
 	move_to_next_tile()
-run_ops = get_tick_count() - run_ops - 3 - 40000
+run_ops = get_tick_count() - run_ops - 40000
 quick_print("move-to-next-tile.py, ops:", run_ops)
 
 # move-to-next-tile.py inline
@@ -33,7 +33,7 @@ for i in range(SIZE):
 		move(West)
 	else:
 		move(North)
-run_ops = get_tick_count() - run_ops - 3 - 40000
+run_ops = get_tick_count() - run_ops - 40000
 quick_print("move-to-next-tile.py inline, ops:", run_ops)
 
 
@@ -48,5 +48,5 @@ run_ops = get_tick_count()
 for i in range(SIZE):
 	till()
 	move(next_tile[get_pos_x()][get_pos_y()])
-run_ops = get_tick_count() - run_ops - 3 - 40000
+run_ops = get_tick_count() - run_ops - 40000
 quick_print("navi-to-next-tile.py, Setup time:", str(boot_time), ", Run time:", run_ops)
