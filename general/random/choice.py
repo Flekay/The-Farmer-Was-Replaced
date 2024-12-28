@@ -1,2 +1,2 @@
-def randchoice(mylist):
+def choice(mylist):
 	return mylist[random() * len(mylist)]

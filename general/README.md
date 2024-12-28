@@ -86,21 +86,6 @@ power = 3
 result = pow(number, power) # 8
 ```
 
-## randchoice.py
-This file contains a function that randomly selects an element from a list.
-```python
-list_of_elements = [1, 2, 3, 4, 5]
-random_element = randchoice(list_of_elements) # 3
-```
-
-## randomint.py
-This file contains a function that generates a random integer between two given numbers.
-```python
-lower_bound = 1
-upper_bound = 10
-random_integer = randomint(lower_bound, upper_bound) # 5
-```
-
 ## reversed.py
 This file contains a function that reverses the order of elements in a list.
 ```python

@@ -2,7 +2,6 @@ def loadDataList(size=get_world_size()):
 	def shift_list(l):
 		return [l[-1]] + l[:-1]
 	if size == 3:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -14,7 +13,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 4:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -28,7 +26,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 5:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -44,7 +41,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 6:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -62,7 +58,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 7:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -82,7 +77,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 8:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -104,7 +98,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 9:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -128,7 +121,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 10:
-		# original list
 		move_x = [
 			[],
 			[East],
