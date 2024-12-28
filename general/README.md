@@ -86,6 +86,13 @@ power = 3
 result = pow(number, power) # 8
 ```
 
+## randchoice.py
+This file contains a function that randomly selects an element from a list.
+```python
+list_of_elements = [1, 2, 3, 4, 5]
+random_element = randchoice(list_of_elements) # 3
+```
+
 ## randomint.py
 This file contains a function that generates a random integer between two given numbers.
 ```python
@@ -118,7 +125,7 @@ rounded_number = round(number, decimal_places) # 3.14
 ```
 
 ## sleep_ops.py
-This file contains a function that pauses the execution of the script for a given number of operations. Minimum 13 operations. Needs to be warmed up before use :/
+This file contains a function that pauses the execution of the script for a given number of operations. Minimum 3 operations.
 ```python
 operations = 100
 sleep_ops(operations) # script pauses for 100 operations
@@ -152,6 +159,13 @@ number = 42.751554
 string = str(number) # "42.7515"
 
 string = str(number, 2) # "42.75"
+```
+
+## strtime.py
+This file contains a function that returns a time string for the given number of seconds, displayed as mm:ss.xx.
+```python
+seconds = 75
+time_string = strtime(seconds) # "  1:15.00"
 ```
 
 ## sum.py
