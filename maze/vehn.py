@@ -1,5 +1,5 @@
 # This is not Vehn's code, but implements the core idea.
-def vehn(iterations=100):
+def vehn(iterations=300):
 	AMOUNT = get_world_size() * num_unlocked(Unlocks.Mazes)
 	BASE = (4, 4)
 
@@ -17,7 +17,7 @@ def vehn(iterations=100):
 
 	# Helper recursive function to find walls and treasure
 	def scan_maze(back=None):
-		if get_entity_type() == Entities.Treasure:
+		if measure():
 			TREASURE_POS.append((get_pos_x(), get_pos_y()))
 		WALLS[(get_pos_x(), get_pos_y())] = set()
 		for dir in [North, East, South, West]:
@@ -72,7 +72,7 @@ def vehn(iterations=100):
 
 
 	# Start the maze!
-	clear()
+	move_to(BASE[0], BASE[1])
 	plant(Entities.Bush)
 	use_item(Items.Weird_Substance, AMOUNT)
 
@@ -81,20 +81,20 @@ def vehn(iterations=100):
 	do_bfs(BASE[0], BASE[1])
 
 	# Solve the maze
-	goal = TREASURE_POS[0]
-	while True:
-		# Recycle or harvest treasure if it's here
-		while get_entity_type() == Entities.Treasure:
-			goal = measure()
-			iterations -= 1
-			if iterations == 0:
-				harvest()
-				return
-			use_item(Items.Weird_Substance, AMOUNT)
+	if not measure():
+		x, y = TREASURE_POS[0]
+		gpath = get_path_to_base(x, y)
+		for step in gpath[::-1]:
+			move_and_break_walls(OPP[step])
+
+	for _ in range(iterations):
+		# Reuse maze
+		x, y = measure()
+		use_item(Items.Weird_Substance, AMOUNT)
 
 		# Compute paths from drone and goal to base
 		dpath = get_path_to_base(get_pos_x(), get_pos_y())
-		gpath = get_path_to_base(goal[0], goal[1])
+		gpath = get_path_to_base(x, y)
 		# Cancel the final moves if they're the same
 		while dpath and gpath and dpath[-1] == gpath[-1]:
 			gpath.pop()
@@ -105,12 +105,4 @@ def vehn(iterations=100):
 		# Follow the goal path backward
 		for step in gpath[::-1]:
 			move_and_break_walls(OPP[step])
-
-
-timings = []
-for i in range(10000):
-	time = get_time()
-	vehn()
-	time = get_time() - time
-	insort(timings, time)
-	quick_print("#", i, "min:", timings[0], "max:", timings[-1], "median:", median(timings), "avg:", average(timings), "time:", time)
+	harvest()
