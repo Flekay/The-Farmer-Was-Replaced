@@ -2,7 +2,6 @@ def loadDataList(size=get_world_size()):
 	def shift_list(l):
 		return [l[-1]] + l[:-1]
 	if size == 3:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -14,7 +13,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 4:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -28,7 +26,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 5:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -44,7 +41,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 6:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -62,7 +58,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 7:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -82,7 +77,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 8:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -104,7 +98,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 9:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -128,7 +121,6 @@ def loadDataList(size=get_world_size()):
 			[South],
 		]
 	elif size == 10:
-		# original list
 		move_x = [
 			[],
 			[East],
@@ -163,15 +155,17 @@ def loadDataList(size=get_world_size()):
 
 	return move_x_list, move_y_list
 
-def navi_to_list(x, y):
-	for fx in move_data_x[get_pos_x()][x]:
+def navi_to_list(goal_x, goal_y, start_x = get_pos_x(), start_y = get_pos_y()):
+	for fx in move_data_x[start_x][goal_x]:
 		move(fx)
-	for fy in move_data_y[get_pos_y()][y]:
+	for fy in move_data_y[start_y][goal_y]:
 		move(fy)
 
 
-def navi_to_list_pos(pos):
-	for fx in move_data_x[get_pos_x()][pos[0]]:
+def navi_to_list_pos(goal_pos, start_pos = (get_pos_x(), get_pos_y())):
+	goal_x, goal_y = goal_pos
+	start_x, start_y = start_pos
+	for fx in move_data_x[start_x][goal_x]:
 		move(fx)
-	for fy in move_data_y[get_pos_y()][pos[1]]:
+	for fy in move_data_y[start_y][goal_y]:
 		move(fy)

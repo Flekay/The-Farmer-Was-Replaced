@@ -5,9 +5,9 @@ def gen_move_to(ws=get_world_size()):
 	for delta in range(-ws + 1, ws):
 		delta_lookup[delta] = (delta + hws) % ws - hws
 
-	def _gen_move_to(x, y, current_x=get_pos_x(), current_y=get_pos_y()):
-		dx = delta_lookup[x - current_x]
-		dy = delta_lookup[y - current_y]
+	def _gen_move_to(goal_x, goal_y, current_x=get_pos_x(), current_y=get_pos_y()):
+		dx = delta_lookup[goal_x - current_x]
+		dy = delta_lookup[goal_y - current_y]
 
 		for i in range(dx):
 			move(East)

@@ -21,7 +21,7 @@ run_ops = get_tick_count() - run_ops - 32800 - 240 - 1 # minus mandatory operati
 quick_print("move-to.py, ops:", run_ops)
 
 
-# navi-to.py
+# navi-to-tuple.py
 clear()
 boot_time = get_time()
 move_x2, move_y2 = loadData(get_world_size())
@@ -42,7 +42,7 @@ for pos in SPOTS:
 		break
 
 run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-to.py, Setup time:", str(boot_time), ", ops:", run_ops)
+quick_print("navi-to-tuple.py, Setup time:", str(boot_time), ", ops:", run_ops)
 
 
 # navi-to-list.py
@@ -65,31 +65,7 @@ run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
 quick_print("navi-to-list.py, Setup time:", str(boot_time), ", ops:", run_ops)
 
 
-# navi-to-list.py - inline
-clear()
-boot_time = get_time()
-move_data_x, move_data_y = loadDataList(get_world_size())
-boot_time = get_time() - boot_time
-
-run_ops = get_tick_count()
-
-for pos in SPOTS:
-
-	for fx in move_data_x[get_pos_x()][pos[0]]:
-		move(fx)
-	for fy in move_data_y[get_pos_y()][pos[1]]:
-		move(fy)
-
-	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
-		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
-		break
-
-run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-to-list.py - inline, Setup time:", str(boot_time), ", ops:", run_ops)
-
-
-
-# navi-to-pos.py
+# navi-pos-to-pos.py
 clear()
 boot_time = get_time()
 navi_to_pos = generate_path_map(get_world_size())
@@ -105,10 +81,10 @@ for pos in SPOTS:
 		break
 
 run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-to-pos.py, Setup time:", str(boot_time), ", ops:", run_ops)
+quick_print("navi-pos-to-pos.py, Setup time:", str(boot_time), ", ops:", run_ops)
 
 
-# navi-to-func.py
+# navi-pos-to-pos-func.py
 clear()
 boot_time = get_time()
 navi_to_func_pos = generate_path_func_map(get_world_size())
@@ -123,7 +99,7 @@ for pos in SPOTS:
 		break
 
 run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-to-func.py, Setup time:", str(boot_time), ", ops:", run_ops)
+quick_print("navi-pos-to-pos-func.py, Setup time:", str(boot_time), ", ops:", run_ops)
 
 
 

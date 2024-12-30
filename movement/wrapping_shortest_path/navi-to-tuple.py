@@ -792,16 +792,18 @@ def loadData(size=get_world_size()):
 			(9, 8): [South],
 			(9, 9): []
 		}
-	
 
-def navi_to(x, y):
-	for fx in move_x2[get_pos_x(), x]:
+
+def navi_to(goal_x, goal_y, current_x=get_pos_x(), current_y=get_pos_y()):
+	for fx in move_x2[current_x, goal_x]:
 		move(fx)
-	for fy in move_y2[get_pos_y(), y]:
+	for fy in move_y2[current_y, goal_y]:
 		move(fy)
 
-def navi_to_pos(pos):
-	for fx in move_x2[get_pos_x(), pos[0]]:
+def navi_to_pos(goal_pos, current_pos=(get_pos_x(), get_pos_y())):
+	goal_x, goal_y = goal_pos
+	current_x, current_y = current_pos
+	for fx in move_x2[current_x, goal_x]:
 		move(fx)
-	for fy in move_y2[get_pos_y(), pos[1]]:
+	for fy in move_y2[current_y, goal_y]:
 		move(fy)
