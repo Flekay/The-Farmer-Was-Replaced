@@ -45,7 +45,7 @@ def vehn(iterations=300):
 						queue.append((new_x, new_y, dist + 1))
 
 	# Helper to compute the path to a base
-	def get_path_to_base(x, y):
+	def get_path_to_base(x=get_pos_x(), y=get_pos_y()):
 		path = []
 		dir = DIR_TO_BASE[x, y]
 		while dir:
@@ -85,16 +85,17 @@ def vehn(iterations=300):
 		x, y = TREASURE_POS[0]
 		gpath = get_path_to_base(x, y)
 		for step in gpath[::-1]:
-			move_and_break_walls(OPP[step])
+			move(OPP[step])
 
-	for _ in range(iterations):
-		# Reuse maze
-		x, y = measure()
+	for _ in range(iterations - 1):
+		# Compute paths from drone and goal to base
+		dpath = get_path_to_base()
+		gx, gy = measure()
+		gpath = get_path_to_base(gx, gy)
+
+		# Recycle treasure if it's here
 		use_item(Items.Weird_Substance, AMOUNT)
 
-		# Compute paths from drone and goal to base
-		dpath = get_path_to_base(get_pos_x(), get_pos_y())
-		gpath = get_path_to_base(x, y)
 		# Cancel the final moves if they're the same
 		while dpath and gpath and dpath[-1] == gpath[-1]:
 			gpath.pop()

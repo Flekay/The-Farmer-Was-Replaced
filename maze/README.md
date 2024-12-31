@@ -41,30 +41,24 @@ The gold stat is currently a bit broken. So the stats might be a off.
 
 ## Early Maze Leaderboard 1x20 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 20 treasures.
-| # | file            | min       | max       | median    | avg       |
-| - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | vehn.py         |   8.6299s |  14.6499s |  10.9099s |  10.9299s |
+| # | file            | min       | max       | avg       |
+| - | --------------- | --------- | --------- | --------- |
+| 0 | vehn.py         |   7.0707s |  13.4355s |   9.6710s |
 
 
 ## Mid Maze Leaderboard 1x100 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 100 treasures.
-| # | file            | min       | max       | median    | avg       |
-| - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | vehn.py         |  23.3799s |  40.3199s |  28.5699s |  28.5399s |
+| # | file            | min       | max       | avg       |
+| - | --------------- | --------- | --------- | --------- |
+| 0 | vehn.py         |  20.3616s |  34.4092s |  25.9778s |
 
 ## Late Maze Leaderboard 1x300 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 300 treasures.
-| # | file            | min       | max       | median    | avg       |
-| - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | vehn.py         |  50.9299s |  73.5099s |  59.7399s |  59.9699s |
-
-## Speedrun Maze Leaderboard 1x151 (8x8)
-This leaderboard changes over time based on the current meta for timed resets.
-| # | file            | min       | max       | median    | avg       |
-| - | --------------- | --------- | --------- | --------- | --------- |
-| 0 | vehn.py         |  22.6899s |  34.8999s |  26.4699s |  26.7899s |
+| # | file            | min       | max       | avg       |
+| - | --------------- | --------- | --------- | --------- |
+| 0 | vehn.py         |  47.1636s |  65.3409s |  54.2558s |
 
 
 ## Important Notes
 - Currently known best strategy is to use recursive dfs to scan the map than use a flowfield (vehn.py) for about 40-50 treasures. After that use recursive Astar to collect the rest of the treasures.
-- `pro-max.py`, `dfs.py`, `bi-bfs.py`, `astar.py` are all work outdated and need to be updated.
+- `pro-max.py`, `dfs.py`, `bi-bfs.py`, `astar.py` are all outdated and need to be updated.
