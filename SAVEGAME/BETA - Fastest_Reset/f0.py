@@ -1,0 +1,1 @@
+quick_print(num_unlocked(Unlocks.Carrots))

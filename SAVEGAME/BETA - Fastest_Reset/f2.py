@@ -1,0 +1,8 @@
+quick_print(get_world_size())
+quick_print(num_unlocked(Unlocks.Expand))
+unlock(Unlocks.Expand)
+quick_print(get_world_size())
+quick_print(num_unlocked(Unlocks.Expand))
+unlock(Unlocks.Expand)
+quick_print(get_world_size())
+quick_print(num_unlocked(Unlocks.Expand))
