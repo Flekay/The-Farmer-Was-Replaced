@@ -12,7 +12,8 @@ SPOTS = [
 run_ops = get_tick_count()
 
 for pos in SPOTS:
-	move_to_pos(pos)
+	x,y = pos
+	move_to(x,y)
 	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
 		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
 		break
@@ -21,41 +22,39 @@ run_ops = get_tick_count() - run_ops - 32800 - 240 - 1 # minus mandatory operati
 quick_print("move-to.py, ops:", run_ops)
 
 
-# navi-to-tuple.py
+# navi-to-dict.py
 clear()
 boot_time = get_time()
-move_x2, move_y2 = loadData(get_world_size())
+move_x, move_y = loadData(get_world_size())
 boot_time = get_time() - boot_time
 
 run_ops = get_tick_count()
 
 for pos in SPOTS:
 
-	# this is the same as
-	# pos_x, pos_y = pos
-	# navi_to(pos_x, pos_y)
-	# this
-	navi_to_pos(pos)
+	x, y = pos
+	navi_to_dict(x, y)
 
 	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
 		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
 		break
 
 run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-to-tuple.py, Setup time:", str(boot_time), ", ops:", run_ops)
+quick_print("navi-to-dict.py, Setup time:", str(boot_time), ", ops:", run_ops)
 
 
 # navi-to-list.py
 clear()
 boot_time = get_time()
-move_data_x, move_data_y = loadDataList(get_world_size())
+move_x, move_y = loadDataList(get_world_size())
 boot_time = get_time() - boot_time
 
 run_ops = get_tick_count()
 
 for pos in SPOTS:
 
-	navi_to_list_pos(pos)
+	x, y = pos
+	navi_to_list(x, y)
 
 	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
 		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
@@ -63,6 +62,54 @@ for pos in SPOTS:
 
 run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
 quick_print("navi-to-list.py, Setup time:", str(boot_time), ", ops:", run_ops)
+
+
+# navi-to-list.py - known positions
+clear()
+boot_time = get_time()
+move_x = (
+	(),
+	[East],
+	(East, East),
+	(East, East, East),
+	(East, East, East, East),
+	(West, West, West, West, West),
+	(West, West, West, West),
+	(West, West, West),
+	(West, West),
+	[West],
+)
+move_y = (
+	(),
+	[North],
+	(North, North),
+	(North, North, North),
+	(North, North, North, North),
+	(South, South, South, South, South),
+	(South, South, South, South),
+	(South, South, South),
+	(South, South),
+	[South],
+)
+boot_time = get_time() - boot_time
+
+run_ops = get_tick_count()
+tx = 0
+ty = 0
+
+for pos in SPOTS:
+
+	x, y = pos
+	navi_to_list(x, y, tx, ty)
+	tx = x
+	ty = y
+
+	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
+		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
+		break
+
+run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
+quick_print("navi-to-list.py - known positions, Setup time:", str(boot_time), ", ops:", run_ops)
 
 
 # navi-pos-to-pos.py

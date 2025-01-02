@@ -9,13 +9,13 @@ def gen_move_to(ws=get_world_size()):
 		dx = delta_lookup[goal_x - current_x]
 		dy = delta_lookup[goal_y - current_y]
 
-		for i in range(dx):
+		for _ in range(dx):
 			move(East)
-		for i in range(-dx):
+		for _ in range(-dx):
 			move(West)
-		for i in range(dy):
+		for _ in range(dy):
 			move(North)
-		for i in range(-dy):
+		for _ in range(-dy):
 			move(South)
 
 	return _gen_move_to

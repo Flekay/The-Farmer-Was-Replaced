@@ -6,19 +6,19 @@ def move_to(goal_x, goal_y, current_x = get_pos_x(), current_y = get_pos_y(), ws
 	dy = (goal_y - current_y + hws) % ws - hws
 
 	# Move in x direction
-	for i in range(dx):
+	for _ in range(dx):
 		move(East)
-	for i in range(-dx):
+	for _ in range(-dx):
 		move(West)
 
 	# Move in y direction
-	for i in range(dy):
+	for _ in range(dy):
 		move(North)
-	for i in range(-dy):
+	for _ in range(-dy):
 		move(South)
 
 
-def move_to_pos(goal_pos, current_pos = (get_pos_x(), get_pos_y()), ws = get_world_size()):
+def move_to_pos(goal_pos, current_pos, ws = get_world_size()):
 	hws = ws // 2
 	goal_x, goal_y = goal_pos
 	start_x, start_y = current_pos

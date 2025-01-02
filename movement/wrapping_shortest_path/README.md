@@ -18,9 +18,9 @@ This script pre-calculates the moves form each position to each position. Simila
 Generates a comprehensive map of paths between all possible position pairs. It stores these paths in a dictionary for quick lookup and execution.
 
 ### `navi-to-list.py`
-Similar to `navi-to-tuple.py`, but utilizes lists instead of dictionaries to store movement data. This can potentially reduce setup time by using a generator method.
+Similar to `navi-to-dict.py`, but utilizes ~~lists~~ tuples instead of dictionaries to store movement data. Changed from 2d Lists to 1d Tuples to increased setup time. Setup time can be reduced even further by directly assaining the variable instead of using the function. e.g. `navi-to-list.py - known positions`
 
-### `navi-to-tuple.py`
+### `navi-to-dict.py`
 Pre-calculates the moves from each x,y coordinate to every other x,y coordinate. This approach reduces computation time during execution by using precomputed paths.
 
 
@@ -29,19 +29,21 @@ To benchmark the movement functions, run the `benchmark.py` script. This will ex
 
 ### Benchmark Results from `benchmark.py`
 
-| File                       | Setup Time | Operations per Benchmark |
-| -------------------------- | ---------- | ------------------------ |
-| move-to.py                 |          - |                      660 |
-| navi-to-tuple.py           |    0.0915s |                      360 |
-| navi-to-list.py            |    0.0303s |                      300 |
-| navi-pos-to-pos.py         |    6.6732s |                      240 |
-| navi-pos-to-pos-func.py    |    4.8067s |                      241 |
-| gen-move-to.py             |    0.0049s |                      450 |
+| File                              | Setup Time | Operations per Benchmark |
+| --------------------------------- | ---------- | ------------------------ |
+| move-to.py                        |          - |                      600 |
+| navi-to-dict.py                   |    0.0915s |                      300 |
+| navi-to-list.py                   |    0.0024s |                      240 |
+| navi-to-list.py - known positions |    0.0013s |                      180 |
+| navi-pos-to-pos.py                |    6.6732s |                      240 |
+| navi-pos-to-pos-func.py           |    4.8067s |                      241 |
+| gen-move-to.py                    |    0.0049s |                      450 |
 
 
 ## Important Notes
-- The `navi-pos-to-pos.py` and `navi-pos-to-pos-func.py` currently have no real use case in the game, because of the high setup time compared to the other methods.
-- The `gen-move-to.py` is technically a `navi` method, because it hardcodes the world size.
-- The `move-to.py` and `gen-move-to.py` are most likely be used in quick testing and debugging scenarios.
-- The `navi-to-list.py` is currently never a good choice, because it performs worse than `navi-to-list.py` in every aspect.
-- The `navi-to-list.py` is the best choice for most scenarios, because it has a low setup time and a good performance.
+- `navi-pos-to-pos.py` and `navi-pos-to-pos-func.py` are not recommended for use in the game due to their high setup times compared to other methods.
+- `gen-move-to.py` is considered a `navi` method as it hardcodes the world size.
+- `move-to.py` is primarily used for debugging and testing purposes.
+- `navi-to-dict.py` is generally not recommended anymore due to the increased cost of using dictionaries.
+- `navi-to-list.py` is currently the most efficient choice for most scenarios.
+- Most functions allow you to pass current position as an argument to increase performance even more. e.g. `navi-to-list.py - known positions`

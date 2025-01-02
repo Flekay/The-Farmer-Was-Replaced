@@ -1,4 +1,3 @@
-
 def loadData(size=get_world_size()):
 	if size == 3:
 		return {
@@ -794,16 +793,13 @@ def loadData(size=get_world_size()):
 		}
 
 
-def navi_to(goal_x, goal_y, current_x=get_pos_x(), current_y=get_pos_y()):
-	for fx in move_x2[current_x, goal_x]:
+def navi_to_dict(goal_x, goal_y, current_x=get_pos_x(), current_y=get_pos_y()):
+	for fx in move_x[current_x, goal_x]:
 		move(fx)
-	for fy in move_y2[current_y, goal_y]:
+	for fy in move_y[current_y, goal_y]:
 		move(fy)
 
-def navi_to_pos(goal_pos, current_pos=(get_pos_x(), get_pos_y())):
+def navi_to_dict_pos(goal_pos, current_pos):
 	goal_x, goal_y = goal_pos
 	current_x, current_y = current_pos
-	for fx in move_x2[current_x, goal_x]:
-		move(fx)
-	for fy in move_y2[current_y, goal_y]:
-		move(fy)
+	navi_to(goal_x, goal_y, current_x, current_y)
