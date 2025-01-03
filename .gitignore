@@ -1,0 +1,4 @@
+# Ignore vscode settings
+.*/**
+# Ignore Test files
+**/test**.*
