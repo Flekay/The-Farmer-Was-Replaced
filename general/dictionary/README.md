@@ -1,76 +1,96 @@
-# List
+# Dictionary Functions
 
-This folder contains functions that are useful for manipulating strings.
+This folder contains functions that are useful for manipulating dictionaries.
 
 ## Functions
 
-### `average.py`
-This file contains a function that calculates the average of a given list of numbers.
+### `copy.py`
+Creates a shallow copy of a dictionary.
 ```python
-list_of_numbers = [1, 2, 3, 4, 5]
-average = average(list_of_numbers) # 3
+old_dict = {'a': 1, 'b': 2}
+new_dict = copy(old_dict)
+new_dict['a'] = 3
+
+quick_print(old_dict['a']) # 1
+quick_print(new_dict['a']) # 3
 ```
 
-### `copy_list.py`
-This file contains a function that creates a copy of a list.
+### `deep_copy.py`
+Creates a deep copy of a dictionary up to a specified depth.
 ```python
-list_of_numbers = [1, 2, 3, 4, 5]
-copied_list = copy_list(list_of_numbers) # [1, 2, 3, 4, 5]
+old_dict = {'a': {'b': 1}}
+new_dict = deep_copy(old_dict, 1)
+new_dict['a']['b'] = 2
+
+quick_print(old_dict['a']['b']) # 1
+quick_print(new_dict['a']['b']) # 2
 ```
 
-### `deep_copy_list.py`
-This file contains a function that creates a deep copy of a list. Requires a depth parameter to specify the level of depth to copy and all nested lists need to be of the same depth.
+### `filter.py`
+Filters a dictionary based on a predicate function.
 ```python
-list_of_numbers = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
-deep_copied_list = deep_copy_list(list_of_numbers, 1) # [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
+def is_even(value):
+	return value % 2 == 0
+
+dictionary = {'a': 1, 'b': 2, 'c': 3}
+filtered = filter(dictionary, is_even)
+
+quick_print(filtered) # {'b': 2}
 ```
 
-### `insort.py`
-This file contains a function that inserts a number into a sorted list while keeping the list sorted.
+### `get.py`
+Gets the value for a specified key with an optional default.
 ```python
-sorted_list = [1, 2, 3, 5, 6]
-insort(sorted_list, 4) # [1, 2, 3, 4, 5, 6]
+dictionary = {'a': 1, 'b': 2}
+example1 = get(dictionary, 'a')
+example2 = get(dictionary, 'c', 'default')
+
+quick_print(example1) # 1
+quick_print(example2) # 'default'
 ```
 
-### `is_sorted.py`
-This file contains a function that checks if a list is sorted in ascending order.
+### `items.py`
+Retrieves all key-value pairs from a dictionary.
 ```python
-sorted_list = [1, 2, 3, 4, 5]
-is_sorted(sorted_list) # True
+dictionary = {'a': 1, 'b': 2}
+items = dictionary_items(dictionary)
+
+quick_print(items) # [('a', 1), ('b', 2)]
 ```
 
-### `mean.py`
-This file contains a function that calculates the mean of a given list of numbers.
+### `keys.py`
+Retrieves all the keys from a dictionary and returns them as a list.
 ```python
-list_of_numbers = [1, 2, 3, 4, 5]
-mean = mean(list_of_numbers) # 3
+dictionary = {'a': 1, 'b': 2}
+keys = keys(dictionary)
+
+quick_print(keys) # ['a', 'b']
 ```
 
-### `median.py`
-This file contains a function that calculates the median of a given list of numbers.
+### `merge.py`
+Merges two dictionaries into one.
 ```python
-list_of_numbers = [1, 2, 3, 4, 5]
-median = median(list_of_numbers) # 3
+left = {'a': 1}
+right = {'b': 2}
+merged = merge(left, right)
+
+quick_print(merged) # {'a': 1, 'b': 2}
 ```
 
-### `reversed.py`
-This file contains a function that reverses the order of elements in a list.
+### `set.py`
+Sets a key-value pair in a dictionary.
 ```python
-list_of_numbers = [1, 2, 3, 4, 5]
-reversed_list = reversed(list_of_numbers) # [5, 4, 3, 2, 1]
+dictionary = {'a': 1}
+set(dictionary, 'b', 2)
+
+quick_print(dictionary) # {'a': 1, 'b': 2}
 ```
 
-### `sorted.py`
-This file contains a function that returns a sorted list of elements. It does not modify the original list. It uses a custom bucket sort algorithm.
+### `values.py`
+Retrieves all the values from a dictionary and returns them as a list.
 ```python
-list_of_numbers = [5, 4, 3, 2, 1]
-sorted_list = sorted(list_of_numbers) # [1, 2, 3, 4, 5]
-```
+dictionary = {'a': 1, 'b': 2}
+values = values(dictionary)
 
-
-### `sum.py`
-This file contains a function that calculates the sum of a given list of numbers.
-```python
-list_of_numbers = [1, 2, 3, 4, 5]
-sum_of_numbers = sum(list_of_numbers) # 15
+quick_print(values) # [1, 2]
 ```

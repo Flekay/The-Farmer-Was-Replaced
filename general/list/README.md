@@ -67,10 +67,20 @@ list_of_numbers = [5, 4, 3, 2, 1]
 sorted_list = sorted(list_of_numbers) # [1, 2, 3, 4, 5]
 ```
 
-
 ### `sum.py`
 This file contains a function that calculates the sum of a given list of numbers.
 ```python
 list_of_numbers = [1, 2, 3, 4, 5]
 sum_of_numbers = sum(list_of_numbers) # 15
+```
+
+### `zip.py`
+This file contains a function that zips two or more lists together.
+```python
+lists_to_zip = [
+	[1,2,3],
+	['a','b','c'],
+	[True,False,True]
+]
+zipped = zip(lists_to_zip)  # [(1,'a',True), (2,'b',False), (3,'c',True)]
 ```
