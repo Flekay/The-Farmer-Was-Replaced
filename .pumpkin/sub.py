@@ -35,20 +35,28 @@ for _ in range(21):
 	tpos = (get_pos_x(), get_pos_y())
 	# 3. visit all missing pumpkins until ready to harvest
 	while len(pumpkin_set) > num_items(Items.Fertilizer)/2+3:
-		# for pos in set(pumpkin_set):
-		pos = pumpkin_set.pop()
-		navi_to_list_pos(pos, tpos)
-		tpos = pos
-		# pumpkin_set.remove(pos)
-		if not can_harvest():
-			plant(Entities.Pumpkin)
-			pumpkin_set.append(tpos)
+		for pos in pumpkin_set:
+			navi_to_list_pos(pos, tpos)
+			tpos = pos
+			if can_harvest():
+				pumpkin_set.remove(pos)
+			else:
+				plant(Entities.Pumpkin)
 	# 4. fertilize the remaining pumpkins
 	for pos in pumpkin_set:
 		navi_to_list_pos(pos, tpos)
 		tpos = pos
+		if get_water() < 0.75:
+			use_item(Items.Water)
 		while not can_harvest():
 			plant(Entities.Pumpkin)
 			use_item(Items.Fertilizer)
 	# 5. harvest
 	harvest()
+
+
+
+pumpkin_set = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0)]
+ticks = get_tick_count()
+pumpkin_set.remove((6, 0))
+quick_print(get_tick_count() - ticks)
