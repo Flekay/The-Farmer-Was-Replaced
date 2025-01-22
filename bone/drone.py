@@ -1,8 +1,5 @@
-# for dinos it turns out the other rules aren't really worth it anyway
-# the idea was to split the grid into 2x2 cells
-# always drive on the right side of cells
-# only enter a cell you're in from the same side you entered it
-# but it was faster to only do the valid directions and fail slightly more
+# WIP
+# The Transision to almighty circle not yet working
 
 # video
 # https://discord.com/channels/988081966035402783/1241469488919220316/1323107367419777025
@@ -11,45 +8,155 @@
 
 clear()
 change_hat(Hats.Dinosaur_Hat)
-apple = measure()
-DD = {
-	North: 1,
-	East: 1,
-	South: -1,
-	West: -1
-}
-# snake_body = [(0, 0)]
-# length = 0
+apple_x, apple_y = measure()
+flipX = True
+flipY = True
+x = 0
+y = 0
+length = 0
 
-def movable_directions(x=get_pos_x(), y=get_pos_y()):
-	directions = []
-	if x % 2:
-		directions.append(North)
+# Early apples
+while length < 50:
+
+	if flipX:
+		if flipY:
+			# South or East
+			if apple_y < y:
+				if move(South):
+					flipY = not flipY
+					y -= 1
+				else:
+					move(East)
+					flipX = not flipX
+					x += 1
+			else:
+				if move(East):
+					flipX = not flipX
+					x += 1
+				else:
+					move(South)
+					flipY = not flipY
+					y -= 1
+		else:
+			# South or West
+			if apple_x < x:
+				if move(West):
+					flipX = not flipX
+					x -= 1
+				else:
+					move(South)
+					flipY = not flipY
+					y -= 1
+			else:
+				if move(South):
+					flipY = not flipY
+					y -= 1
+				else:
+					move(West)
+					flipX = not flipX
+					x -= 1
 	else:
-		directions.append(South)
-	if y % 2:
-		directions.append(West)
+		if flipY:
+			# North or East
+			if apple_x > x:
+				if move(East):
+					flipX = not flipX
+					x += 1
+				else:
+					move(North)
+					flipY = not flipY
+					y += 1
+			else:
+				if move(North):
+					flipY = not flipY
+					y += 1
+				else:
+					move(East)
+					flipX = not flipX
+					x += 1
+		else:
+			# North or West
+			if apple_y > y:
+				if move(North):
+					flipY = not flipY
+					y += 1
+				else:
+					move(West)
+					flipX = not flipX
+					x -= 1
+			else:
+				if move(West):
+					flipX = not flipX
+					x -= 1
+				else:
+					move(North)
+					flipY = not flipY
+					y += 1
+
+	m = measure()
+	if m:
+		apple_x, apple_y = m
+		length += 1
+
+
+# generate almighty circle list
+almighty = []
+visited = set((x,y))
+for _ in range(100):
+	if flipX:
+		if flipY:
+			new_y = y - 1
+			if (x, new_y) not in visited and move(South):
+				flipY = not flipY
+				y = new_y
+				almighty.append(South)
+			else:
+				move(East)
+				flipX = not flipX
+				x += 1
+				almighty.append(East)
+		else:
+			new_x = x - 1
+			if (new_x, y) not in visited and move(West):
+				flipX = not flipX
+				x = new_x
+				almighty.append(West)
+			else:
+				move(South)
+				flipY = not flipY
+				y -= 1
+				almighty.append(South)
 	else:
-		directions.append(East)
-	return directions
+		if flipY:
+			new_x = x + 1
+			if (new_x, y) not in visited and move(East):
+				flipX = not flipX
+				x = new_x
+				almighty.append(East)
+			else:
+				move(North)
+				flipY = not flipY
+				y += 1
+				almighty.append(North)
+		else:
+			new_y = y + 1
+			if (x, new_y) not in visited and move(North):
+				flipY = not flipY
+				y = new_y
+				almighty.append(North)
+			else:
+				move(West)
+				flipX = not flipX
+				x -= 1
+				almighty.append(West)
+	visited.add((x, y))
 
-# manhatten distance
-def manhatten_distance(point1, point2, ws=get_world_size()):
-	return abs(point1[0] - point2[0]) + abs(point1[1] - point2[1])
+# loop through almighty circle list
+contin = True
+while contin:
+	for direction in almighty:
+		if not move(direction):
+			contin = False
+			break
 
-
-# print(movable_directions(7,1))
-while True:
-	directions = movable_directions()
-	# move the first direction that moves in the direction of the apple
-	pos = (get_pos_x(), get_pos_y())
-	distanceX = manhatten_distance((pos[0] + DD[directions[0]], pos[1]), apple)
-	distanceY = manhatten_distance((pos[0], pos[1] + DD[directions[1]]), apple)
-	# if distanceX < distanceY:
-	# 	move(directions[0])
-	# else:
-	# 	move(directions[1])
-	if distanceX > distanceY and not move(directions[0]):
-		move(directions[1])
-	elif not move(directions[1]):
-		move(directions[0])
+clear()
