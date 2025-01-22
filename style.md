@@ -10,6 +10,8 @@
 
 ## Naming
 
-- Use `snake_case` for variables, functions
+- Use `snake_case` for variables
+- Use `snake_case` for functions
+- Use `snake_case` for file names
 - Use `CONSTANT_CASE` for precompiled variables
-- Use `kebab-case.py` for file names
+- Use `CONSTANT_CASE` for constants

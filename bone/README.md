@@ -45,7 +45,7 @@ benchmarks with "-" have a less than 100% success rate and are therefore not abl
 ### Benchmark Results
 | file         | items/min | leaderboard time |
 | -----------  | --------- | ---------------- |
-| drone.py     |   392 373 |         0:19.263 |
+| drone.py     |   392 373 |         0:18.845 |
 | /circle.py   |   294 280 |         0:23.924 |
 | timon.py     |   294 280 |         0:27.889 |
 | almighty.py  |   196 000 |         0:42.221 |
