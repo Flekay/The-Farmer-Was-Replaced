@@ -4,25 +4,25 @@ This directory contains functions and scripts designed to facilitate seamless lo
 
 ## Functions
 
-### `map-adv.py`
+### `map_adv.py`
 Generates movement sequences based on the current world size and player position. Utilizes recursive logic to handle large maps by breaking them down into manageable segments. Support for custom path lengths and custom starting positions.
 
-### `map-inline.py`
+### `map_inline.py`
 Provides inline generation of move sequences reducing the need for precomputed data. Adapts dynamically to different world sizes, ensuring consistent performance.
 
-### `map-light.py`
-A streamlined version of `map-adv.py` with reduced functionality. Focuses on essential movement without support for custom path lengths or starting positions to optimize setup time.
+### `map_light.py`
+A streamlined version of `map_adv.py` with reduced functionality. Focuses on essential movement without support for custom path lengths or starting positions to optimize setup time.
 
-### `map-local.py`
+### `map_local.py`
 I forgot what this does.
 
-### `move-to-next-tile.py`
+### `move_to_next_tile.py`
 Calculates the immediate next move required to advance the player to the adjacent tile based on the current position. Utilizes simple conditional logic for quick execution.
 
-### `navi-to-next-tile.py`
-Precomputes the necessary moves to transition the player to the next tile. Ensures consistent and predictable traversal paths across the map.
+### `navi_to_next_tile.py`
+Precomputed movement sequences for each tile to the next tile. Ensures consistent and predictable traversal paths across the map.
 
-### `world-adv.py`
+### `world_adv.py`
 This script pre-calculates the moves to the next tile for each tile. Withouth using world wraping. Currently only works for even sized maps.
 
 ## Benchmarking
@@ -31,16 +31,16 @@ To assess the performance of the movement functions, execute the `benchmark.py` 
 
 ### Benchmark Results from `benchmark.py`
 
-| File                        | Setup Time | Operations per Benchmark |
-| --------------------------- | ---------- | ------------------------ |
-| map-adv.py                  |        609 |                        1 |
-| map-light.py                |        116 |                        1 |
-| map-inline.py               |         14 |                       12 |
-| move-to-next-tile.py        |          - |                      402 |
-| navi-to-next-tile.py        |        127 |                      402 |
+| File                        | Setup Ticks | Ticks per Benchmark |
+| --------------------------- | ----------- | ------------------- |
+| map_adv.py                  |         610 |                   1 |
+| map_light.py                |         117 |                   1 |
+| map_inline.py               |          15 |                  12 |
+| move_to_next_tile.py        |           1 |                 402 |
+| navi_to_next_tile.py        |          16 |                 402 |
 
 ## Important Notes
-- The `map-light.py` is the best choice for most scenarios, because it has a low setup time and a good performance.
-- The `map-adv.py` and `map-inline.py` only have some niche use cases.
-- The `world-adv.py` was created for in the previous version of the game to fit a non full field pumpking in the 60s best stats time window. It is currently not used in the game.
-- The `navi-to-next-tile.py` and `move-to-next-tile.py` currently dont have a real use case in the game.
+- The `map_light.py` is the best choice for most scenarios, because it has a low setup time and a good performance.
+- The `map_adv.py` and `map_inline.py` only have some niche use cases.
+- The `world_adv.py` was created for in the previous version of the game to fit a non full field pumpking in the 60s best stats time window. It is currently not used in the game.
+- The `navi_to_next_tile.py` and `move_to_next_tile.py` currently dont have a real use case in the game.

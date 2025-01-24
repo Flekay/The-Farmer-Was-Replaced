@@ -1,3 +1,5 @@
+# general/string/string.py
+from string import string
 # goto.py
 clear()
 # True Random Number Generator
@@ -9,6 +11,10 @@ SPOTS = [
 	(0,1),(4,2),(8,7),(4,7),(8,2),(6,4),
 	(2,7),(5,8),(0,2),(8,0),(0,8),(6,6),
 ]
+boot_time = get_time()
+# movement/non_wrapping_shortest_path/goto.py
+from goto import goto
+boot_time = get_time() - boot_time
 run_ops = get_tick_count()
 
 for pos in SPOTS:
@@ -19,25 +25,25 @@ for pos in SPOTS:
 		break
 
 run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("goto.py, ops:", run_ops)
+quick_print("goto.py, Setup time:", string(boot_time), ", ops:", run_ops)
 
 
 # goto-local.py
 clear()
 boot_time = get_time()
-goto_local = generate_path_map_local(get_world_size())
+# movement/non_wrapping_shortest_path/goto_local.py
+from runto_local import *
 boot_time = get_time() - boot_time
 
 run_ops = get_tick_count()
 
 for pos in SPOTS:
 
-	for moves in goto_local[(get_pos_x(),get_pos_y())][pos]:
-		move(moves)
+	runto(pos)
 
 	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
 		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
 		break
 
 run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("goto-local.py, Setup time:", str(boot_time), ", ops:", run_ops)
+quick_print("runto-local.py, Setup time:", string(boot_time), ", ops:", run_ops)

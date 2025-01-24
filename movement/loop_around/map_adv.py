@@ -19,3 +19,5 @@ def generate_moves(
 			pos_y += 1
 			moves.append(North)
 	return moves
+
+MOVES = generate_moves()

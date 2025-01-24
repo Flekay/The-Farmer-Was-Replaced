@@ -27,4 +27,10 @@ def generate_path_map_local(ws=get_world_size()):
 			ex, ey = end_pos
 			map_paths[start_pos][end_pos] = x_path_start[ex] + y_path_start[ey]
 	return map_paths
-	
+
+
+runto_local = generate_path_map_local(get_world_size())
+
+def runto(pos, current_pos=(get_pos_x(),get_pos_y())):
+	for moves in runto_local[current_pos][pos]:
+		move(moves)

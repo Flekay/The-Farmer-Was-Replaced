@@ -792,6 +792,7 @@ def loadData(size=get_world_size()):
 			(9, 9): []
 		}
 
+move_x, move_y = loadData(get_world_size())
 
 def navi_to_dict(goal_x, goal_y, current_x=get_pos_x(), current_y=get_pos_y()):
 	for fx in move_x[current_x, goal_x]:

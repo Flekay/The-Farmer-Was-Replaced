@@ -691,3 +691,8 @@ def generate_path_func_map(ws=get_world_size()):
 			ex, ey = end_pos
 			path_func_map[start_pos][end_pos] = move_to_func_map[ey - sy][ex - sx]
 	return path_func_map
+
+navi_to_func_pos = generate_path_func_map(get_world_size())
+
+def move_to(pos, current_pos=(get_pos_x(),get_pos_y())):
+	navi_to_func_pos[current_pos][pos]()

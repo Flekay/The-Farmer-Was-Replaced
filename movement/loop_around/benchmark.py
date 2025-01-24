@@ -1,7 +1,8 @@
-# map-adv.py
+# map_adv.py
 clear()
 boot_time = get_tick_count()
-MOVES = generate_moves()
+# movement/loop_around/map_adv.py
+from map_adv import MOVES
 boot_time = get_tick_count() - boot_time
 
 run_ops = get_tick_count()
@@ -9,14 +10,15 @@ for direction in MOVES:
 	till()
 	move(direction)
 run_ops = get_tick_count() - run_ops - 40000
-quick_print("map-adv.py, Setup time:", boot_time, ", ops:", run_ops)
+quick_print("map_adv.py, Setup time:", boot_time, ", ops:", run_ops)
 
 
-# map-inline.py
+# map_inline.py
 clear()
 SIZE = get_world_size()
 boot_time = get_tick_count()
-MOVES = generate_moves_inline()
+# movement/loop_around/map_inline.py
+from map_inline import MOVES
 boot_time = get_tick_count() - boot_time
 
 run_ops = get_tick_count()
@@ -25,13 +27,14 @@ for _ in range(SIZE):
 		till()
 		move(direction)
 run_ops = get_tick_count() - run_ops - 40000
-quick_print("map-inline.py, Setup time:", boot_time, ", ops:", run_ops)
+quick_print("map_inline.py, Setup time:", boot_time, ", ops:", run_ops)
 
 
-# map-light.py
+# map_light.py
 clear()
 boot_time = get_tick_count()
-MOVES = generate_moves_light()
+# movement/loop_around/map_light.py
+from map_light import MOVES
 boot_time = get_tick_count() - boot_time
 
 run_ops = get_tick_count()
@@ -39,30 +42,34 @@ for direction in MOVES:
 	till()
 	move(direction)
 run_ops = get_tick_count() - run_ops - 40000
-quick_print("map-light.py, Setup time:", boot_time, ", ops:", run_ops)
+quick_print("map_light.py, Setup time:", boot_time, ", ops:", run_ops)
 
 
-# move-to-next-tile.py
+# move_to_next_tile.py
 clear()
+boot_time = get_tick_count()
+# movement/loop_around/move_to_next_tile.py
+from move_to_next_tile import move_to_next_tile
+boot_time = get_tick_count() - boot_time
 SIZE = get_world_size()**2
 run_ops = get_tick_count()
 for i in range(SIZE):
 	till()
 	move_to_next_tile()
 run_ops = get_tick_count() - run_ops - 40000
-quick_print("move-to-next-tile.py, ops:", run_ops)
+quick_print("move_to_next_tile.py, Setup time:", boot_time, ", ops:", run_ops)
 
 
-# navi-to-next-tile.py
+# navi_to_next_tile.py
 clear()
-SIZE = get_world_size()**2
 boot_time = get_tick_count()
-next_tile = navi_to_next_tile()
+# movement/loop_around/navi_to_next_tile.py
+from navi_to_next_tile import navi_to_next_tile
 boot_time = get_tick_count() - boot_time
-
+SIZE = get_world_size()**2
 run_ops = get_tick_count()
 for i in range(SIZE):
 	till()
-	move(next_tile[get_pos_x()][get_pos_y()])
+	navi_to_next_tile()
 run_ops = get_tick_count() - run_ops - 40000
-quick_print("navi-to-next-tile.py, Setup time:", boot_time, ", Run time:", run_ops)
+quick_print("navi_to_next_tile.py, Setup time:", boot_time, ", ops:", run_ops)

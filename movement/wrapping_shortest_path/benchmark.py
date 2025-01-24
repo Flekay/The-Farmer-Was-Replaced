@@ -1,168 +1,113 @@
-# move-to.py
-clear()
-# True Random Number Generator
-# https://www.random.org/
-SPOTS = [
+from string import string
+
+# Randomly generated test positions
+SPOTS = (
 	(5,0),(2,0),(3,5),(8,9),(6,6),(6,6),
 	(3,0),(4,7),(9,7),(5,3),(7,9),(9,4),
 	(6,7),(4,4),(2,6),(1,5),(6,8),(2,0),
 	(0,1),(4,2),(8,7),(4,7),(8,2),(6,4),
 	(2,7),(5,8),(0,2),(8,0),(0,8),(6,6),
-]
-run_ops = get_tick_count()
-
-for pos in SPOTS:
-	x,y = pos
-	move_to(x,y)
-	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
-		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
-		break
-
-run_ops = get_tick_count() - run_ops - 32800 - 240 - 1 # minus mandatory operations (164 moves, verify position, for loop)
-quick_print("move-to.py, ops:", run_ops)
-
-
-# navi-to-dict.py
-clear()
-boot_time = get_time()
-move_x, move_y = loadData(get_world_size())
-boot_time = get_time() - boot_time
-
-run_ops = get_tick_count()
-
-for pos in SPOTS:
-
-	x, y = pos
-	navi_to_dict(x, y)
-
-	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
-		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
-		break
-
-run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-to-dict.py, Setup time:", str(boot_time), ", ops:", run_ops)
-
-
-# navi-to-list.py
-clear()
-boot_time = get_time()
-move_x, move_y = loadDataList(get_world_size())
-boot_time = get_time() - boot_time
-
-run_ops = get_tick_count()
-
-for pos in SPOTS:
-
-	x, y = pos
-	navi_to_list(x, y)
-
-	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
-		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
-		break
-
-run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-to-list.py, Setup time:", str(boot_time), ", ops:", run_ops)
-
-
-# navi-to-list.py - known positions
-clear()
-boot_time = get_time()
-move_x = (
-	(),
-	[East],
-	(East, East),
-	(East, East, East),
-	(East, East, East, East),
-	(West, West, West, West, West),
-	(West, West, West, West),
-	(West, West, West),
-	(West, West),
-	[West],
 )
-move_y = (
-	(),
-	[North],
-	(North, North),
-	(North, North, North),
-	(North, North, North, North),
-	(South, South, South, South, South),
-	(South, South, South, South),
-	(South, South, South),
-	(South, South),
-	[South],
-)
-boot_time = get_time() - boot_time
 
-run_ops = get_tick_count()
-tx = 0
-ty = 0
+names = []
+files = []
+timings = []
 
-for pos in SPOTS:
-
-	x, y = pos
-	navi_to_list(x, y, tx, ty)
-	tx = x
-	ty = y
-
-	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
-		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
-		break
-
-run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-to-list.py - known positions, Setup time:", str(boot_time), ", ops:", run_ops)
-
-
-# navi-pos-to-pos.py
-clear()
+# movement/wrapping_shortest_path/gen_move_to.py
 boot_time = get_time()
-navi_to_pos = generate_path_map(get_world_size())
-boot_time = get_time() - boot_time
+import gen_move_to
+timings.append(get_time() - boot_time)
+files.append(gen_move_to.move_to)
+names.append("gen_move_to.py")
 
-run_ops = get_tick_count()
-
-for pos in SPOTS:
-	for moves in navi_to_pos[(get_pos_x(),get_pos_y())][pos]:
-		move(moves)
-	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
-		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
-		break
-
-run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-pos-to-pos.py, Setup time:", str(boot_time), ", ops:", run_ops)
-
-
-# navi-pos-to-pos-func.py
-clear()
+# movement/wrapping_shortest_path/move_to.py
 boot_time = get_time()
-navi_to_func_pos = generate_path_func_map(get_world_size())
-boot_time = get_time() - boot_time
+import move_to
+timings.append(get_time() - boot_time)
+files.append(move_to.move_to)
+names.append("move_to.py")
 
-run_ops = get_tick_count()
-
-for pos in SPOTS:
-	navi_to_func_pos[(get_pos_x(),get_pos_y())][pos]()
-	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
-		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
-		break
-
-run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("navi-pos-to-pos-func.py, Setup time:", str(boot_time), ", ops:", run_ops)
-
-
-
-# gen-move-to.py
-clear()
+# movement/wrapping_shortest_path/navi_to_deltalist.py
 boot_time = get_time()
-move_to = gen_move_to()
-boot_time = get_time() - boot_time
+import navi_to_deltalist
+timings.append(get_time() - boot_time)
+files.append(navi_to_deltalist.navi_to_deltalist)
+names.append("navi_to_deltalist.py")
 
-run_ops = get_tick_count()
+# movement/wrapping_shortest_path/navi_to_dict.py
+boot_time = get_time()
+import navi_to_dict
+timings.append(get_time() - boot_time)
+files.append(navi_to_dict.navi_to_dict)
+names.append("navi_to_dict.py")
 
-for pos in SPOTS:
-	x,y = pos
-	move_to(x, y)
-	if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
-		quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
-		break
-run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
-quick_print("gen-move-to.py, Setup time:", str(boot_time), ", ops:", run_ops)
+# movement/wrapping_shortest_path/navi_to_list.py
+boot_time = get_time()
+import navi_to_list
+timings.append(get_time() - boot_time)
+files.append(navi_to_list.navi_to_list)
+names.append("navi_to_list.py")
+
+
+# Run tests for x,y based movement
+for i in range(len(files)):
+	move_to = files[i]
+	clear()
+	run_ops = get_tick_count()
+
+	for pos in SPOTS:
+		x,y = pos
+		move_to(x,y)
+		if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
+			quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
+			break
+
+	# minus mandatory operations (164 moves, verify position, for loop)
+	run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
+	quick_print(names[i], "Booted in", string(timings[i]), "seconds and ran in", run_ops, "operations")
+
+
+
+
+
+
+
+
+
+
+
+
+names = []
+files = []
+timings = []
+
+# movement/wrapping_shortest_path/navi_pos_to_pos_func.py
+boot_time = get_time()
+import navi_pos_to_pos_func
+timings.append(get_time() - boot_time)
+files.append(navi_pos_to_pos_func.move_to)
+names.append("navi_pos_to_pos_func.py")
+
+# movement/wrapping_shortest_path/navi_pos_to_pos.py
+boot_time = get_time()
+import navi_pos_to_pos
+timings.append(get_time() - boot_time)
+files.append(navi_pos_to_pos.move_to)
+names.append("navi_pos_to_pos.py")
+
+
+# Run tests for position based movement
+for i in range(len(files)):
+	move_to = files[i]
+	clear()
+	run_ops = get_tick_count()
+
+	for pos in SPOTS:
+		move_to(pos)
+		if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
+			quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
+			break
+
+	# minus mandatory operations (164 moves, verify position, for loop)
+	run_ops = get_tick_count() - run_ops - 32800 - 240 - 1
+	quick_print(names[i], "Booted in", string(timings[i]), "seconds and ran in", run_ops, "operations")

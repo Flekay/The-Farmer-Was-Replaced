@@ -38,3 +38,9 @@ def generate_path_map(ws=get_world_size()):
 			ex, ey = end_pos
 			map_paths[start_pos][end_pos] = x_path_start[ex] + y_path_start[ey]
 	return map_paths
+
+navi_to_pos = generate_path_map(get_world_size())
+
+def move_to(pos, current_pos=(get_pos_x(),get_pos_y())):
+	for moves in navi_to_pos[current_pos][pos]:
+		move(moves)
