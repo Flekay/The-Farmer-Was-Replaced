@@ -1,3 +1,15 @@
+# The sorted function sorts a list of numbers in-place in ascending order using the bucket sort algorithm.
+#
+# Arguments:
+#	list (list): a list of numbers
+#
+# Returns:
+#	list: a sorted list of numbers
+#
+# Example:
+#	list = [3, 2, 1]
+#	sorted_list = sorted(list)
+#	# [1, 2, 3]
 def sorted(list):
 	if len(list) == 0:
 		return []

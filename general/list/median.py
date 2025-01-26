@@ -1,3 +1,15 @@
+# The median function takes a list of numbers and returns the median value.
+#
+# Arguments:
+#	list (list): a list of numbers
+#
+# Returns:
+#	number: the median value of the list
+#
+# Example:
+#	list = [1, 2, 3]
+#	median_value = median(list)
+#	# 2
 def median(list):
 	sorted_numbers = sorted(list)
 	length = len(sorted_numbers)
