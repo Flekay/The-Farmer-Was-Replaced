@@ -4,28 +4,6 @@ This folder contains functions that are useful for manipulating dictionaries.
 
 ## Functions
 
-### `copy.py`
-Creates a shallow copy of a dictionary.
-```python
-old_dict = {'a': 1, 'b': 2}
-new_dict = copy(old_dict)
-new_dict['a'] = 3
-
-quick_print(old_dict['a']) # 1
-quick_print(new_dict['a']) # 3
-```
-
-### `deep_copy.py`
-Creates a deep copy of a dictionary up to a specified depth.
-```python
-old_dict = {'a': {'b': 1}}
-new_dict = deep_copy(old_dict, 1)
-new_dict['a']['b'] = 2
-
-quick_print(old_dict['a']['b']) # 1
-quick_print(new_dict['a']['b']) # 2
-```
-
 ### `filter.py`
 Filters a dictionary based on a predicate function.
 ```python

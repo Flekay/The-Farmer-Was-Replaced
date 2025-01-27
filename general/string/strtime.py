@@ -1,3 +1,14 @@
+# Converts a number of seconds to a string in the format 'mm:ss.ff'.
+#
+# Arguments:
+#	seconds (float): the number of seconds
+#
+# Returns:
+#	str: the time string
+#
+# Example 1:
+#	strtime(123.45)
+#	# ' 2:03.45'
 def strtime(seconds):
 	# Flotating point error correction
 	seconds += 0.00000000001

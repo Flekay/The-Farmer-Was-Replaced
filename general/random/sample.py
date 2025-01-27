@@ -1,3 +1,15 @@
+# Chooses a random sample of elements from a list.
+#
+# Arguments:
+#	population (list): the list to choose from
+#	k (int): the number of elements to choose
+#
+# Returns:
+#	list: a list of random elements from the population
+#
+# Example 1:
+#	sample([1, 2, 3], 2)
+#	# [2, 1]
 def sample(population, k):
 	if k > len(population):
 		k = len(population)

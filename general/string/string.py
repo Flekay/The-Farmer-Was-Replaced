@@ -1,3 +1,15 @@
+# Converts a number to a string with an optional precision.
+#
+# Arguments:
+#	number (number): the number to convert to a string
+#	precision (int): the number of decimal places to include (default is 4)
+#
+# Returns:
+#	str: the number as a string
+#
+# Example 1:
+#	string(1.234567)
+#	# '1.2346'
 def string(number, precision = 4):
 	if number >= 0:
 		string = str(number//1)

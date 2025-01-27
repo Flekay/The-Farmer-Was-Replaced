@@ -1,3 +1,16 @@
+# Chooses a random element from a list. If weights are provided, the probability of each element being chosen is proportional to its weight.
+#
+# Arguments:
+#	population (list): the list to choose from
+#	weights (list): the weights for each element in the population (default is None)
+#	k (int): the number of elements to choose (default is 1)
+#
+# Returns:
+#	list: a list of random elements from the population
+#
+# Example 1:
+#	choices([1, 2, 3], [1, 2, 1], 2)
+#	# [2, 1]
 def choices(population, weights=None, k=1):
 	if weights == None:
 		weights = []

@@ -18,13 +18,6 @@ number = 3.14
 rounded_down = floor(number) # 3
 ```
 
-### `int.py`
-This file contains a function that converts a number into an integer.
-```python
-number = 3.14
-integer = int(number) # 3
-```
-
 ### `ln.py`
 This file contains a function that calculates the natural logarithm of a number.
 ```python
