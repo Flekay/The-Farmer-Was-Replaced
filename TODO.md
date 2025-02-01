@@ -1,0 +1,28 @@
+- Create a movement library with the most common movement functions
+- Add imports to all older scripts
+- Create a fastest reset leaderboard folder/savegame
+- Snake
+	- finish drone's algorithm
+- Cactus
+	- split by planting and sorting phases
+	- add bubble sort
+	- add cocktail sort
+	- add gnome sort
+	- improve selection sort (SwedishChef.py)
+- Maze
+	- add recursive astar
+	- add pure bfs
+	- add pure dfs
+	- add pure astar
+	- improve vehn's algorithm
+- Pumpkin
+	- improve benchmark by adding avg yield per minute and leaderboard time
+	- add harvest 4x5s in corner strategy
+	- add harvest first 5s strategy
+	- add pathfinding strategy
+- sunflower
+	- improve benchmark by adding avg yield per minute and leaderboard time
+	- refactor bruce and my sub 29min leaderboard script
+- weird-substance
+	- improve benchmark by adding avg yield per minute and time to 100k
+	- add a script that works with less fertilizer
