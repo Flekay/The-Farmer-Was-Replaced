@@ -1,6 +1,6 @@
 help        = "https://github.com/Flekay/The-Farmer-Was-Replaced/tree/main/general/builtins"
 constants   = "[]"
-functions   = "[copy, deepcopy, help, uniqid]"
+functions   = "[copy, deepcopy, help, uniqid, enumerate, raise]"
 
 # The copy function takes an object and returns a shallow copy of the object.
 #
@@ -54,6 +54,25 @@ def deepcopy(object):
 			new_dict[key] = deepcopy(object[key])
 		return new_dict
 	return object
+
+# The enumerate function takes an iterable and returns an iterator that produces tuples of the index and the item.
+#
+# Arguments:
+#	iterable (iterable): an iterable
+#	start (int): the starting index (default is 0)
+#
+# Returns:
+#	iterator: an iterator that produces tuples of the index and the item
+#
+# Example:
+#	for index, item in enumerate([1, 2, 3]):
+#		print(index, item)
+def enumerate(iterable, start=0):
+	results = []
+	for item in iterable:
+		results.append((start, item))
+		start += 1
+	return results
 
 # Prints a help message for a module.
 #

@@ -32,3 +32,16 @@ Generates a unique identifier.
 unique_id = uniqid()
 quick_print(unique_id)  # 1
 ```
+
+### `raise.py`
+Raises an exception with a message.
+```python
+raise("This is an error message.")
+```
+
+### `enumerate.py`
+Returns an iterator that generates tuples of indices and values.
+```python
+for index, value in enumerate([1, 2, 3]):
+    quick_print(index, value)  # 0 1, 1 2, 2 3
+```
