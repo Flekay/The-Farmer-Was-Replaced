@@ -2,3 +2,5 @@
 .*/**
 # Ignore Test files
 **/test**.*
+# Ignore dot files
+**/.**.py

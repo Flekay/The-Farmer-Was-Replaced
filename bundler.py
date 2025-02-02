@@ -35,6 +35,9 @@ def bundle_subfolders():
                     f for f in files_in_folder
                     if os.path.isfile(os.path.join(folder_path, f))
                     and not f.endswith(".md")
+                    and not f.startswith("__")
+                    and not f.startswith(".")  # Ignore hidden files
+                    and not f.startswith("test")
                 ]
                 if 'constants.py' in py_files:
                     py_files.remove('constants.py')

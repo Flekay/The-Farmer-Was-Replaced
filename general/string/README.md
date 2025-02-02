@@ -27,3 +27,56 @@ This file contains a function that returns a time string for the given number of
 seconds = 75
 time_string = strtime(seconds) # "  1:15.00"
 ```
+
+## `find.py`
+This file contains a function that finds the first occurrence of a substring in a string. It returns the index of the first character of the substring in the string.
+```python
+string = "hello world"
+substring = "world"
+index = find(string, substring) # 6
+```
+
+## `replace.py`
+This file contains a function that replaces all occurrences of a substring in a string with another substring.
+```python
+string = "hello world"
+old_substring = "world"
+new_substring = "there"
+new_string = replace(string, old_substring, new_substring) # "hello there"
+```
+
+## `split.py`
+This file contains a function that splits a string into a list of substrings based on a separator.
+```python
+string = "a, b, c"
+separator = ", "
+substrings = split(string, separator) # ["a", "b", "c"]
+```
+
+## `strip.py`
+This file contains a function that removes leading and trailing whitespace from a string.
+```python
+string = "  hello world  "
+stripped_string = strip(string) # "hello world"
+```
+
+## `rstrip.py`
+This file contains a function that removes trailing whitespace from a string.
+```python
+string = "  hello world  "
+right_stripped_string = rstrip(string) # "  hello world"
+```
+
+## `lstrip.py`
+This file contains a function that removes leading whitespace from a string.
+```python
+string = "  hello world  "
+left_stripped_string = lstrip(string) # "hello world  "
+```
+
+## `zfill.py`
+This file contains a function that pads a string with zeros on the left until it reaches the specified length.
+```python
+string = "42"
+padded_string = zfill(string, 5) # "00042"
+```
