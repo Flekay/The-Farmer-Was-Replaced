@@ -7,6 +7,6 @@
 #	raise("This is an error message.")
 #	# This is an error message.
 def raise(x=None):
-	if msg:
+	if x:
 		quick_print(x)
 	[] = [[],[]]

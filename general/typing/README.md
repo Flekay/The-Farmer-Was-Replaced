@@ -4,6 +4,15 @@ This folder contains functions for determining variable types or converting them
 
 ## Functions
 
+### `float.py`
+Converts a string to a float.
+
+```python
+x = "3.14"
+float_value = float(x)
+quick_print(float_value) # 3.14
+```
+
 ### `int.py`
 Converts a string or float to an integer.
 

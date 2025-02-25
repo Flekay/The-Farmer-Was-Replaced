@@ -1,6 +1,7 @@
 help        = "https://github.com/Flekay/The-Farmer-Was-Replaced/tree/main/general/builtins"
 constants   = "[]"
 functions   = "[copy, deepcopy, help, uniqid, enumerate, raise]"
+print = quick_print
 
 # The copy function takes an object and returns a shallow copy of the object.
 #
@@ -100,7 +101,7 @@ def help(module):
 #	raise("This is an error message.")
 #	# This is an error message.
 def raise(x=None):
-	if msg:
+	if x:
 		quick_print(x)
 	[] = [[],[]]
 

@@ -181,17 +181,19 @@ def split(text, sep=" "):
 #	string(1.234567)
 #	# '1.2346'
 def string(number, precision = 4):
+	numbers = "0123456789"
 	if number >= 0:
-		string = str(number // 1)
+		pre_string = str(number // 1)
 	else:
-		string = str(-(-number // 1))
+		number = -number
+		pre_string = "-" + str(number // 1)
+
 	if precision > 0:
-		string += "."
-		number = abs(number)
+		string = "."
 		for _ in range(precision):
 			number = (number * 10) % 10
-			string += str(number // 1)
-	return string
+			string += numbers[number]
+	return pre_string + string
 
 # Removes both leading and trailing characters (default whitespace if chars is None) from the string.
 #
