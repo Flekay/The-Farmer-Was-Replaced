@@ -45,6 +45,21 @@ run_ops = get_tick_count() - run_ops - 40000
 quick_print("map_light.py, Setup time:", boot_time, ", ops:", run_ops)
 
 
+# map_pos.py
+clear()
+boot_time = get_tick_count()
+# movement/loop_around/map_pos.py
+from map_pos import MOVES
+boot_time = get_tick_count() - boot_time
+
+run_ops = get_tick_count()
+for direction, pos in MOVES:
+	till()
+	move(direction)
+run_ops = get_tick_count() - run_ops - 40000
+quick_print("map_pos.py, Setup time:", boot_time, ", ops:", run_ops)
+
+
 # move_to_next_tile.py
 clear()
 boot_time = get_tick_count()

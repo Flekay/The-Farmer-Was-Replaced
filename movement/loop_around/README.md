@@ -13,6 +13,9 @@ Provides inline generation of move sequences reducing the need for precomputed d
 ### `map_light.py`
 A streamlined version of `map_adv.py` with reduced functionality. Focuses on essential movement without support for custom path lengths or starting positions to optimize setup time.
 
+### `map_pos.py`
+Simular to `map_adv.py` but returns a tuple with direction and current position.
+
 ### `map_local.py`
 I forgot what this does.
 
@@ -23,7 +26,7 @@ Calculates the immediate next move required to advance the player to the adjacen
 Precomputed movement sequences for each tile to the next tile. Ensures consistent and predictable traversal paths across the map.
 
 ### `world_adv.py`
-This script pre-calculates the moves to the next tile for each tile. Withouth using world wraping. Currently only works for even sized maps.
+This script pre-calculates the moves to the next tile for each tile. Without using world wrapping. Currently only works for even-sized maps.
 
 ## Benchmarking
 
@@ -36,11 +39,12 @@ To assess the performance of the movement functions, execute the `benchmark.py` 
 | map_adv.py                  |         610 |                   1 |
 | map_light.py                |         117 |                   1 |
 | map_inline.py               |          15 |                  12 |
+| map_pos.py                  |         517 |                   1 |
 | move_to_next_tile.py        |           1 |                 402 |
 | navi_to_next_tile.py        |          16 |                 402 |
 
 ## Important Notes
 - The `map_light.py` is the best choice for most scenarios, because it has a low setup time and a good performance.
 - The `map_adv.py` and `map_inline.py` only have some niche use cases.
-- The `world_adv.py` was created for in the previous version of the game to fit a non full field pumpking in the 60s best stats time window. It is currently not used in the game.
-- The `navi_to_next_tile.py` and `move_to_next_tile.py` currently dont have a real use case in the game.
+- The `world_adv.py` was created for in the previous version of the game to fit a non full field pumpkin in the 60s best stats time window. It is currently not used in the game.
+- The `navi_to_next_tile.py` and `move_to_next_tile.py` currently don't have a real use case in the game.
