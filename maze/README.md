@@ -28,6 +28,9 @@ Work in progress.
 ### `bi-bfs.py`
 Work in progress.
 
+### `zero_tick_maze_runner.py`
+This abomination from @kalpyy uses dynamic functions as logic gates to solve the maze for "free". Has been patched and is no longer free. Quite laggy and slow.
+
 
 ## Benchmarks
 The gold stat is currently a bit broken. So the stats might be a off.
@@ -54,9 +57,10 @@ This leaderboard aims to show the fastest scripts for a 10x10 maze with 100 trea
 
 ## Late Maze Leaderboard 1x300 (10x10)
 This leaderboard aims to show the fastest scripts for a 10x10 maze with 300 treasures.
-| # | file            | min       | max       | avg       |
-| - | --------------- | --------- | --------- | --------- |
-| 0 | vehn.py         |  47.1636s |  65.3409s |  54.2558s |
+| # | file                     | min       | max       | avg       |
+| - | ------------------------ | --------- | --------- | --------- |
+| 0 | vehn.py                  |  47.1636s |  65.3409s |  54.2558s |
+| 0 | zero_tick_maze_runner.py |  2315.71s |  2315.71s |  2315.71s |
 
 
 ## Important Notes
