@@ -6,7 +6,7 @@ nan         = (-1)**0.5 # sqrt(-1) | inf-inf
 tau         = 6.283185307179586
 help        = "https://github.com/Flekay/The-Farmer-Was-Replaced/tree/main/general/math"
 constants   = "[e, pi, inf, ninf, nan, tau]"
-functions   = "[ceil, floor, ln, log, pow, root, round, sqrt, truncate]"
+functions   = "[ceil, floor, isclose, ln, log, pow, root, round, sqrt, truncate]"
 
 # Rounds a number up to the nearest integer.
 #
@@ -35,6 +35,28 @@ def ceil(number):
 #	# 1
 def floor(number):
 	return number // 1
+
+# IsClose function to compare floating point numbers with a tolerance
+#
+# Arguments:
+#	a (number): the first number to compare
+#	b (number): the second number to compare
+#	rel_tol (number): the relative tolerance (optional, default is 1e-9)
+#	abs_tol (number): the absolute tolerance (optional, default is 0.0)
+#
+# Returns:
+#	bool: True if the numbers are close, False otherwise
+#
+# Example:
+#	isclose(1, 1.000000001)
+#	# True
+def isclose(a, b, rel_tol=0.000000001, abs_tol=0.0):
+	if a == b:
+		return True
+	diff = abs(a - b)
+	if diff <= abs_tol:
+		return True
+	return diff <= rel_tol * max(a, b, -a, -b)
 
 # The ln function calculates the natural logarithm of a number.
 #

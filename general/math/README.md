@@ -18,6 +18,14 @@ number = 3.14
 rounded_down = floor(number) # 3
 ```
 
+### `isclose.py`
+This file contains a function that checks if two numbers are close to each other. This is useful for comparing floating point numbers.
+```python
+number1 = 1
+number2 = 1.000000001
+close = isclose(number1, number2) # True
+```
+
 ### `ln.py`
 This file contains a function that calculates the natural logarithm of a number.
 ```python
