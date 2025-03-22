@@ -1,3 +1,23 @@
+from bubble_sort import *
+from bucket_sort import *
+from cocktail_sort import *
+from comb_sort import *
+from counting_sort import *
+from gnome_sort import *
+from heap_sort import *
+from insertion_sort import *
+from merge_sort import *
+from quick_sort import *
+from radix_sort import *
+from selection_sort import *
+from shell_sort import *
+
+from randint import *
+from is_sorted import *
+from randint import *
+from randint import *
+
+
 # You can only test one sorting algorithm at a time
 # because arrays are passed by reference
 # and some sorting algorithms modify the original array
@@ -50,7 +70,7 @@ for algo in sorting_functions:
 		if sorted_arr == None:
 			sorted_arr = list_copy
 		if is_sorted(sorted_arr):
-			quick_print(case, "passed successfully in **", ops, "** ops")
+			quick_print(case, "passed successfully in **", ops, "** ops  <br/>")
 		else:
 			quick_print(case, "**failed**")
 	quick_print("\n")

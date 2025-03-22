@@ -1,3 +1,4 @@
+from insertion_sort import *
 # Bucket Sort
 # requires the insertion_sort function
 # since lists are passed by reference, this function modifies the original list
@@ -76,3 +77,4 @@ def compact_bucket_sort(arr):
 		sorted_arr = sorted_arr + compact_insertion_sort(bucket)
 
 	return sorted_arr
+	
