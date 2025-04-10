@@ -12,6 +12,7 @@ This folder contains the bundled Python modules generated from the "general" fol
 - [Random](../general/random/README.md): Functions for generating random values.
 - [Scipy](../general/scipy/README.md): Scientific computing functions.
 - [String](../general/string/README.md): Functions for working with strings.
+- [Sympy](../general/sympy/README.md): Functions for working with prime numbers.
 - [Typing](../general/typing/README.md): Functions related to type annotations.
 
 Refer to each module for detailed information.

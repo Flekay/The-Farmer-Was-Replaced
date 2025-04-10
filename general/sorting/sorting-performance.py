@@ -1,3 +1,4 @@
+# /general/sorting/*
 from bubble_sort import *
 from bucket_sort import *
 from cocktail_sort import *
@@ -12,15 +13,10 @@ from radix_sort import *
 from selection_sort import *
 from shell_sort import *
 
-from randint import *
-from is_sorted import *
-from randint import *
-from randint import *
-
-
-# You can only test one sorting algorithm at a time
-# because arrays are passed by reference
-# and some sorting algorithms modify the original array
+# /libraries/random.py
+from random import randint
+# /libraries/list.py
+from list import is_sorted
 
 sorting_functions = {
 	"Bubble Sort": bubble_sort,

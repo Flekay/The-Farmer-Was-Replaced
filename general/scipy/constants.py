@@ -1,9 +1,13 @@
+help        = "https://github.com/Flekay/The-Farmer-Was-Replaced/tree/main/general/scipy"
+constants   = "[c, golden, h, G, R, k, psi, bar, atm, parsec, au, light_year, gallon, barrel, mach, kmh, mph, knot, zero_celsius, degree_fahrenheit, calorie, ton_tnt, hp]"
+functions   = "[]"
+
 c = 299792458  # Speed of light in vacuum
 golden = 1.618033988749895  # Golden ratio
-h = 6.6260693e-34  # Planck constant
+h = 0.00000000000000000000000000000000066260693  # Planck constant
 G = 9.80665  # Standard acceleration of gravity
 R = 8.31446261815324  # Molar gas constant
-k = 1.380649e-23  # Boltzmann constant
+k = 0.00000000000000000000001380649  # Boltzmann constant
 psi = 6894.75729316836  # Pounds per square inch
 bar = 100000  # Bar
 atm = 101325  # Standard atmosphere
