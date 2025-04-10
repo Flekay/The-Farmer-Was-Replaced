@@ -1,11 +1,3 @@
-# WIP
-# The Transision to almighty circle not yet working
-
-# video
-# https://discord.com/channels/988081966035402783/1241469488919220316/1323107367419777025
-
-
-
 clear()
 change_hat(Hats.Dinosaur_Hat)
 apple_x, apple_y = measure()
@@ -18,8 +10,8 @@ length = 0
 # Early apples
 while length < 50:
 
-	if flipX:
-		if flipY:
+	if flipX: # <- check if X is even or odd
+		if flipY: # <- check if Y is even or odd
 			# South or East
 			if apple_y < y:
 				if move(South):
@@ -102,27 +94,27 @@ while length < 50:
 # generate almighty circle list
 almighty = []
 visited = set((x,y))
-for _ in range(100):
+while len(almighty) < 100:
 	if flipX:
 		if flipY:
-			new_y = y - 1
-			if (x, new_y) not in visited and move(South):
-				flipY = not flipY
-				y = new_y
-				almighty.append(South)
-			else:
-				move(East)
+			new_x = x + 1
+			if (new_x, y) not in visited and move(East):
 				flipX = not flipX
-				x += 1
+				x = new_x
 				almighty.append(East)
+			elif move(South):
+				# move(South)
+				flipY = not flipY
+				y -= 1
+				almighty.append(South)
 		else:
 			new_x = x - 1
 			if (new_x, y) not in visited and move(West):
 				flipX = not flipX
 				x = new_x
 				almighty.append(West)
-			else:
-				move(South)
+			elif move(South):
+				# move(South)
 				flipY = not flipY
 				y -= 1
 				almighty.append(South)
@@ -133,8 +125,8 @@ for _ in range(100):
 				flipX = not flipX
 				x = new_x
 				almighty.append(East)
-			else:
-				move(North)
+			elif move(North):
+				# move(North)
 				flipY = not flipY
 				y += 1
 				almighty.append(North)
@@ -144,12 +136,16 @@ for _ in range(100):
 				flipY = not flipY
 				y = new_y
 				almighty.append(North)
-			else:
-				move(West)
+			elif move(West):
+				# move(West)
 				flipX = not flipX
 				x -= 1
 				almighty.append(West)
-	visited.add((x, y))
+	pos = (get_pos_x(), get_pos_y())
+	if pos in visited:
+		almighty.pop()
+	else:
+		visited.add(pos)
 
 # loop through almighty circle list
 contin = True

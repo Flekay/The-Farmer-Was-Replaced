@@ -3,41 +3,36 @@ This will be a collection of snake scripts that are used to farm bone.
 
 ## functions
 
-### greedy.py
+### `greedy.py`
 This Script tries to move to the apple in a straight line.
 
-### almighty.py
+### `almighty.py`
 Almighty makes the snake move in a circular pattern around the board
 
-### timon.py
+### `timon.py`
 This is a recreation of Timon's script shown in the first snake video. It is a switches at length 34 from the stack.py script to the almighty.py script.
 
-### hybrid.py
+### `hybrid.py`
 This script switches from greedy.py to stack.py at length 20 and switches to almighty.py at length 34.
 
-### astar.py
+### `astar.py`
 This script uses the A* algorithm to find the shortest path to the goal.
 
-### rando.py
+### `rando.py`
 This script moves in a random direction until it gets stuck.
 
-### stack.py
+### `stack.py`
 This script is a modified version of the almighty.py script. It moves in a circular pattern around the board and tries make shortcuts when possible.
 
-### brainlet.py
+### `brainlet.py`
 This script is the simplest script that possible. It only harvest one apple before restarting.
 
-### circle.py
+### `circle.py`
 This script moves in a circular pattern around the board. similar to almighty.py but with a different pattern and shortcuts.
 
-### drone.py
+### `drone.py`
 Strategy by @drone.
-This script just follows simple rules to move to the apple without without getting stuck. WORK IN PROGRESS
-
-### shortcut.py
-This script follows a pregenerated almighty circle but takes shortcuts when possible. WORK IN PROGRESS
-currently not working as it is to aggressive and gets stuck at 25 length sometimes even earlier.
-
+This script just follows simple rules to move to the apple without without getting stuck.
 
 ## Benchmarks
 benchmarks with "-" have a less than 100% success rate and are therefore not able to compete in leaderboard runs.
@@ -55,4 +50,6 @@ benchmarks with "-" have a less than 100% success rate and are therefore not abl
 | astar.py     |    39 900 |                - |
 | brainlet.py  |     8 590 |                - |
 | rando.py     |     1 810 |                - |
-| /shortcut.py |         - |                - |
+
+## Important Notes
+- The `drone.py` script is currently not working, but it uses the core concept of drones algorithm.
