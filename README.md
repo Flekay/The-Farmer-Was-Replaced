@@ -1,32 +1,37 @@
-# The-Farmer-Was-Replaced Scripts Collection
+# The-Farmer-Was-Replaced Strategy Collection
 
-The largest collection of community scripts for the game "The Farmer Was Replaced". This repository tries to gather the most efficient of each strategy in each category and rank them by performance.
+A community driven project that collects all farming strategies for each crop along with common utility functions.
 
 ## Repository Structure
 
-Each folder in this repository represents a different category or type of script. Within each folder, you'll find:
-
-- Individual script files
-- A README.md file containing:
-  - Benchmarks for the scripts in that folder
-  - Detailed descriptions of how each file functions
+- Resource folders (e.g., cactus, bone, maze ...) hold many script files and a README.md with more details.
+	- /resource
+		- /subfolder (one strategy split into multiple files for readability)
+		- strategy.py (one strategy small enough to fit in a single file)
+		- README.md (contains a description of the folder and its contents)
+- Special folders:
+	- movement
+		Contains common movement scripts in groups (e.g., loop_around, non_wrapping_shortest_path, wrapping_shortest_path) with its own README.md.
+	- general
+		Source files for libraries split into multiple files for specific functions (e.g., math operations).
+	- libraries
+		Bundled files generated automatically from the general folder (e.g., math.py, string.py, random.py, etc.)
 
 ## How to Use
 
-Most scripts in this collection require the base movement scripts. Follow these steps to get started:
-
-1. Add the movement scripts first. You can find them in the `movement` folder.
-2. Choose the specific script you want to use from the appropriate folder.
-3. Read the folder's README.md for benchmarks and functionality details.
-4. Follow the individual script instructions for implementation.
+1. Browse the repository online on GitHub or clone/download it.
+2. Each script is a standalone code snippet meant to be manually inserted into the game—it is not a complete savegame file.
+3. Open the script file you need, copy its code, and paste it into the game.
+4. Always include any required utilities from the movement, general, and libraries folders as specified in each file.
 
 ## Contributing
 
-We welcome and encourage contributions from all players! If you have a more efficient approach or a new strategy, please submit a pull request or reach out to us on Discord.
+All types of contributions are welcome – new strategies (regardless of efficiency), improvements to existing code, or bug fixes. Please submit a pull request or contact me on Discord if you want to help.
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 (GPL-3.0). See the [LICENSE](LICENSE) file for details.
+This project is under the GNU General Public License v3.0 (GPL-3.0). If you use any of these scripts, your code must also be open source and under a compatible license.
+The GPL3 means that any changes or new work based on this code must be shared publicly so everyone can use, change, and share the code.
 
 ## Contact
 
