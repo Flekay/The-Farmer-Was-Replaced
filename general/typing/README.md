@@ -31,6 +31,23 @@ x_is_number = isinstance(x, 'number')
 quick_print(x_is_number) # True
 ```
 
+### `iter.py`
+The iter function takes an iterable and returns a function that can be used to get the next item in the iterable.
+
+```python
+rx = iter(range(3))
+quick_print(next(rx)) # 0
+quick_print(next(rx)) # 1
+```
+
+### `next.py`
+Returns the next item from an iterator.
+
+```python
+rx = iter(range(3))
+quick_print(next(rx)) # 0
+quick_print(next(rx)) # 1
+```
 
 ### `type.py`
 Determines the type of a variable.
