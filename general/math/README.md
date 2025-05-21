@@ -11,6 +11,14 @@ number = 3.14
 rounded_up = ceil(number) # 4
 ```
 
+### `divmod.py`
+This file contains a function that returns the quotient and remainder of dividing two numbers.
+```python
+dividend = 10
+divisor = 3
+quotient, remainder = divmod(dividend, divisor) # quotient: 3, remainder: 1
+```
+
 ### `floor.py`
 This file contains a function that rounds a number down to the nearest integer.
 ```python
