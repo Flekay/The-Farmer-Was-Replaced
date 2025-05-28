@@ -1,19 +1,19 @@
 # Sympy
 
-This folder contains functions that are useful for working with prime numbers.
+This folder contains functions for mathematical computations using the Sympy library. The functions include calculations for Fibonacci numbers, prime checking, and prime number generation.
 
 ## Functions
 
-### primerange.py
-Returns a list of prime numbers in the given range.
+### fibonacci.py
+Calculates the Fibonacci number at a given position.
 ```python
-primes = primerange(10, 50)  # e.g., [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+result = fibonacci(10)  # 55
 ```
 
-### prevprime.py
-Finds the largest prime less than a given number.
+### isprime.py
+Checks if a given number is prime.
 ```python
-prime = prevprime(20)  # 19
+result = isprime(29)  # True
 ```
 
 ### nextprime.py
@@ -22,8 +22,14 @@ Finds the smallest prime greater than a given number.
 prime = nextprime(20)  # 23
 ```
 
-### isprime.py
-Checks if a given number is prime.
+### prevprime.py
+Finds the largest prime less than a given number.
 ```python
-result = isprime(29)  # True
+prime = prevprime(20)  # 19
+```
+
+### primerange.py
+Returns a list of prime numbers in the given range.
+```python
+primes = primerange(10, 50)  # e.g., [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 ```
