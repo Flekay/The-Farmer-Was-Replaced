@@ -53,6 +53,13 @@ list_of_numbers = [5, 4, 3, 2, 1]
 sorted_list = sorted(list_of_numbers) # [1, 2, 3, 4, 5]
 ```
 
+### `stdev.py`
+This file contains a function that calculates the standard deviation of a given list of numbers.
+```python
+list_of_numbers = [1, 2, 3, 4, 5]
+stdev = stdev(list_of_numbers) # 1.4142135623730951
+```
+
 ### `sum.py`
 This file contains a function that calculates the sum of a given list of numbers.
 ```python
