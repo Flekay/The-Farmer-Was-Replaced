@@ -92,7 +92,8 @@ harvest()
 ```
 
 ## Cactus Leaderboard (10x10)
-- Optional planting can vary for each script, so the leaderboard is based on the `/cactus/planting/simple_planting.py` script. This is to ensure a fair comparison across all scripts and only compare raw sorting speed.
+Optimal planting can vary for each script, so the leaderboard is based on the `/cactus/planting/simple_planting.py` script. This is to ensure a fair comparison across all scripts and only compare raw sorting speed.
+
 | file                                | min       | max       | avg       |
 | ----------------------------------- | --------- | --------- | --------- |
 | gradient_bubble_sort.py             |  11.2305s |  15.0240s |  12.9877s |
