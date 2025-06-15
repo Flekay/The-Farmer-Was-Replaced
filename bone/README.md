@@ -32,7 +32,7 @@ This script moves in a circular pattern around the board. similar to almighty.py
 
 ### `drone.py`
 Strategy by @drone.
-This script just follows simple rules to move to the apple without without getting stuck.
+This script just follows simple rules to move to the apple. After reaching a length of 50 it switches to almighty circle.
 
 ## Benchmarks
 benchmarks with "-" have a less than 100% success rate and are therefore not able to compete in leaderboard runs.
@@ -40,7 +40,7 @@ benchmarks with "-" have a less than 100% success rate and are therefore not abl
 ### Benchmark Results
 | file         | items/min | leaderboard time |
 | -----------  | --------- | ---------------- |
-| drone.py     |   392 373 |         0:18.845 |
+| drone.py     |   392 373 |         0:18.741 |
 | /circle.py   |   294 280 |         0:23.924 |
 | timon.py     |   294 280 |         0:27.889 |
 | almighty.py  |   196 000 |         0:42.221 |
@@ -50,6 +50,3 @@ benchmarks with "-" have a less than 100% success rate and are therefore not abl
 | astar.py     |    39 900 |                - |
 | brainlet.py  |     8 590 |                - |
 | rando.py     |     1 810 |                - |
-
-## Important Notes
-- The `drone.py` script is currently not working, but it uses the core concept of drones algorithm.
