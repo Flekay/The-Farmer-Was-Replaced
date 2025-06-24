@@ -31,21 +31,21 @@ names.append("move_to.py")
 boot_time = get_time()
 import navi_to_deltalist
 timings.append(get_time() - boot_time)
-files.append(navi_to_deltalist.navi_to_deltalist)
+files.append(navi_to_deltalist.move_to)
 names.append("navi_to_deltalist.py")
 
 # movement/wrapping_shortest_path/navi_to_dict.py
 boot_time = get_time()
 import navi_to_dict
 timings.append(get_time() - boot_time)
-files.append(navi_to_dict.navi_to_dict)
+files.append(navi_to_dict.move_to)
 names.append("navi_to_dict.py")
 
 # movement/wrapping_shortest_path/navi_to_list.py
 boot_time = get_time()
 import navi_to_list
 timings.append(get_time() - boot_time)
-files.append(navi_to_list.navi_to_list)
+files.append(navi_to_list.move_to)
 names.append("navi_to_list.py")
 
 
@@ -85,14 +85,14 @@ timings = []
 boot_time = get_time()
 import navi_pos_to_pos_func
 timings.append(get_time() - boot_time)
-files.append(navi_pos_to_pos_func.move_to)
+files.append(navi_pos_to_pos_func.move_to_pos)
 names.append("navi_pos_to_pos_func.py")
 
 # movement/wrapping_shortest_path/navi_pos_to_pos.py
 boot_time = get_time()
 import navi_pos_to_pos
 timings.append(get_time() - boot_time)
-files.append(navi_pos_to_pos.move_to)
+files.append(navi_pos_to_pos.move_to_pos)
 names.append("navi_pos_to_pos.py")
 
 
@@ -103,7 +103,7 @@ for i in range(len(files)):
 	run_ops = get_tick_count()
 
 	for pos in SPOTS:
-		move_to(pos)
+		move_to(pos, (get_pos_x(), get_pos_y()))
 		if get_pos_x() != pos[0] or get_pos_y() != pos[1]:
 			quick_print("Target missed! Expected:", pos, "Actual:", (get_pos_x(), get_pos_y()))
 			break

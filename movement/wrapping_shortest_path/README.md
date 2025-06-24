@@ -34,13 +34,13 @@ To benchmark the movement functions, run the `benchmark.py` script. This will ex
 
 | File                              | Setup Time | Ticks per Benchmark |
 | --------------------------------- | ---------- | ------------------- |
-| gen_move_to.py                    |    0.0049s |                 450 |
+| gen_move_to.py                    |    0.0050s |                 450 |
 | move_to.py                        |    0.0001s |                 630 |
 | navi_pos_to_pos_func.py           |    4.8068s |                 271 |
-| navi_pos_to_pos.py                |    6.6757s |                 270 |
+| navi_pos_to_pos.py                |    6.6733s |                 270 |
 | navi_to_deltalist.py              |    0.0069s |                 240 |
-| navi_to_dict.py                   |    0.0917s |                 330 |
-| navi_to_list.py                   |    0.0017s |                 270 |
+| navi_to_dict.py                   |    0.0908s |                 330 |
+| navi_to_list.py                   |    0.0016s |                 270 |
 
 
 ## Important Notes
@@ -50,3 +50,4 @@ To benchmark the movement functions, run the `benchmark.py` script. This will ex
 - `navi_to_dict.py` is generally not recommended anymore due to the increased cost of using dictionaries.
 - `navi_to_deltalist.py` is currently the most efficient choice for most scenarios.
 - Most functions allow you to pass current position as an argument to increase performance even more.
+- All movement functions that use precomputed data (such as lookup tables or path maps) require you to call `module.update()` whenever the world size changes. The only exception is `move_to.py`, which does not use precomputed data and does not require updates.

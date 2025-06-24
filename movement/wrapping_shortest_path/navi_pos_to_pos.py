@@ -1,4 +1,6 @@
-def generate_path_map(ws=get_world_size()):
+_navi_to_pos = None
+def update(ws=get_world_size()):
+	global _navi_to_pos
 	def generate_paths(delta):
 		if delta == 0:
 			return [], []
@@ -37,10 +39,15 @@ def generate_path_map(ws=get_world_size()):
 		for end_pos in map_paths:
 			ex, ey = end_pos
 			map_paths[start_pos][end_pos] = x_path_start[ex] + y_path_start[ey]
-	return map_paths
+	_navi_to_pos = map_paths
 
-navi_to_pos = generate_path_map(get_world_size())
+# Initialize on import
+update()
 
-def move_to(pos, current_pos=(get_pos_x(),get_pos_y())):
-	for moves in navi_to_pos[current_pos][pos]:
+def move_to(goal_x, goal_y, current_x=get_pos_x(), current_y=get_pos_y()):
+	for moves in _navi_to_pos[(current_x, current_y)][(goal_x, goal_y)]:
+		move(moves)
+
+def move_to_pos(pos, current_pos=(get_pos_x(),get_pos_y())):
+	for moves in _navi_to_pos[current_pos][pos]:
 		move(moves)

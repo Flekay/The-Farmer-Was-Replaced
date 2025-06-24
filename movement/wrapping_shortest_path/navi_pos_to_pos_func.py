@@ -1,4 +1,6 @@
-def generate_path_func_map(ws=get_world_size()):
+_navi_to_func_pos = None
+def update(ws=get_world_size()):
+	global _navi_to_func_pos
 	def init_move_to_func_map(ws=get_world_size()):
 		def m0m0():
 			pass
@@ -690,9 +692,13 @@ def generate_path_func_map(ws=get_world_size()):
 		for end_pos in path_func_map:
 			ex, ey = end_pos
 			path_func_map[start_pos][end_pos] = move_to_func_map[ey - sy][ex - sx]
-	return path_func_map
+	_navi_to_func_pos = path_func_map
 
-navi_to_func_pos = generate_path_func_map(get_world_size())
+# Initialize on import
+update()
 
-def move_to(pos, current_pos=(get_pos_x(),get_pos_y())):
-	navi_to_func_pos[current_pos][pos]()
+def move_to(goal_x, goal_y, current_x = get_pos_x(), current_y = get_pos_y()):
+	_navi_to_func_pos[(current_x, current_y)][(goal_x, goal_y)]()
+
+def move_to_pos(pos, current_pos):
+	_navi_to_func_pos[current_pos][pos]()
