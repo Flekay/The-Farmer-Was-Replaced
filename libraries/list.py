@@ -122,7 +122,7 @@ def median(list):
 def reversed(list):
 	return list[::-1]
 
-# The sorted function sorts a list of numbers in-place in ascending order using the bucket sort algorithm.
+# The sorted function takes a list of numbers and returns a new list with the numbers sorted in ascending order.
 #
 # Arguments:
 #	list (list): a list of numbers
@@ -134,42 +134,44 @@ def reversed(list):
 #	list = [3, 2, 1]
 #	sorted_list = sorted(list)
 #	# [1, 2, 3]
-def sorted(list):
-	if len(list) == 0:
+def sorted(input_list):
+	if not input_list:
 		return []
-	return_list = list + []
-	min_value = min(list)
-	max_value = max(list)
 
-	# Number of buckets
-	n = len(list)
+	min_value = min(input_list)
+	max_value = max(input_list)
+
+	n = len(input_list)
 	bucket_range = (max_value - min_value) // n + 1
+
+	# Create empty buckets
 	buckets = []
-	for i in range(n):
+	for _ in range(n):
 		buckets.append([])
 
-	# Put array elements in different buckets
-	for num in return_list:
+	# Distribute elements into buckets
+	for num in input_list:
 		index = (num - min_value) // bucket_range
 		buckets[index].append(num)
 
-	# Sort individual buckets using insertion sort
+	# Sort each bucket using insertion sort
 	for bucket in buckets:
-		for i in range(1, len(bucket)):
-			a = bucket[i]
-			j = i - 1
-			while j >= 0 and a < bucket[j]:
-				bucket[j + 1] = bucket[j]
-				j -= 1
-			bucket[j + 1] = a
+		if bucket:
+			for i in range(1, len(bucket)):
+				key = bucket[i]
+				j = i - 1
+				while j >= 0 and key < bucket[j]:
+					bucket[j + 1] = bucket[j]
+					j -= 1
+				bucket[j + 1] = key
 
-	# Concatenate all buckets into arr[]
-	index = 0
+	# Merge buckets
+	output = []
 	for bucket in buckets:
 		for num in bucket:
-			return_list[index] = num
-			index += 1
-	return return_list
+			output.append(num)
+
+	return output
 
 # The stdev function takes a list of numbers and returns the standard deviation.
 #
