@@ -1,6 +1,6 @@
 # any move_to function can be used.
-# /movement/wrapping_shortest_path/navi_to_list.py
-from navi_to_deltalist import *
+# /movement/wrapping_shortest_path/navi_to_deltalist.py
+from navi_to_deltalist import move_to
 
 world_size = get_world_size()
 def shear_sort(grid):
@@ -14,13 +14,13 @@ def shear_sort(grid):
 				for j in range(world_size):
 					if j<world_size - 1:
 						if grid[i][j] > grid[i][j+1]:
-							navi_to_deltalist(i, j)
+							move_to(i, j)
 							swap(North)  # swap with neighbor at (i, j+1)
 							grid[i][j], grid[i][j+1] = grid[i][j+1], grid[i][j]
 							changed = True
 					if i<world_size - 1:
 						if grid[i][j] > grid[i+1][j]:
-							navi_to_deltalist(i, j)
+							move_to(i, j)
 							swap(East)  # swap with neighbor at (i+1, j)
 							grid[i][j], grid[i+1][j] = grid[i+1][j], grid[i][j]
 							changed = True
@@ -32,13 +32,13 @@ def shear_sort(grid):
 				for j in range(world_size-1, 0, -1):
 					if j>0:
 						if grid[i][j] < grid[i][j-1]:
-							navi_to_deltalist(i, j)
+							move_to(i, j)
 							swap(South)  # swap with neighbor at (i, j-1)
 							grid[i][j], grid[i][j-1] = grid[i][j-1], grid[i][j]
 							changed = True
 					if i<world_size - 1:
 						if grid[i][j] > grid[i+1][j]:
-							navi_to_deltalist(i, j)
+							move_to(i, j)
 							swap(East)  # swap with neighbor at (i+1, j)
 							grid[i][j], grid[i+1][j] = grid[i+1][j], grid[i][j]
 							changed = True
@@ -50,7 +50,7 @@ def shear_sort(grid):
 			changed = False
 			for i in range(world_size - 1):
 				if grid[i][j] > grid[i+1][j]:
-					navi_to_deltalist(i, j)
+					move_to(i, j)
 					swap(East)  # swap with neighbor at (i+1, j)
 					grid[i][j], grid[i+1][j] = grid[i+1][j], grid[i][j]
 					changed = True

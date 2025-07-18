@@ -9,3 +9,12 @@ A straightforward planting method that plants cactus without any extra sorting s
 
 ### 2. `plant_and_sort.py`
 This algorithm not only plants cactus but also performs a two-round swapping procedure to sort the cactus based on their measurements. It takes into account measurements from multiple directions to ensure proper order.
+
+### 3. `...`
+Not yet revealed
+
+### 4. `...`
+Not yet revealed
+
+### 5. `...`
+Not yet revealed

@@ -1,6 +1,6 @@
 # any move_to function can be used.
-# /movement/wrapping_shortest_path/navi_to_list.py
-from navi_to_deltalist import *
+# /movement/wrapping_shortest_path/navi_to_deltalist.py
+from navi_to_deltalist import move_to
 
 def insertion_sort(grid):
 	ws = get_world_size()
@@ -15,7 +15,7 @@ def insertion_sort(grid):
 				left = grid[x - 1][y]
 				down = grid[x][y - 1]
 				if cur < left or cur < down:
-					navi_to_deltalist(x, y)
+					move_to(x, y)
 					while cur < left or cur < down:
 						if left > down:
 							swap(West)
@@ -41,7 +41,7 @@ def insertion_sort(grid):
 								break
 		if x:
 			if cur < grid[x - 1][y]:
-				navi_to_deltalist(x, y)
+				move_to(x, y)
 				while cur < grid[x - 1][y]:
 					swap(West)
 					grid[x][y] = grid[x - 1][y]
@@ -54,7 +54,7 @@ def insertion_sort(grid):
 		if y:
 			if cur < grid[x][y - 1]:
 				li = grid[x]
-				navi_to_deltalist(x, y)
+				move_to(x, y)
 				while cur < li[y - 1]:
 					swap(South)
 					li[y] = li[y - 1]
@@ -72,7 +72,7 @@ def insertion_sort(grid):
 				right = grid[x + 1][y]
 				up = grid[x][y + 1]
 				if cur > right or cur > up:
-					navi_to_deltalist(x, y)
+					move_to(x, y)
 					while cur > right or cur > up:
 						if right < up:
 							swap(East)
@@ -98,7 +98,7 @@ def insertion_sort(grid):
 								break
 		if x < n1:
 			if cur > grid[x + 1][y]:
-				navi_to_deltalist(x, y)
+				move_to(x, y)
 				while cur > grid[x + 1][y]:
 					swap(East)
 					grid[x][y] = grid[x + 1][y]
@@ -111,7 +111,7 @@ def insertion_sort(grid):
 		if y < n1:
 			if cur > grid[x][y + 1]:
 				li = grid[x]
-				navi_to_deltalist(x, y)
+				move_to(x, y)
 				while cur > li[y + 1]:
 					swap(North)
 					li[y] = li[y + 1]

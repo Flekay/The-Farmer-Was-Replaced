@@ -1,4 +1,4 @@
-from map_inline import MOVES
+from map_inline import MOVES # movement/loop_aroud/map_inline.py
 OOP = {North: South, South: North, East: West, West: East}
 
 def handle_tile():

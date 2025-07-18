@@ -1,6 +1,6 @@
 # any move_to function can be used.
-# /movement/wrapping_shortest_path/navi_to_list.py
-from navi_to_list import *
+# /movement/wrapping_shortest_path/navi_to_deltalist.py
+from navi_to_deltalist import move_to
 
 def gradient_bubble_sort(grid):
 	rr = range(get_world_size())
@@ -19,12 +19,12 @@ def gradient_bubble_sort(grid):
 					gridx[yp1] = temp
 
 					global_changed = True
-					navi_to_list(x, y)
+					move_to(x, y)
 					swap(North)
 					offset = y - 1
 					offset2 = y
 					while offset2 and gridx[offset2] < gridx[offset]:
-						navi_to_list(x, offset2)
+						move_to(x, offset2)
 						swap(South)
 						temp = gridx[offset2]
 						gridx[offset2] = gridx[offset]
@@ -45,12 +45,12 @@ def gradient_bubble_sort(grid):
 					gridxp1[y] = temp
 
 					global_changed = True
-					navi_to_list(x, y)
+					move_to(x, y)
 					swap(East)
 					offset = x - 1
 					offset2 = x
 					while offset2 and grid[offset2][y] < grid[offset][y]:
-						navi_to_list(offset2, y)
+						move_to(offset2, y)
 						swap(West)
 						gridoffset = grid[offset]
 						gridoffset2 = grid[offset2]

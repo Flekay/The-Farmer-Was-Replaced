@@ -50,3 +50,6 @@ benchmarks with "-" have a less than 100% success rate and are therefore not abl
 | astar.py     |    39 900 |                - |
 | brainlet.py  |     8 590 |                - |
 | rando.py     |     1 810 |                - |
+
+## Important Notes
+- A truly remarkable algorithm exists that could achieve a time below 14 seconds. However, the space here is too limited to describe it, and time does not permit its implementation at present.

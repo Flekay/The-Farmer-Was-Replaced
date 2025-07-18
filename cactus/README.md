@@ -41,13 +41,13 @@ Organizes cacti using a heap sort approach. The script builds a heap from the ca
 #### how to use:
 ```python
 clear()
-from navi_to_deltalist import * # Or any other movement function
+from navi_to_deltalist import move_to # Or any other movement function
 from simple_planting import simple_planting # Or any other planting function
 from heapify import heapify, rectCoords
 
 cacti = simple_planting()
 for x, y in rectCoords():
-	navi_to_deltalist(x, y)
+	move_to(x, y)
 	heapify(cacti, x, y)
 harvest()
 ```
@@ -78,7 +78,7 @@ Implements a swap sort algorithm that repeatedly swaps adjacent cacti based on t
 clear()
 from simple_planting import simple_planting # Or any other planting function
 from swap_sort import simple_swaping
-from map_light import MOVES
+from map_light import MOVES # movement/loop_aroud/map_light.py
 simple_planting()
 unfinished = True
 
