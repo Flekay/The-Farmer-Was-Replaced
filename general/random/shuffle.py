@@ -12,5 +12,7 @@
 def shuffle(lst):
 	for i in range(len(lst) - 1, 0, -1):
 		j = random() * (i + 1)
-		lst[i], lst[j] = lst[j], lst[i]
+		temp = lst[i]
+		lst[i] = lst[j]
+		lst[j] = temp
 	return lst
