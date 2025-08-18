@@ -7,6 +7,9 @@ This directory contains functions and scripts designed to facilitate seamless lo
 ### `map_adv.py`
 Generates movement sequences based on the current world size and player position. Utilizes recursive logic to handle large maps by breaking them down into manageable segments. Support for custom path lengths and custom starting positions.
 
+### `map_hard.py`
+This is just a hardcoded version of the movement sequences for a specific map layout. It does not utilize any dynamic generation or optimization techniques.
+
 ### `map_inline.py`
 Provides inline generation of move sequences reducing the need for precomputed data. Adapts dynamically to different world sizes, ensuring consistent performance.
 
@@ -37,6 +40,7 @@ To assess the performance of the movement functions, execute the `benchmark.py` 
 | File                        | Setup Ticks | Ticks per Benchmark |
 | --------------------------- | ----------- | ------------------- |
 | map_adv.py                  |         610 |                   1 |
+| map_hard.py                 |           8 |                   1 |
 | map_light.py                |         117 |                   1 |
 | map_inline.py               |          15 |                  12 |
 | map_pos.py                  |         517 |                   1 |

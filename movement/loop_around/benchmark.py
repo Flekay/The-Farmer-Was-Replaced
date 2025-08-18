@@ -13,6 +13,21 @@ run_ops = get_tick_count() - run_ops - 40000
 quick_print("map_adv.py, Setup time:", boot_time, ", ops:", run_ops)
 
 
+# map_hard.py
+clear()
+boot_time = get_tick_count()
+# movement/loop_around/map_hard.py
+import map_hard
+boot_time = get_tick_count() - boot_time
+
+run_ops = get_tick_count()
+for direction in map_hard.WS10:
+	till()
+	move(direction)
+run_ops = get_tick_count() - run_ops - 40000
+quick_print("map_hard.py, Setup time:", boot_time, ", ops:", run_ops)
+
+
 # map_inline.py
 clear()
 SIZE = get_world_size()
