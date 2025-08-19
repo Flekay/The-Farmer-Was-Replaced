@@ -20,7 +20,7 @@ This script moves diagonally to plant and harvest trees.
 ### Benchmark Results
 | file         | leaderboard time |
 | -----------  | ---------------- |
-| gridpop.py   |         0:24.125 |
+| gridpop.py   |         0:24.058 |
 | popwood.py   |         0:26.226 |
 | grid.py      |         0:26.873 |
 | hypotenuse.py|         0:31.015 |
