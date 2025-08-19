@@ -1,110 +1,72 @@
-MOVES = generate_moves()
-MOVES_ONE_MIN = generate_moves(2300)
-GRID_SIZE = get_world_size()**2
-CARROT = Entities.Carrot
-BUSH = Entities.Bush
-GRASS = Entities.Grass
-TREE = Entities.Tree
-FERTILIZER = Items.Fertilizer
-WATER = Items.Water
-TREE_GRID = {}
-TREE_GRID_POS = {}
-current_companion = {}
-used_by_companion = {}
-companion_by_index = {}
-INDEX_MAP = {}
-BUSH_LOCATIONS = [(1,1),(3,6),(6,3),(9,6),(6,9)]
+from map_pos import MOVES
+companions = {}
+flipflop = True
 
-while True:
-	for i in range(GRID_SIZE):
-		companion_by_index[i] = 0
-		if not i % 2:
-			current_companion[i] = TREE
-			used_by_companion[i] = 99
-			TREE_GRID[i] = True
-		else:
-			current_companion[i] = GRASS
-			used_by_companion[i] = 0
-			TREE_GRID[i] = False
+def plant_tree():
+	global companions
+	plant(Entities.Tree)
+	companion, pos = get_companion()
+	x, y = pos
+	while companion == Entities.Carrot or (pos in companions and companion != companions[pos]):
+		harvest()
+		plant(Entities.Tree)
+		companion, pos = get_companion()
+		x, y = pos
+	companions[pos] = companion
 
-	clear()
-	i = 0
-	for direction in MOVES:
-		INDEX_MAP[(get_pos_x(), get_pos_y())] = i
-		if (get_pos_x() + get_pos_y()) % 2:
-			TREE_GRID_POS[(get_pos_x(), get_pos_y())] = True
-		else:
-			TREE_GRID_POS[(get_pos_x(), get_pos_y())] = False
-		i+=1
-		# till()
-		# use_item(WATER)
-		move(direction)
+def handle_grass():
+	plant_tree()
+	if not get_water():
+		use_item(Items.Water)
 
-	def preplant():
-		for dir in MOVES:
-			till()
-			if (get_pos_x(), get_pos_y()) in BUSH_LOCATIONS:
-				plant(BUSH)
-			else:
-				plant(TREE)
-				# companion, x, y = get_companion()
-				companion, pos = get_companion()
-				while not pos in BUSH_LOCATIONS:
-					harvest()
-					plant(TREE)
-					companion, pos = get_companion()
-			use_item(WATER)
-			use_item(WATER)
-			use_item(WATER)
-			use_item(WATER)
-			move(dir)
+def handle_bush():
+	harvest()
+	plant_tree()
+	if not get_water():
+		use_item(Items.Water)
 
-	preplant()
-	def pregrow():
-		for dir in MOVES:
-			while not can_harvest():
-				pass
-				# use_item(FERTILIZER)
-			use_item(WATER)
-			use_item(WATER)
-			use_item(WATER)
-			use_item(WATER)
-			move(dir)
-	pregrow()
-
-	def prewater():
-		for dir in MOVES:
-			use_item(WATER)
-			move(dir)
-	prewater()
-
-
-
-	companions = {(1,1):BUSH, (3,6):BUSH, (6,3):BUSH, (9,6):BUSH, (6,9):BUSH}
-	time = get_time()
-	for dir in MOVES_ONE_MIN:
-		coords = (get_pos_x(), get_pos_y())
-		if coords in companions:
-			if get_entity_type() == companions[coords]:
-				move(dir)
-			else:
+def handle_tree():
+	global companions
+	if can_harvest():
+		harvest()
+		plant_tree()
+		if not get_water():
+			use_item(Items.Water)
+	else:
+		if get_water() and use_item(Items.Fertilizer):
+			use_item(Items.Weird_Substance)
+			if can_harvest():
 				harvest()
-				plant(companions.pop(coords))
-				move(dir)
+				plant_tree()
+				if not get_water():
+					use_item(Items.Water)
 		else:
+			companion, pos = get_companion()
+			companions[pos] = companion
 
-			harvest()
-			if TREE_GRID_POS[coords]:
-				move(dir)
-			else:
-				plant(TREE)
-				companion, pos = get_companion()
-				# while (x,y) in companions:
-				# 	companions.pop((x,y))
-				# 	harvest()
-				# 	plant(TREE)
-				# 	companion, x, y = get_companion()
+handles = {
+	Entities.Grass: handle_grass,
+	Entities.Bush: handle_bush,
+	Entities.Tree: handle_tree
+}
 
-				companions[pos] = companion
-				move(dir)
-	quick_print("Time: " + str(get_time() - time))
+while num_items(Items.Wood) < 100000:
+	for dir, coords in MOVES:
+		# Companion
+		if coords in companions:
+			comp = companions.pop(coords)
+			entity_type = get_entity_type()
+			if entity_type != comp:
+				if entity_type != Entities.Grass:
+					if entity_type == Entities.Tree and get_water():
+						if use_item(Items.Fertilizer):
+							while not can_harvest():
+								continue
+					harvest()
+				if comp != Entities.Grass:
+					plant(comp)
+		# Tree
+		elif flipflop:
+			handles[get_entity_type()]()
+		flipflop = not flipflop
+		move(dir)
