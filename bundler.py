@@ -3,7 +3,6 @@ import os
 # Folders to ignore during bundling
 IGNORED_FOLDERS = {
     'sorting',
-    'pathing',
 }
 
 def bundle_subfolders():
