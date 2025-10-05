@@ -8,7 +8,7 @@ This directory contains functions and scripts designed to facilitate seamless lo
 Generates movement sequences based on the current world size and player position. Utilizes recursive logic to handle large maps by breaking them down into manageable segments. Support for custom path lengths and custom starting positions.
 
 ### `map_hard.py`
-This is just a hardcoded version of the movement sequences for a specific map layout. It does not utilize any dynamic generation or optimization techniques.
+This is just a hardcoded version of the movement sequences for a specific map layout. It does not utilize any dynamic generation or optimization techniques. Only works up to 10x10 grids.
 
 ### `map_inline.py`
 Provides inline generation of move sequences reducing the need for precomputed data. Adapts dynamically to different world sizes, ensuring consistent performance.
@@ -26,14 +26,14 @@ I forgot what this does.
 Calculates the immediate next move required to advance the player to the adjacent tile based on the current position. Utilizes simple conditional logic for quick execution.
 
 ### `navi_to_next_tile.py`
-Precomputed movement sequences for each tile to the next tile. Ensures consistent and predictable traversal paths across the map.
+Precomputed movement sequences for each tile to the next tile. Ensures consistent and predictable traversal paths across the map. Only works up to 10x10 grids.
 
 ### `world_adv.py`
 This script pre-calculates the moves to the next tile for each tile. Without using world wrapping. Currently only works for even-sized maps.
 
 ## Benchmarking
 
-To assess the performance of the movement functions, execute the `benchmark.py` script. This will evaluate each movement method's setup time and operational efficiency, providing insights into their suitability for different scenarios.
+To assess the performance of the movement functions, execute the `benchmark.py` script. This will evaluate each movement method's setup time and operational efficiency, providing insights into their suitability for different scenarios. This benchmark runs on a 10x10 grid.
 
 ### Benchmark Results from `benchmark.py`
 
@@ -52,3 +52,4 @@ To assess the performance of the movement functions, execute the `benchmark.py` 
 - The `map_adv.py` and `map_inline.py` only have some niche use cases.
 - The `world_adv.py` was created for in the previous version of the game to fit a non full field pumpkin in the 60s best stats time window. It is currently not used in the game.
 - The `navi_to_next_tile.py` and `move_to_next_tile.py` currently don't have a real use case in the game.
+- These movement functions are only relevant for early farms and single drone leaderboards. For multi drone leaderboards, check out `/line_formation` or `/chunk_positioning`.
