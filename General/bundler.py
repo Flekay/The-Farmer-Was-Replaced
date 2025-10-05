@@ -38,7 +38,7 @@ def generate_libraries_readme(libraries_dir, bundled_modules):
             # Get description or use default
             description = descriptions.get(module, f"Functions for {module.replace('_', ' ')} operations")
             # Create link to the original folder's README
-            f.write(f"- [{display_name}](../General/{module}/README.md): {description}.\n")
+            f.write(f"- [{display_name}](../General/{module}/): {description}.\n")
 
         f.write("\nRefer to each module for detailed information.\n")
 
