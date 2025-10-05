@@ -1,18 +1,18 @@
 # Libraries
 
-This folder contains the bundled Python modules generated from the "general" folder.
+This folder contains the bundled Python modules generated from the "General" folder.
 
-- [Builtins](../general/builtins/README.md): Provides built-in utility functions.
-- [Dictionary](../general/dictionary/README.md): Functions for working with dictionaries.
-- [Farming](../general/farming/README.md): Functions related to farming operations.
-- [List](../general/list/README.md): Functions for working with lists.
-- [Logic Gates](../general/logic_gates/README.md): Functions for implementing logic gates.
-- [Math](../general/math/README.md): Functions for mathematical operations.
-- [Operations](../general/operations/README.md): Functions for performing operations.
-- [Random](../general/random/README.md): Functions for generating random values.
-- [Scipy](../general/scipy/README.md): Scientific computing functions.
-- [String](../general/string/README.md): Functions for working with strings.
-- [Sympy](../general/sympy/README.md): Functions for working with prime numbers.
-- [Typing](../general/typing/README.md): Functions related to type annotations.
+- [Builtins](../General/builtins/README.md): Provides built-in utility functions.
+- [Dictionary](../General/dictionary/README.md): Functions for working with dictionaries.
+- [Farming](../General/farming/README.md): Functions related to farming operations.
+- [List](../General/list/README.md): Functions for working with lists.
+- [Logic Gates](../General/logic_gates/README.md): Functions for implementing logic gates.
+- [Math](../General/math/README.md): Functions for mathematical operations.
+- [Operations](../General/operations/README.md): Functions for performing operations.
+- [Random](../General/random/README.md): Functions for generating random values.
+- [Scipy](../General/scipy/README.md): Scientific computing functions.
+- [String](../General/string/README.md): Functions for working with strings.
+- [Sympy](../General/sympy/README.md): Functions for symbolic mathematics and prime numbers.
+- [Typing](../General/typing/README.md): Functions related to type annotations.
 
 Refer to each module for detailed information.

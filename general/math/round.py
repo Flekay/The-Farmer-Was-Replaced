@@ -11,8 +11,7 @@
 #	round(1.123456789)
 #	# 1
 def round(number, decimals=0):
-	multiplier = 10 ** decimals
-	if number >= 0:
+	if decimals:
+		multiplier = 10 ** decimals
 		return (number * multiplier + 0.5) // 1 / multiplier
-	else:
-		return (number * multiplier - 0.5) // 1 / multiplier
+	return (number + 0.5) // 1
