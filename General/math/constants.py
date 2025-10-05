@@ -1,0 +1,9 @@
+e           = 2.718281828459045
+pi          = 3.141592653589793
+inf         = 10**309
+ninf        = -inf
+nan         = (-1)**0.5 # sqrt(-1) | inf-inf
+tau         = 6.283185307179586
+help        = "https://github.com/Flekay/The-Farmer-Was-Replaced/tree/main/general/math"
+constants   = "[e, pi, inf, ninf, nan, tau]"
+functions   = "[ceil, divmod, floor, isclose, ln, log, pow, root, round, sqrt, truncate]"
