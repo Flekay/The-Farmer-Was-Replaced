@@ -1,4 +1,5 @@
-from typing import Any, Optional, Iterable
+from typing import Any, Optional, Iterable, Tuple, Dict
+from builtins import type, bool, int, float, str
 
 
 # -------------------------------------------------------------------------------
@@ -8,73 +9,40 @@ class Item:
 
 class Items:
     Bone: Item
-    """
-    Obtained by the dinosaur minigame.\n
-    Used for upgrades.
-    """
+    """The bones of an ancient creature."""
 
     Cactus: Item
-    """
-    Obtained by harvesting sorted cacti.\n
-    Used for upgrades.
-    """
+    """Obtained by harvesting sorted cacti."""
 
     Carrot: Item
-    """
-    Obtained by harvesting fully grown carrots.\n
-    Used to plant `Entities.Pumpkin` and `Entities.Sunflower`. Also used for upgrades.
-    """
+    """Obtained by harvesting carrots."""
 
     Fertilizer: Item
-    """
-    Obtained over time after unlocking the `Unlocks.Fertilizer` upgrade.\n
-    Used to reduce the remaining growing time of the plant under the drone by 2 seconds.\n
-    Note: Plants speed up with fertilizer will be infected with `Items.Weird_Substance`.
-    """
+    """Call `use_item(Items.Fertilizer)` to instantly remove 2s from the plants remaining grow time."""
 
     Gold: Item
-    """
-    Obtained by harvesting treasure chests in mazes.\n
-    Used for upgrades.
-    """
+    """Found in treasure chests in mazes."""
 
     Hay: Item
-    """
-    Obtained by harvesting grass.\n
-    Used to plant `Entities.Carrot`. Also used for upgrades.
-    """
+    """Obtained by cutting grass."""
+
+    Piggy: Item
+    """This item has been removed from the game but remains as a nostalgia trophy."""
 
     Power: Item
-    """
-    Obtained by harvesting sunflowers.\n
-    Automatically used by the drone to speed up the execution by 100%.
-    """
+    """Obtained by harvesting sunflowers. The drone automatically uses this to move twice as fast."""
 
     Pumpkin: Item
-    """
-    Obtained by harvesting pumpkins.\n
-    Used to plant `Entities.Cactus`. Also used for upgrades. Also used for Apples in the Dinosaur game.
-    """
+    """Obtained by harvesting pumpkins."""
 
     Water: Item
-    """
-    Obtained over time after unlocking the `Unlocks.Watering` upgrade.\n
-    Increases water level under the drone by 0.25 per use. The water level is capped at 1.
-    """
+    """Used to water the ground by calling `use_item(Items.Water)`."""
 
     Weird_Substance: Item
-    """
-    Obtained by harvesting infected plants.\n
-    Used on bushes to spawn a maze.\n
-    e.g.\n
-    `use_item(Items.Weird_Substance, n)` where `n` determines the size of the maze.
-    """
+    """Call `use_item(Items.Weird_Substance)` on a bush to grow a maze, or on other plants to toggle their infection status."""
 
     Wood: Item
-    """
-    Obtained by harvesting bushes and trees.\n
-    Used to plant `Entities.Carrot`. Also used for upgrades.
-    """
+    """Obtained from bushes and trees."""
 
 
 # -------------------------------------------------------------------------------
@@ -82,11 +50,83 @@ class Hat:
     """A member of the Hats class"""
 
 class Hats:
-    Straw_Hat: Hat
-    """The default hat."""
+    Brown_Hat: Hat
+    """A brown hat."""
+
+    Cactus_Hat: Hat
+    """A hat shaped like a cactus."""
+
+    Carrot_Hat: Hat
+    """A hat shaped like a carrot."""
 
     Dinosaur_Hat: Hat
     """Equip it to start the dinosaur game."""
+
+    Gold_Hat: Hat
+    """A golden hat."""
+
+    Gold_Trophy_Hat: Hat
+    """A golden trophy hat."""
+
+    Golden_Cactus_Hat: Hat
+    """A golden hat shaped like a cactus."""
+
+    Golden_Carrot_Hat: Hat
+    """A golden hat shaped like a carrot."""
+
+    Golden_Gold_Hat: Hat
+    """A golden version of the gold hat."""
+
+    Golden_Pumpkin_Hat: Hat
+    """A golden hat shaped like a pumpkin."""
+
+    Golden_Sunflower_Hat: Hat
+    """A golden hat shaped like a sunflower."""
+
+    Golden_Tree_Hat: Hat
+    """A golden hat shaped like a tree."""
+
+    Gray_Hat: Hat
+    """A gray hat."""
+
+    Green_Hat: Hat
+    """A green hat."""
+
+    Pumpkin_Hat: Hat
+    """A hat shaped like a pumpkin."""
+
+    Purple_Hat: Hat
+    """A purple hat."""
+
+    Silver_Trophy_Hat: Hat
+    """A silver trophy hat."""
+
+    Straw_Hat: Hat
+    """The default hat."""
+
+    Sunflower_Hat: Hat
+    """A hat shaped like a sunflower."""
+
+    The_Farmers_Remains: Hat
+    """The remains of the farmer."""
+
+    Top_Hat: Hat
+    """A fancy top hat."""
+
+    Traffic_Cone: Hat
+    """A traffic cone hat."""
+
+    Traffic_Cone_Stack: Hat
+    """A stack of traffic cones as a hat."""
+
+    Tree_Hat: Hat
+    """A hat shaped like a tree."""
+
+    Wizard_Hat: Hat
+    """A magical wizard hat."""
+
+    Wood_Trophy_Hat: Hat
+    """A wooden trophy hat."""
 
 # -------------------------------------------------------------------------------
 class Leaderboard:
@@ -94,104 +134,52 @@ class Leaderboard:
 
 class Leaderboards:
     Cactus: Leaderboard
-    """
-    Goal: Farm 100000 cacti efficiently
-    Success: num_items(Items.Cactus) >= 100000
-    Starting Conditions:
-    - All unlocks available
-    - Required growing resources
-    - Lots of power
-    """
+    """Farm 33554432 cacti with multiple drones."""
+
+    Cactus_Single: Leaderboard
+    """Farm 131072 cacti with a single drone on an 8x8 farm."""
 
     Carrots: Leaderboard
-    """
-    Goal: Farm 100000 carrots efficiently
-    Success: num_items(Items.Carrot) >= 100000
-    Starting Conditions:
-    - All unlocks available
-    - Required growing resources
-    - Lots of power
-    """
+    """Farm 2000000000 carrots with multiple drones."""
 
-    Dinosaur10x10: Leaderboard
-    """
-    Goal: Farm 98010 bones (fill 10x10 area with tail)
-    Success: num_items(Items.Bone) >= 98010
-    Starting Conditions:
-    - All unlocks available
-    - 1000000 Pumpkin
-    - 1000000 Power
-    """
+    Carrots_Single: Leaderboard
+    """Farm 100000000 carrots with a single drone on an 8x8 farm."""
+
+    Dinosaur: Leaderboard
+    """Farm 33488928 bones with multiple drones."""
 
     Fastest_Reset: Leaderboard
-    """
-    Goal: Automate game progression from start to unlocking Leaderboards
-    Success: num_unlocked(Unlocks.Leaderboard) > 0
-    Starting Conditions:
-    - Empty farm
-    - No unlocks
-    - No items
-    """
+    """The most prestigious category. Completely automate the game from a single farm plot to unlocking the leaderboards again."""
 
     Hay: Leaderboard
-    """
-    Goal: Farm 100000 hay efficiently
-    Success: num_items(Items.Hay) >= 100000
-    Starting Conditions:
-    - All unlocks available
-    - Required growing resources
-    - Lots of power
-    """
+    """Farm 2000000000 hay with multiple drones."""
 
-    Maze10x10: Leaderboard
-    """
-    Goal: Farm 300000 gold (equivalent to solving 300 mazes)
-    Success: num_items(Items.Gold) >= 300000
-    Starting Conditions:
-    - All unlocks available
-    - 1000000 Weird_Substance
-    - 1000000 Power
-    """
+    Hay_Single: Leaderboard
+    """Farm 100000000 hay with a single drone on an 8x8 farm."""
 
-    Polyculture: Leaderboard
-    """
-    Goal: Farm 100000 of each polyculture resource
-    Success: num_items() >= 100000 for all polyculture resources
-    Starting Conditions:
-    - All unlocks available
-    - Required growing resources
-    - Lots of power
-    """
+    Maze: Leaderboard
+    """Farm 9863168 gold with multiple drones."""
+
+    Maze_Single: Leaderboard
+    """Farm 616448 gold with a single drone on an 8x8 farm."""
 
     Pumpkins: Leaderboard
-    """
-    Goal: Farm 100000 pumpkins efficiently
-    Success: num_items(Items.Pumpkin) >= 100000
-    Starting Conditions:
-    - All unlocks available
-    - Required growing resources
-    - Lots of power
-    """
+    """Farm 200000000 pumpkins with multiple drones."""
+
+    Pumpkins_Single: Leaderboard
+    """Farm 10000000 pumpkins with a single drone on an 8x8 farm."""
 
     Sunflowers: Leaderboard
-    """
-    Goal: Farm 2400 power efficiently
-    Success: num_items(Items.Power) >= 2400
-    Starting Conditions:
-    - All unlocks available
-    - Required growing resources
-    - No starting power
-    """
+    """Farm 100000 sunflowers with multiple drones."""
+
+    Sunflowers_Single: Leaderboard
+    """Farm 10000 sunflowers with a single drone on an 8x8 farm."""
 
     Wood: Leaderboard
-    """
-    Goal: Farm 100000 wood efficiently
-    Success: num_items(Items.Wood) >= 100000
-    Starting Conditions:
-    - All unlocks available
-    - Required growing resources
-    - Lots of power
-    """
+    """Farm 10000000000 wood with multiple drones."""
+
+    Wood_Single: Leaderboard
+    """Farm 500000000 wood with a single drone on an 8x8 farm."""
 
 # -------------------------------------------------------------------------------
 class Entity:
@@ -199,109 +187,86 @@ class Entity:
 
 class Entities:
     Apple: Entity
-    """
-    Food for dinosaurs
-
-    Growth time: 0.2s fixed
-    Grows on: Grassland or soil
-    Plant cost: 2 Pumpkins
-    Drops: None (consumed by dinosaurs)
-    Note: Can be collected before fully grown
-    """
+    """Dinosaurs love them apparently."""
 
     Bush: Entity
     """
-    Basic wood source
+    A small bush that drops `Items.Wood`.
 
-    Growth time: 3.2-4.8s
-    Grows on: Grassland or soil
-    Plant cost: None
-    Drops: Items.Wood
+    Average seconds to grow: 4
+    Grows on: grassland or soil
     """
 
     Cactus: Entity
     """
-    Grows in 10 different sizes
-    Must be harvested in sorted order for drops
+    Cacti come in 10 different sizes (0-9). When harvested, adjacent cacti that are in sorted order will also be harvested recursively.
+    You receive cactus equal to the number of harvested cacti squared.
 
-    Growth time: 0.9-1.1s
-    Grows on: Soil only
-    Plant cost: 20 Pumpkins
-    Drops: Items.Cactus
+    Average seconds to grow: 1
+    Grows on: soil
     """
 
     Carrot: Entity
     """
-    Basic crop resource
+    Carrots!
 
-    Growth time: 4.8-7.2s
-    Grows on: Soil only
-    Plant cost: 1 Wood + 1 Hay
-    Drops: Items.Carrot
+    Average seconds to grow: 6
+    Grows on: soil
+    """
+
+    Dead_Pumpkin: Entity
+    """
+    One in five pumpkins dies when it grows up, leaving behind a dead pumpkin. Dead pumpkins are useless and disappear when something new is planted.
+    `can_harvest()` always returns `False` on dead pumpkins.
+    """
+
+    Dinosaur: Entity
+    """
+    A piece of the tail of the dinosaur hat. When wearing the dinosaur hat, the tail is dragged behind the drone filling previously moved tiles.
+
+    Average seconds to grow: 0.2
+    Grows on: grassland or soil
     """
 
     Grass: Entity
     """
-    Base resource that grows automatically on grassland
-    Can be manually planted on soil
+    Grows automatically on grassland. Harvest it to obtain `Items.Hay`.
 
-    Growth time: 0.5s fixed
-    Grows on: Grassland or soil
-    Plant cost: None
-    Drops: Items.Hay
+    Average seconds to grow: 0.5
+    Grows on: grassland or soil
     """
 
     Hedge: Entity
-    """
-    Maze wall. Created by fertilizing grown bush.
-
-    Growth time: N/A
-    Grows on: N/A
-    Plant cost: N/A
-    Drops: None
-    """
+    """Part of the maze."""
 
     Pumpkin: Entity
     """
-    Forms mega-pumpkins with adjacent ripe pumpkins
-    20% chance to die when grown
+    Pumpkins grow together when they are next to other fully grown pumpkins. About 1 in 5 pumpkins dies when it grows up.
+    When you harvest a pumpkin you get `Items.Pumpkin` equal to the number of pumpkins in the mega pumpkin cubed.
 
-    Growth time: 0.2-3.8s
-    Grows on: Soil only
-    Plant cost: 1 Carrot
-    Drops: Items.Pumpkin
+    Average seconds to grow: 2
+    Grows on: soil
     """
 
     Sunflower: Entity
     """
-    Power generator. Harvesting the sunflower with the most petals gives you bonus yield.
+    Sunflowers collect the power from the sun. Harvesting them will give you `Items.Power`.
+    If you harvest a sunflower with the maximum number of petals (and there are at least 10 sunflowers) you get 5x bonus power.
 
-    Growth time: 5.6-8.4s
-    Grows on: Soil only
-    Plant cost: 1 Carrot
-    Drops: Items.Power
+    Average seconds to grow: 5
+    Grows on: soil
     """
 
     Treasure: Entity
-    """
-    Found in mazes. Gold amount = maze size.
-
-    Growth time: N/A
-    Grows on: N/A
-    Plant cost: N/A
-    Drops: Items.Gold
-    """
+    """A treasure that contains gold equal to the side length of the maze in which it is hidden. It can be harvested like a plant."""
 
     Tree: Entity
     """
-    Advanced wood source. Growth slowed by adjacent trees.
+    Trees drop more wood than bushes. They take longer to grow if other trees grow next to them.
 
-    Growth time: 5.6-8.4s (longer with adjacent trees)
-    Grows on: Grassland or soil
-    Plant cost: None
-    Drops: Items.Wood
+    Average seconds to grow: 7
+    Grows on: grassland or soil
     """
-
 
 
 # -------------------------------------------------------------------------------
@@ -324,194 +289,130 @@ class Unlock:
 
 class Unlocks:
     Auto_Unlock: Unlock
-    """
-    Unlock: Automatically unlock new abilities
-    Upgrade: None
-    """
+    """Automatically unlock things."""
 
     Cactus: Unlock
     """
-    Unlock: Plant and harvest cacti
-    Cost: 4000 Pumpkins
-    Upgrade: Increases cactus yield and seed cost
+    Unlock: Cactus!
+    Upgrade: Increases the yield and cost of cactus.
     """
 
     Carrots: Unlock
     """
-    Unlock: Till soil and plant carrots
-    Cost: 100 Wood
-    Upgrade: Increases carrot yield and cost
+    Unlock: Till the soil and plant carrots.
+    Upgrade: Increases the yield and cost of carrots.
     """
 
     Costs: Unlock
-    """
-    Unlock: Access to get_cost() function
-    Upgrade: None
-    """
+    """Allows access to the cost of things."""
 
     Debug: Unlock
-    """
-    Unlock: Basic debugging tools
-    Upgrade: None
-    """
+    """Tools to help with debugging programs."""
 
     Debug_2: Unlock
-    """
-    Unlock: Advanced debugging features
-    Upgrade: None
-    """
+    """Functions to temporarily slow down the execution and make the grid smaller."""
 
     Dictionaries: Unlock
-    """
-    Unlock: Use Python dictionaries and sets
-    Upgrade: None
-    """
+    """Get access to dictionaries and sets."""
 
     Dinosaurs: Unlock
     """
-    Unlock: Dinosaur minigame access
-    Cost: 4000 Pumpkins
-    Upgrade: Increases dinosaur yield and costs
+    Unlock: Majestic ancient creatures.
+    Upgrade: Increases the yield and cost of dinosaurs.
     """
 
     Expand: Unlock
     """
-    Unlock: Larger farm and movement
-    Cost: 30 Hay
-    Upgrade: Increases farm size (clears farm)
+    Unlock: Expands the farm land and unlocks movement.
+    Upgrade: Expands the farm. This also clears the farm.
     """
 
     Fertilizer: Unlock
-    """
-    Unlock: Speed up plant growth
-    Cost: 1000 Wood
-    Note: Creates Weird_Substance when used
-    """
+    """Reduces the remaining growing time of the plant under the drone by 2 seconds."""
 
     Functions: Unlock
-    """
-    Unlock: Define custom functions
-    Upgrade: None
-    """
+    """Define your own functions."""
 
     Grass: Unlock
-    """
-    Unlock: Enhanced grass operations
-    Cost: 300 Hay
-    Upgrade: Increases grass yield
-    """
+    """Increases the yield of grass."""
+
+    Hats: Unlock
+    """Unlocks new hat colors for your drone."""
+
+    Import: Unlock
+    """Import code from other files."""
 
     Leaderboard: Unlock
-    """
-    Unlock: Access to leaderboards
-    Cost: 300000 Gold + 500000 Cactus + 400000 Bone
-    Upgrade: None
-    """
+    """Join the leaderboard for the fastest reset time."""
 
     Lists: Unlock
-    """
-    Unlock: Use Python lists
-    Upgrade: None
-    """
+    """Use lists to store lots of values."""
 
     Loops: Unlock
-    """
-    Unlock: Use while loops
-    Upgrade: None
-    """
+    """Unlocks a simple while loop."""
 
     Mazes: Unlock
     """
-    Unlock: Generate and solve mazes
-    Cost: 3000 Pumpkins
-    Upgrade: Increases treasure gold amounts
+    Unlock: A maze with a treasure in the middle.
+    Upgrade: Increases the gold in treasure chests.
     """
+
+    Megafarm: Unlock
+    """Unlocks multiple drones and drone management functions."""
 
     Operators: Unlock
-    """
-    Unlock: Use arithmetic/logic operators
-    Upgrade: None
-    """
+    """Arithmetic, comparison and logic operators."""
 
     Plant: Unlock
-    """
-    Unlock: Basic planting ability
-    Cost: 50 Hay
-    Upgrade: None
-    """
+    """Unlocks planting."""
 
     Polyculture: Unlock
-    """
-    Unlock: Companion planting bonuses
-    Cost: 800 Gold
-    Upgrade: None
-    """
+    """Use companion planting to increase the yield."""
 
     Pumpkins: Unlock
     """
-    Unlock: Plant and harvest pumpkins
-    Cost: 500 Wood + 350 Carrot
-    Upgrade: Increases pumpkin yield
+    Unlock: Pumpkins!
+    Upgrade: Increases the yield and cost of pumpkins.
     """
 
     Senses: Unlock
-    """
-    Unlock: Drone position/tile awareness
-    Upgrade: None
-    """
+    """The drone can see what's under it and where it is."""
 
     Simulation: Unlock
-    """
-    Unlock: Access to simulation mode
-    Upgrade: None
-    """
+    """Unlocks simulation functions for testing and optimization."""
 
     Speed: Unlock
-    """
-    Unlock: Basic drone speed
-    Cost: 20 Hay
-    Upgrade: Further increases speed
-    """
+    """Increases the speed of the drone."""
 
     Sunflowers: Unlock
     """
-    Unlock: Power generation
-    Cost: 200 Carrot
-    Upgrade: Increases power yield
+    Unlock: Sunflowers and Power.
+    Upgrade: Increases the power gained from sunflowers.
     """
 
+    The_Farmers_Remains: Unlock
+    """Unlocks the special hat 'The Farmers Remains'."""
+
     Timing: Unlock
-    """
-    Unlock: Performance measurement
-    Upgrade: None
-    """
+    """Functions to help measure performance."""
+
+    Top_Hat: Unlock
+    """Unlocks the fancy Top Hat."""
 
     Trees: Unlock
     """
-    Unlock: Tree farming
-    Cost: 50 Wood + 70 Carrot
-    Upgrade: Increases wood yield
+    Unlock: Unlocks trees.
+    Upgrade: Increases the yield of bushes and trees.
     """
 
     Utilities: Unlock
-    """
-    Unlock: min(), max(), abs() functions
-    Upgrade: None
-    """
+    """Unlocks the `min()`, `max()` and `abs()` functions."""
 
     Variables: Unlock
-    """
-    Unlock: Use variables
-    Upgrade: None
-    """
+    """Assign values to variables."""
 
     Watering: Unlock
-    """
-    Unlock: Water plants
-    Cost: 50 Wood
-    Upgrade: None
-    """
-
+    """Water the plants to make them grow faster."""
 
 
 # -------------------------------------------------------------------------------
@@ -612,6 +513,23 @@ def move(direction: Direction) -> bool:
     example usage:
     ```
     move(North)
+    ```
+    """
+    ...
+
+# -------------------------------------------------------------------------------
+def can_move(direction: Direction) -> bool:
+    """
+    Checks if the drone can move in the specified `direction`.
+
+    returns `True` if the drone can move, `False` otherwise.
+
+    takes `1` tick to execute.
+
+    example usage:
+    ```
+    if can_move(North):
+        move(North)
     ```
     """
     ...
@@ -765,13 +683,13 @@ def get_time() -> float:
 
 
 # -------------------------------------------------------------------------------
-def get_tick_count() -> float:
+def get_tick_count() -> int:
     """
     Used to measure the number of ticks performed.
 
     returns the number of ticks performed since the start of execution.
 
-    takes `1` tick to execute.
+    takes `0` tick to execute.
 
     example usage:
     ```
@@ -786,15 +704,16 @@ def get_tick_count() -> float:
 # -------------------------------------------------------------------------------
 def use_item(item: Item, n: int = 1) -> bool:
     """
-    Attempts to use the specified `item` `n` times. Can only be used with some items including `Items.Water`, `Items.Fertilizer` and `Items.Egg`.
+    Attempts to use the specified `item` `n` times. Can only be used with some items including `Items.Water`, `Items.Fertilizer` and `Items.Weird_Substance`.
 
-    returns `True` if an item was used, `False` otherwise.
+    returns `True` if an item was used, `False` if the item can't be used or you don't have enough.
 
     takes `200` ticks to execute if it succeeded, `1` tick otherwise.
 
     example usage:
     ```
-    use_item(Items.Fertilizer)
+    if use_item(Items.Fertilizer):
+        print("Fertilizer used successfully")
     ```
     """
     ...
@@ -831,6 +750,24 @@ def do_a_flip() -> None:
     ```
     while True:
         do_a_flip()
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def pet_the_piggy() -> None:
+    """
+    Pets the piggy! This action is not affected by speed upgrades.
+
+    returns `None`
+
+    takes 1s to execute.
+
+    example usage:
+    ```
+    while True:
+        pet_the_piggy()
     ```
     """
     ...
@@ -881,7 +818,7 @@ def set_execution_speed(speed: float) -> None:
 
 
 # -------------------------------------------------------------------------------
-def set_farm_size(size: float) -> None:
+def set_world_size(size: float) -> None:
     """
     Limits the size of the farm to better see what's happening.
     Also clears the farm and resets the drone position.
@@ -896,7 +833,7 @@ def set_farm_size(size: float) -> None:
 
     example usage:
     ```
-    set_farm_size(5)
+    set_world_size(5)
     ```
     """
     ...
@@ -913,24 +850,24 @@ def num_items(item: Item) -> float:
 
     example usage:
     ```
-    if num_items(Items.Fertilizer) == 0:
-        trade(Items.Fertilizer)
+    if num_items(Items.Fertilizer) > 0:
+        use_item(Items.Fertilizer)
     ```
     """
     ...
 
 
 # -------------------------------------------------------------------------------
-def get_cost(thing: Entity | Item | Unlock) -> dict[Item, float] | None:
+def get_cost(thing: Entity | Item | Unlock, level: Optional[int] = None) -> Dict[Item, float] | None:
     """
     Gets the cost of a `thing`
 
-    If `thing` is an item: get the cost of buying it when using `trade(item)`.
-    If `thing` is an entity: get the seed needed to plant it.
-    If `thing` is an unlock: get the cost of unlocking it.
+    If `thing` is an entity: get the cost of planting it.
+    If `thing` is an unlock: get the cost of unlocking it at the specified level.
 
     - returns a dictionary with items as keys and numbers as values. Each item is mapped to how much of it is needed.
-    - returns `None` when used on an upgradeable unlock that is already at the max level.
+    - returns `None` for unlocks that are already unlocked (when no level specified).
+    - The optional `level` parameter specifies the upgrade level for unlocks.
 
     takes `1` tick to execute.
 
@@ -963,11 +900,11 @@ def clear() -> None:
 
 
 # -------------------------------------------------------------------------------
-def get_companion() -> tuple[Entity, tuple[int, int]] | None:
+def get_companion() -> Tuple[Entity, Tuple[int, int]] | None:
     """
     Get the companion preference of the plant under the drone.
 
-    returns a list of the form `(companion_type, (companion_x_position, companion_y_position))`
+    returns a tuple of the form `(companion_type, (companion_x_position, companion_y_position))` or `None` if there is no companion.
 
     takes `1` tick to execute.
 
@@ -975,7 +912,8 @@ def get_companion() -> tuple[Entity, tuple[int, int]] | None:
     ```
     companion = get_companion()
     if companion != None:
-        print(companion)
+        plant_type, (x, y) = companion
+        print(f"Companion: {plant_type} at ({x}, {y})")
     ```
     """
     ...
@@ -1009,18 +947,17 @@ def num_unlocked(thing: Unlock | Entity | Ground | Item) -> int:
 
     example usage:
     ```
-    if num_unlocked(Unlocks.Multi_Trade) > 0:
-        trade(Items.Carrot_Seed, 10)
+    if num_unlocked(Unlocks.Carrots) > 0:
+        plant(Entities.Carrot)
     else:
-        for i in range(10):
-            trade(Items.Carrot_Seed)
+        print("Carrots not unlocked yet")
     ```
     """
     ...
 
 
 # -------------------------------------------------------------------------------
-def measure(direction: Optional[Direction] = None) -> float | tuple[int, int] | None:
+def measure(direction: Optional[Direction] = None) -> float | Tuple[int, int] | None:
     """
     Can measure some values on some entities. The effect of this depends on the entity.
 
@@ -1029,7 +966,7 @@ def measure(direction: Optional[Direction] = None) -> float | tuple[int, int] | 
     `measure(direction)`: measures the neighboring entity in the `direction` of the drone.
 
     Sunflower: returns the number of petals.
-    Treasure: returns the next position.
+    Maze: returns the position of the current treasure from anywhere in the maze.
     Cactus: returns the size.
     Dinosaur: returns the number corresponding to the type.
     All other entities: returns `None`.
@@ -1039,6 +976,7 @@ def measure(direction: Optional[Direction] = None) -> float | tuple[int, int] | 
     example usage:
     ```
     num_petals = measure()
+    treasure_pos = measure()  # Works anywhere in maze
     ```
     """
     ...
@@ -1063,7 +1001,7 @@ def leaderboard_run(leaderboard: Leaderboard, file_name: str, speedup: float) ->
 
 
 # -------------------------------------------------------------------------------
-def simulate(filename: str, sim_unlocks: dict[Unlocks, float] | Iterable[Unlocks], sim_items: dict[Items, float], sim_globals: dict[str, Any], seed: float, speedup: float) -> None:
+def simulate(filename: str, sim_unlocks: Dict[Unlocks, float] | Iterable[Unlocks] | type[Unlocks], sim_items: Dict[Item, float], sim_globals: Dict[str, Any], seed: float, speedup: float) -> float:
     """
     Starts a simulation for the leaderboard using the specified `file_name` as a starting point.
 
@@ -1103,7 +1041,7 @@ def quick_print(*something: Any) -> None:
 
     returns `None`
 
-    takes `1` ticks to execute.
+    takes `0` ticks to execute.
 
     example usage:
     ```
@@ -1133,6 +1071,86 @@ def random() -> float:
 
 
 # -------------------------------------------------------------------------------
+def str(obj: Any) -> str:
+    """
+    Converts an object to its string representation.
+
+    returns the string representation of the object.
+
+    takes `1` tick to execute.
+
+    example usage:
+    ```
+    string = str(1000)
+    print(string)  # prints "1000"
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def min(*args: Any) -> Any:
+    """
+    Gets the minimum of a sequence of elements or several passed arguments.
+    Can be used on numbers and strings.
+
+    `min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
+    `min(sequence)`: Returns the minimum of all values in a sequence.
+
+    returns the minimum value from the arguments.
+
+    takes #comparisons ticks to execute.
+
+    example usage:
+    ```
+    smallest = min(1, 5, 3, 2)
+    smallest_from_list = min([3, 6, 34, 16])
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def max(*args: Any) -> Any:
+    """
+    Gets the maximum of a sequence of elements or several passed arguments.
+    Can be used on numbers and strings.
+
+    `max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
+    `max(sequence)`: Returns the maximum of all values in a sequence.
+
+    returns the maximum value from the arguments.
+
+    takes #comparisons ticks to execute.
+
+    example usage:
+    ```
+    largest = max(1, 5, 3, 2)
+    largest_from_list = max([3, 6, 34, 16])
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def abs(x: float) -> float:
+    """
+    Returns the absolute value of a number.
+
+    returns the absolute value of x.
+
+    takes `1` tick to execute.
+
+    example usage:
+    ```
+    positive = abs(-5)
+    print(positive)  # prints 5
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
 def change_hat(hat: Hat) -> None:
     """
     Changes the hat of the drone to the specified `hat`.
@@ -1146,5 +1164,104 @@ def change_hat(hat: Hat) -> None:
     change_hat(Hats.Dinosaur_Hat)
     ```
     ...
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def spawn_drone(filename: str) -> Any:
+    """
+    Spawns a new drone in the same position as the drone that ran the `spawn_drone(function)` command. The new drone then begins executing the specified function. After it is done, it will disappear automatically.
+
+    returns the handle of the new drone or `None` if all drones are already spawned.
+
+    takes `200` ticks to execute if a drone was spawned, `1` otherwise.
+
+    example:
+    ```
+    def harvest_column():
+        for _ in range(get_world_size()):
+            harvest()
+            move(North)
+
+    while True:
+        if spawn_drone(harvest_column):
+            move(East)
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def wait_for(drone: Any) -> Any:
+    """
+    Waits until the given drone terminates.
+
+    returns the return value of the function that the drone was running.
+
+    takes `1` tick to execute if the awaited drone is already done.
+
+    example:
+    ```
+    def get_entity_type_in_direction(dir):
+        move(dir)
+        return get_entity_type()
+
+    def zero_arg_wrapper():
+        return get_entity_type_in_direction(North)
+    handle = spawn_drone(zero_arg_wrapper)
+    print(wait_for(handle))
+    ```
+    """
+    ...
+
+# -------------------------------------------------------------------------------
+def has_finished(drone: Any) -> Any:
+    """
+    Checks if the given drone has finished.
+
+    returns `True` if the drone has finished, `False` otherwise.
+
+    takes `1` tick to execute.
+
+    example:
+    ```
+    drone = spawn_drone(function)
+    while not has_finished(drone):
+        do_something_else()
+    result = wait_for(drone)
+    ```
+    """
+    ...
+
+# -------------------------------------------------------------------------------
+def max_drones() -> int:
+    """
+    returns the maximum number of drones that you can have in the farm.
+
+    takes `1` tick to execute.
+
+    example:
+    ```
+    while num_drones() < max_drones():
+        spawn_drone("some_file_name")
+        move(East)
+    ```
+    """
+    ...
+
+# -------------------------------------------------------------------------------
+def num_drones() -> int:
+    """
+    returns the number of drones currently in the farm.
+
+    takes `1` tick to execute.
+
+    example:
+    ```
+    while num_drones() < max_drones():
+        spawn_drone("some_file_name")
+        move(East)
+    ```
     """
     ...
