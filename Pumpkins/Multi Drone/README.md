@@ -16,16 +16,16 @@ Same concept as `mega_line.py` but uses `movement/chunk_positioning` instead. Op
 The individual drones don't have a fixed path - they use swarm intelligence to build a big pumpkin. Constantly spawning and despawning drones based on dynamic conditions and requirements.
 
 ### `tiny_line.py`
-Just harvests small pumpkins. Each drone operates independently with no communication between the drones at all. Simple parallel farming approach.
+Just harvests small (2x2) pumpkins. Each drone operates independently with no communication between the drones at all. Simple parallel farming approach.
 
 ## Benchmarks
 Benchmarks with "-" have a less than 100% success rate and are therefore not able to compete in leaderboard runs.
 
 ### Benchmark Results
-| file         | items/min | leaderboard time |
-| -----------  | --------- | ---------------- |
-| devil.py     |       TBD |              TBD |
-| mega_line.py |       TBD |              TBD |
-| mega_chunk.py|       TBD |              TBD |
-| mega_swarm.py|       TBD |              TBD |
-| tiny_line.py |       TBD |              TBD |
+| file         | leaderboard time |
+| -----------  | ---------------- |
+| devil.py     |              TBD |
+| mega_line.py |        08:54.836 |
+| mega_chunk.py|              TBD |
+| mega_swarm.py|              TBD |
+| tiny_line.py |        09:48.730 |
