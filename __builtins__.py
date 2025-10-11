@@ -152,34 +152,34 @@ class Leaderboards:
     """The most prestigious category. Completely automate the game from a single farm plot to unlocking the leaderboards again."""
 
     Hay: Leaderboard
-    """Farm 2000000000 hay with multiple drones."""
+    """Farm 2 000 000 hay with multiple drones."""
 
     Hay_Single: Leaderboard
-    """Farm 100000000 hay with a single drone on an 8x8 farm."""
+    """Farm 10 000 000 hay with a single drone on an 8x8 farm."""
 
     Maze: Leaderboard
-    """Farm 9863168 gold with multiple drones."""
+    """Farm 9 863 168 gold with multiple drones."""
 
     Maze_Single: Leaderboard
-    """Farm 616448 gold with a single drone on an 8x8 farm."""
+    """Farm 616 448 gold with a single drone on an 8x8 farm."""
 
     Pumpkins: Leaderboard
-    """Farm 200000000 pumpkins with multiple drones."""
+    """Farm 2 000 000 pumpkins with multiple drones."""
 
     Pumpkins_Single: Leaderboard
-    """Farm 10000000 pumpkins with a single drone on an 8x8 farm."""
+    """Farm 1 000 000 pumpkins with a single drone on an 8x8 farm."""
 
     Sunflowers: Leaderboard
-    """Farm 100000 sunflowers with multiple drones."""
+    """Farm 10 000 sunflowers with multiple drones."""
 
     Sunflowers_Single: Leaderboard
-    """Farm 10000 sunflowers with a single drone on an 8x8 farm."""
+    """Farm 10 000 sunflowers with a single drone on an 8x8 farm."""
 
     Wood: Leaderboard
-    """Farm 10000000000 wood with multiple drones."""
+    """Farm 10 000 000 000 wood with multiple drones."""
 
     Wood_Single: Leaderboard
-    """Farm 500000000 wood with a single drone on an 8x8 farm."""
+    """Farm 500 000 000 wood with a single drone on an 8x8 farm."""
 
 # -------------------------------------------------------------------------------
 class Entity:
