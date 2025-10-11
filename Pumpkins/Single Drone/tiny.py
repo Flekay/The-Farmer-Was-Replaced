@@ -1,26 +1,18 @@
-MOVES = generate_moves()
+# movement/loop_around/map_light.py
+from map_light import MOVES
 
 clear()
-# till all
-for direction in MOVES:
+# Till the entire field and plant initial pumpkins
+for dir in MOVES:
 	till()
-	move(direction)
+	plant(Entities.Pumpkin)
+	move(dir)
 
-def tiny():
-	# prewater
-	for direction in MOVES:
-		while get_water() != 1:
-			use_item(Items.Water)
-		move(direction)
-
-	time = get_time()
-	for _ in range(22): # 60 seconds
-		# plant
-		for direction in MOVES:
-			harvest()
-			plant(Entities.Pumpkin)
-			move(direction)
-	quick_print("Time: ", get_time() - time)
-
+# Main farming loop
 while True:
-	tiny()
+	for dir in MOVES:
+		if can_harvest():
+			harvest()
+		else:
+			plant(Entities.Pumpkin)
+		move(dir)

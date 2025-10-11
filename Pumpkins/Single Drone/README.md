@@ -1,24 +1,23 @@
-# Pumpkin
-This is a collection of pumpkin scripts that are used to farm pumpkins.
+# Single Drone Pumpkins
+This is a collection of single drone pumpkin scripts that are used to farm pumpkins.
 
-## functions
+## Functions
 
-### oneshot.py
-This script is a one-shot script that will plant and harvest pumpkins in a single run.
+### `oneshot.py`
+This script is a one-shot script that will plant and harvest pumpkins in a single run. Uses water and fertilizer to accelerate growth.
 
-### rerun.py
-This script will only plant in the first run and then plant, fertilize and harvest in the second run.
+### `schindler.py`
+This script will keep planting pumpkins until every tile is filled. Uses a sophisticated approach with position tracking and selective fertilization.
 
-### schindler.py
-This script will keep planting pumpkins until every tile is filled.
-
-### tiny.py
-This script just runs and harvests at the same time.
+### `tiny.py`
+This script just runs and harvests at the same time. Simple approach that alternates between planting and harvesting as it moves.
 
 ## Benchmarks
-| file         | items/min | fertilizer |
-| -----------  | --------- | ---------- |
-| rerun.py     |  67.9k    | low        |
-| oneshot.py   |  37.5k    | high       |
-| schindler.py |  55k      | no         |
-| tiny.py      |  32.2k    | no         |
+Benchmarks with "-" have a less than 100% success rate and are therefore not able to compete in leaderboard runs.
+
+### Benchmark Results
+| file            | leaderboard time |
+| --------------- | ---------------- |
+| oneshot.py      |              TBD |
+| schindler.py    |              TBD |
+| tiny.py         |              TBD |
