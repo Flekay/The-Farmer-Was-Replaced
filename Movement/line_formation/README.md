@@ -18,18 +18,22 @@ def my_function():
 for_all(my_function)
 ```
 
-### `for_all_sync.py`
-A synchronized version where all drones are spawned first, then move in a coordinated pattern ensuring all drones stop at the same time. Hardcoded for maximum world size for leaderboard optimization.
+### `for_all_sync_col.py` and `for_all_sync_row.py`
+Two synchronized versions where all drones are spawned first, then move in a coordinated pattern ensuring all drones stop at the same time. Hardcoded for maximum world size for leaderboard optimization. These files are functionally identical - the only difference is the movement direction (East/West vs South/North).
 
 #### How to use:
 ```python
-from for_all_sync import for_all
+from for_all_sync_col import for_all_sync_col
+# OR
+from for_all_sync_row import for_all_sync_row
 
 def my_function():
     # Your farming logic here
     harvest()
 
-for_all(my_function)
+for_all_sync_col(my_function)
+# OR
+for_all_sync_row(my_function)
 ```
 
 ### `for_all_dual.py`
@@ -65,4 +69,4 @@ To assess the performance of the movement functions, execute the `benchmark.py` 
 | --------------------------- | ------------- | --------------- |
 | for_all.py                  |         25006 |               3 |
 | for_all_dual.py             |         16224 |               5 |
-| for_all_sync.py             |         16224 |               5 |
+| for_all_sync_col/row.py     |         16224 |               5 |
