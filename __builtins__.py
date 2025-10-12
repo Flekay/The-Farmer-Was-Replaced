@@ -1,5 +1,5 @@
 from typing import Any, Optional, Iterable, Tuple, Dict
-from builtins import type, bool, int, float, str
+from builtins import type, bool, int, float, str, list
 
 
 # -------------------------------------------------------------------------------
@@ -1065,6 +1065,42 @@ def random() -> float:
     def random_elem(list):
         index = random() * len(list) // 1
         return list[index]
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def len(obj):
+    """
+    Returns the number of items in an object.
+
+    returns the length of the object.
+
+    takes `1` tick to execute.
+
+    example usage:
+    ```
+    my_list = [1, 2, 3]
+    length = len(my_list)  # 3
+    ```
+    """
+    ...
+
+
+# -------------------------------------------------------------------------------
+def range(start, stop=None, step=1):
+    """
+    Returns a sequence of numbers from start (inclusive) to stop (exclusive).
+
+    returns a range object.
+
+    takes `1` tick to execute.
+
+    example usage:
+    ```
+    for i in range(5):
+        print(i)  # 0, 1, 2, 3, 4
     ```
     """
     ...
