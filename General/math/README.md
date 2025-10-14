@@ -73,6 +73,17 @@ decimal_places = 2
 rounded_number = round(number, decimal_places) # 3.14
 ```
 
+### `sign.py`
+This file contains a function that returns the sign of a number.
+```python
+positive_number = 5
+negative_number = -3
+zero_number = 0
+sign_positive = sign(positive_number) # 1
+sign_negative = sign(negative_number) # -1
+sign_zero = sign(zero_number) # 0
+```
+
 ### `sqrt.py`
 This file contains a function that calculates the square root of a number.
 ```python

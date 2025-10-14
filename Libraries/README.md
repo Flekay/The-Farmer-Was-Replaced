@@ -4,7 +4,6 @@ This folder contains the bundled Python modules generated from the "General" fol
 
 - [Builtins](../General/builtins/): Provides built-in utility functions.
 - [Dictionary](../General/dictionary/): Functions for working with dictionaries.
-- [Farming](../General/farming/): Functions related to farming operations.
 - [List](../General/list/): Functions for working with lists.
 - [Logic Gates](../General/logic_gates/): Functions for implementing logic gates.
 - [Math](../General/math/): Functions for mathematical operations.

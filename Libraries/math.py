@@ -6,7 +6,7 @@ nan         = (-1)**0.5 # sqrt(-1) | inf-inf
 tau         = 6.283185307179586
 help        = "https://github.com/Flekay/The-Farmer-Was-Replaced/tree/main/general/math"
 constants   = "[e, pi, inf, ninf, nan, tau]"
-functions   = "[ceil, divmod, floor, isclose, ln, log, pow, root, round, sqrt, truncate]"
+functions   = "[ceil, divmod, floor, isclose, ln, log, pow, root, round, sign, sqrt, truncate]"
 
 # Rounds a number up to the nearest integer.
 #
@@ -150,6 +150,24 @@ def round(number, decimals=0):
 		multiplier = 10 ** decimals
 		return (number * multiplier + 0.5) // 1 / multiplier
 	return (number + 0.5) // 1
+
+# Returns the sign of a number.
+#
+# Arguments:
+#	number (number): the number to get the sign of
+#
+# Returns:
+#	number: 1 if positive, -1 if negative, 0 if zero
+#
+# Example:
+#	sign(5)
+#	# 1
+#	sign(-3)
+#	# -1
+#	sign(0)
+#	# 0
+def sign(number):
+	return (number > 0) - (number < 0)
 
 # The sqrt function calculates the square root of a number.
 #
