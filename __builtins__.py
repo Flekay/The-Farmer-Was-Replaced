@@ -1,5 +1,5 @@
 from typing import Any, Optional, Iterable, Tuple, Dict
-from builtins import type, bool, int, float, str, list
+from builtins import type, bool, int, float, str, list, set, dict
 
 
 # -------------------------------------------------------------------------------
@@ -911,9 +911,9 @@ def get_companion() -> Tuple[Entity, Tuple[int, int]] | None:
     example usage:
     ```
     companion = get_companion()
-    if companion != None:
+    if companion:
         plant_type, (x, y) = companion
-        print(f"Companion: {plant_type} at ({x}, {y})")
+        print("Companion:", plant_type, "at (", x, ",", y, ")")
     ```
     """
     ...
