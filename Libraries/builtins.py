@@ -103,7 +103,7 @@ def help(module):
 def raise(x=None):
 	if x:
 		quick_print(x)
-	[] = [[],[]]
+	return "Oh no"/"Something went wrong!"
 
 _id_counter = 0
 # Generates a unique identifier.

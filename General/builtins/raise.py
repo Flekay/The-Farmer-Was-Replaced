@@ -9,4 +9,4 @@
 def raise(x=None):
 	if x:
 		quick_print(x)
-	[] = [[],[]]
+	return "Oh no"/"Something went wrong!"
