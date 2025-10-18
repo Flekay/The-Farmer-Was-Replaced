@@ -1,0 +1,65 @@
+Current #1 fastest reset unlock order:
+
+```py
+ 0:10.86 ||  Unlocks.Speed 1
+ 0:37.62 ||  Unlocks.Plant 1
+ 0:53.72 ||  Unlocks.Expand 1
+ 1:17.98 ||  Unlocks.Expand 2
+ 1:39.40 ||  Unlocks.Speed 2
+ 3:12.38 ||  Unlocks.Carrots 1
+ 3:50.07 ||  Unlocks.Grass 2
+ 4:45.49 ||  Unlocks.Trees 1
+ 5:01.24 ||  Unlocks.Trees 2
+ 5:05.06 ||  Unlocks.Expand 3
+ 5:46.53 ||  Unlocks.Carrots 2
+ 5:59.84 ||  Unlocks.Speed 3
+ 6:08.76 ||  Unlocks.Watering 1
+ 7:27.88 ||  Unlocks.Carrots 3
+ 7:45.58 ||  Unlocks.Watering 2
+ 8:03.24 ||  Unlocks.Speed 4
+ 8:17.33 ||  Unlocks.Grass 3
+ 8:58.53 ||  Unlocks.Fertilizer 1
+ 8:58.63 ||  Unlocks.Sunflowers 1
+ 9:10.14 ||  Unlocks.Expand 4
+ 9:25.95 ||  Unlocks.Trees 3
+ 9:40.09 ||  Unlocks.Watering 3
+10:16.97 ||  Unlocks.Fertilizer 2
+11:06.88 ||  Unlocks.Pumpkins 1
+12:05.16 ||  Unlocks.Expand 5
+14:10.61 ||  Unlocks.Polyculture 1
+14:26.66 ||  Unlocks.Grass 4
+14:39.28 ||  Unlocks.Speed 5
+14:39.31 ||  Unlocks.Mazes 1
+15:04.48 ||  Unlocks.Megafarm 1
+15:23.16 ||  Unlocks.Trees 4
+15:35.15 ||  Unlocks.Carrots 4
+15:35.19 ||  Unlocks.Watering 4
+16:04.34 ||  Unlocks.Pumpkins 2
+16:04.38 ||  Unlocks.Pumpkins 3
+17:05.80 ||  Unlocks.Expand 6
+18:13.45 ||  Unlocks.Cactus 1
+23:19.92 ||  Unlocks.Mazes 2
+23:19.95 ||  Unlocks.Mazes 3
+24:40.69 ||  Unlocks.Megafarm 2
+24:40.73 ||  Unlocks.Megafarm 3
+24:40.76 ||  Unlocks.Dinosaurs 1
+24:40.79 ||  Unlocks.Dinosaurs 2
+25:44.07 ||  Unlocks.Polyculture 2
+25:44.10 ||  Unlocks.Grass 5
+25:48.05 ||  Unlocks.Trees 5
+26:00.26 ||  Unlocks.Watering 5
+26:00.30 ||  Unlocks.Fertilizer 3
+26:00.33 ||  Unlocks.Fertilizer 4
+26:15.04 ||  Unlocks.Carrots 5
+27:36.92 ||  Unlocks.Pumpkins 4
+27:51.90 ||  Unlocks.Pumpkins 5
+28:24.51 ||  Unlocks.Expand 7
+29:15.60 ||  Unlocks.Megafarm 4
+31:00.77 ||  Unlocks.Cactus 2
+31:00.81 ||  Unlocks.Cactus 3
+31:20.69 ||  Unlocks.Dinosaurs 3
+31:33.94 ||  Unlocks.Dinosaurs 4
+33:46.60 ||  Unlocks.Dinosaurs 5
+38:07.93 ||  Unlocks.Mazes 4
+39:30.30 ||  Unlocks.Leaderboard 1
+```
