@@ -1,158 +1,80 @@
-clear()
-change_hat(Hats.Dinosaur_Hat)
-apple_x, apple_y = measure()
-flipX = True
-flipY = True
-drone_x = 0
-drone_y = 0
-length = 0
+# Phase 1: Drones simple snake rules
+def phase_one():
+	target_x, target_y = measure()
+	snake_body = []
+	snake_length = 0
 
-# Early apples
-while length < 50:
+	# We want to switch to a full hamiltonian at ~half the map size
+	maximum_collection_length = get_world_size()**2/2
+	while snake_length < maximum_collection_length:
+		# Use position-based parity checks instead of flip variables
+		is_x_position_even = get_pos_x() % 2 == 0
+		is_y_position_even = get_pos_y() % 2 == 0
 
-	if flipX: # <- check if X is even or odd
-		if flipY: # <- check if Y is even or odd
-			# South or East
-			if apple_y < drone_y:
-				if move(South):
-					flipY = not flipY
-					drone_y -= 1
+		if is_x_position_even:
+			if is_y_position_even:
+				if target_y < get_pos_y():
+					if not move(South):
+						move(East)
 				else:
-					move(East)
-					flipX = not flipX
-					drone_x += 1
+					if not move(East):
+						move(South)
 			else:
-				if move(East):
-					flipX = not flipX
-					drone_x += 1
+				if target_x < get_pos_x():
+					if not move(West):
+						move(South)
 				else:
-					move(South)
-					flipY = not flipY
-					drone_y -= 1
+					if not move(South):
+						move(West)
 		else:
-			# South or West
-			if apple_x < drone_x:
-				if move(West):
-					flipX = not flipX
-					drone_x -= 1
+			if is_y_position_even:
+				if target_x > get_pos_x():
+					if not move(East):
+						move(North)
 				else:
-					move(South)
-					flipY = not flipY
-					drone_y -= 1
+					if not move(North):
+						move(East)
 			else:
-				if move(South):
-					flipY = not flipY
-					drone_y -= 1
+				if target_y > get_pos_y():
+					if not move(North):
+						move(West)
 				else:
-					move(West)
-					flipX = not flipX
-					drone_x -= 1
-	else:
-		if flipY:
-			# North or East
-			if apple_x > drone_x:
-				if move(East):
-					flipX = not flipX
-					drone_x += 1
-				else:
-					move(North)
-					flipY = not flipY
-					drone_y += 1
-			else:
-				if move(North):
-					flipY = not flipY
-					drone_y += 1
-				else:
-					move(East)
-					flipX = not flipX
-					drone_x += 1
+					if not move(West):
+						move(North)
+
+		# Update snake body and length
+		snake_body.append((get_pos_x(), get_pos_y()))
+		if measure():
+			target_x, target_y = measure()
+			snake_length += 1
 		else:
-			# North or West
-			if apple_y > drone_y:
-				if move(North):
-					flipY = not flipY
-					drone_y += 1
-				else:
-					move(West)
-					flipX = not flipX
-					drone_x -= 1
-			else:
-				if move(West):
-					flipX = not flipX
-					drone_x -= 1
-				else:
-					move(North)
-					flipY = not flipY
-					drone_y += 1
+			# Remove tail segment if no cactus was collected
+			snake_body.pop(0)
+	return snake_body
 
-	m = measure()
-	if m:
-		apple_x, apple_y = m
-		length += 1
+# Phase 2: Expand snake body to full hamiltonian path
+def phase_two(snake_body):
+	return "Oh no"/"You have to implement this phase yourself!"
+
+# Phase 3: Follow hamiltonian path until the entire map is filled
+def phase_three(hamiltonian_path):
+	while True:
+		for direction in hamiltonian_path:
+			if not move(direction):
+				return
 
 
-# generate almighty circle list
-almighty = []
-visited = set((drone_x,drone_y))
-while len(almighty) < 100:
-	if flipX:
-		if flipY:
-			new_x = drone_x + 1
-			if (new_x, drone_y) not in visited and move(East):
-				flipX = not flipX
-				drone_x = new_x
-				almighty.append(East)
-			elif move(South):
-				# move(South)
-				flipY = not flipY
-				drone_y -= 1
-				almighty.append(South)
-		else:
-			new_x = drone_x - 1
-			if (new_x, drone_y) not in visited and move(West):
-				flipX = not flipX
-				drone_x = new_x
-				almighty.append(West)
-			elif move(South):
-				# move(South)
-				flipY = not flipY
-				drone_y -= 1
-				almighty.append(South)
-	else:
-		if flipY:
-			new_x = drone_x + 1
-			if (new_x, drone_y) not in visited and move(East):
-				flipX = not flipX
-				drone_x = new_x
-				almighty.append(East)
-			elif move(North):
-				# move(North)
-				flipY = not flipY
-				drone_y += 1
-				almighty.append(North)
-		else:
-			new_y = drone_y + 1
-			if (drone_x, new_y) not in visited and move(North):
-				flipY = not flipY
-				drone_y = new_y
-				almighty.append(North)
-			elif move(West):
-				# move(West)
-				flipX = not flipX
-				drone_x -= 1
-				almighty.append(West)
-	pos = (get_pos_x(), get_pos_y())
-	if pos in visited:
-		almighty.pop()
-	else:
-		visited.add(pos)
 
-# loop through almighty circle list
-contin = True
-while contin:
-	for direction in almighty:
-		if not move(direction):
-			contin = False
-			break
+if __name__ == "__main__":
 
-clear()
+	# Initialize dinosaur hat
+	clear()
+	change_hat(Hats.Dinosaur_Hat)
+
+	# Execute all phases
+	snake_body = phase_one()
+	hamiltonian_path = phase_two(snake_body)
+	phase_three(hamiltonian_path)
+
+	# Harvest your juicy dinosaur apples!
+	clear()
