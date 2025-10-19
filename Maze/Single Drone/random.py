@@ -5,6 +5,6 @@ clear()
 while True:
 	plant(Entities.Bush)
 	use_item(Items.Weird_Substance, AMOUNT)
-	while not measure():
+	while get_entity_type() != Entities.Treasure:
 		move(DIRECTION[random()*4])
 	harvest()

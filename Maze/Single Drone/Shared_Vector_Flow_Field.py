@@ -17,7 +17,7 @@ def vehn(iterations=300):
 
 	# Helper recursive function to find walls and treasure
 	def scan_maze(back=None):
-		if measure():
+		if get_entity_type() == Entities.Treasure:
 			TREASURE_POS.append((get_pos_x(), get_pos_y()))
 		WALLS[(get_pos_x(), get_pos_y())] = set()
 		for dir in [North, East, South, West]:
@@ -81,7 +81,7 @@ def vehn(iterations=300):
 	do_bfs(BASE[0], BASE[1])
 
 	# Solve the maze
-	if not measure():
+	if get_entity_type() != Entities.Treasure:
 		x, y = TREASURE_POS[0]
 		gpath = get_path_to_base(x, y)
 		for step in gpath[::-1]:

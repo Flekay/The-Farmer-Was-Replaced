@@ -498,7 +498,7 @@ plant(Entities.Bush)
 use_item(Items.Weird_Substance, 100)
 
 while not fully_mapped:
-	if measure():
+	if get_entity_type() == Entities.Treasure:
 		tc0 = pc0
 		tc1 = pc1
 		tc2 = pc2
@@ -981,7 +981,7 @@ while not fully_mapped:
 	And10(t_0_8_visited, t_1_8_visited, t_2_8_visited, t_3_8_visited, t_4_8_visited, t_5_8_visited, t_6_8_visited, t_7_8_visited, t_8_8_visited, t_9_8_visited),
 	And10(t_0_9_visited, t_1_9_visited, t_2_9_visited, t_3_9_visited, t_4_9_visited, t_5_9_visited, t_6_9_visited, t_7_9_visited, t_8_9_visited, t_9_9_visited))(True, False)
 
-if measure():
+if get_entity_type() == Entities.Treasure:
 	tc0 = pc0
 	tc1 = pc1
 	tc2 = pc2
@@ -1715,7 +1715,7 @@ for maze_iteration in range(299):
 
 	on_chest = False
 
-	if measure():
+	if get_entity_type() == Entities.Treasure:
 		tx, ty = measure()
 
 		tc0, tc1, tc2, tc3, tc4, tc5, tc6, tc7, tc8, tc9 = decode_t[tx]

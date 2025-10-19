@@ -12,7 +12,7 @@ def explore_north():
 	# Attempt to move north
 	if move(North):
 		# If the move is successful, check for treasure
-		if measure():
+		if get_entity_type() == Entities.Treasure:
 			# If treasure is found, save its position
 			treasure_position = get_pos_x(), get_pos_y()
 
@@ -27,7 +27,7 @@ def explore_north():
 def explore_east():
 	global treasure_position
 	if move(East):
-		if measure():
+		if get_entity_type() == Entities.Treasure:
 			treasure_position = get_pos_x(), get_pos_y()
 		explore_north()
 		explore_east()
@@ -37,7 +37,7 @@ def explore_east():
 def explore_south():
 	global treasure_position
 	if move(South):
-		if measure():
+		if get_entity_type() == Entities.Treasure:
 			treasure_position = get_pos_x(), get_pos_y()
 		explore_north()
 		explore_east()
@@ -47,7 +47,7 @@ def explore_south():
 def explore_west():
 	global treasure_position
 	if move(West):
-		if measure():
+		if get_entity_type() == Entities.Treasure:
 			treasure_position = get_pos_x(), get_pos_y()
 		explore_north()
 		explore_east()

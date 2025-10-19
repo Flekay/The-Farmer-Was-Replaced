@@ -6,6 +6,6 @@ clear()
 while True:
 	plant(Entities.Bush)
 	use_item(Items.Weird_Substance, AMOUNT)
-	while not measure():
+	while get_entity_type() != Entities.Treasure:
 		dir = (dir + 2 * move(DIRECTION[dir]) - 1) % 4
 	harvest()
