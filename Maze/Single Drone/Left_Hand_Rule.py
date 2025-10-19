@@ -9,7 +9,7 @@ plant(Entities.Bush)
 use_item(Items.Weird_Substance, AMOUNT)
 
 # Follow the left-hand rule until treasure is found
-while not measure():
+while get_entity_type() != Entities.Treasure:
 	if move(dir):
 		# If the move was successful turn left
 		dir = RIGHT[dir]
