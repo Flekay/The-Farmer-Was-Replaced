@@ -11,7 +11,7 @@
 - `*=`: 1 tick
 - `/=`: 1 tick
 - `%=`: 1 tick
-- `**=`: 1 tick
+- `**=`: Not implemented
 
 ### Enum access
 - `.`: 0 ticks
@@ -28,10 +28,12 @@
 - `or`: 1 tick
 - `not`: 0 ticks
 
+**Note on Recursive Comparisons:** When comparing complex types (lists, tuples), comparisons are element-by-element. The base cost is 1 tick, but comparing collections adds overhead proportional to the elements compared. See tests in `General/tests/test_builtin_functions.py` for examples.
+
 
 ### Arithmetic operators
 - `+`
-	- On lists, strings, and tuples: `len(list1) + len(list2) + 1` ticks
+	- On lists, strings, and tuples: `len(list1) + len(list2)` ticks
 	- On numbers: 1 tick
 
 - `-`: 1 tick
@@ -44,32 +46,58 @@
 - `in`
 	- On lists & tuples
 		- Item exists: `indexof(item)` + 1 ticks
-		- Item does not exist: `len(list)` + 1 ticks
-
-	- On set: 2 ticks
-	- On dict: 2 ticks
+		- Item does not exist: `len(list)` ticks
+	- On strings: `len(string)` ticks (regardless of whether char exists or position)
+	- On set: 1 tick
+	- On dict: 1 tick
 
 ### Methods
 - `.add()`: 1 tick
 - `.append()`: 1 tick
-- `.insert()`: `len(list) - insertion_index + 1` ticks
+- `.insert()`: `len(list) - insertion_index + 2` ticks
 - `.remove()`
-	- On list: `indexof(item)` + 1 ticks (this is probably a bug, it should be `len(list) - indexof(item)` ticks to account for shifting)
+	- On list: `len(list)` ticks
 	- On set: 1 tick
-- `.ptick()`
-	- On list: `len(list) - idx` + 1 ticks (note that idx defaults to `len(list)`)
+- `.pop()`
+	- On list: `max(len(list) - idx, 1)` ticks
 	- On dict: 1 tick
 
 - Indexing with a value: 1 tick
-- Indexing with a slice: number of items in slice + 1 ticks
+- Indexing with a slice: `max(number of items in slice, 1)` ticks
 
 ## Literals
-- Literal value: 0 ticks
-
-- Dict: Sum of all key ticks + sum of all value ticks + 1
-- List: `max(len(list), 1)` ticks
-- Set: Sum of all value ticks + 1
-- Tuple: Sum of all value ticks + 1
+- Number: 0 ticks
+- String: 0 ticks
+- Boolean: 0 ticks
+- None: 0 ticks
+- Dict
+	- `{}`: 1 tick
+	- `{k1: v1, k2: v2}`: `len(keys) + 1` ticks
+	- `dict()`: 1 tick
+	- `dict(args)`: `2 * len(args) + 1` ticks
+	- `d[key]` (indexing): 1 tick
+	- `d[key] = value` (assignment): 0 ticks
+	- `.pop(key)`: 1 tick
+- List
+	- `[]`: 1 tick
+	- `[1, 2, 3]`: `max(len(list), 1)` ticks
+	- `list()`: 1 tick
+	- `list(args)`: `len(args) + 1` ticks
+	- `lst[idx]` (indexing): 1 tick
+	- `lst[idx] = value` (assignment): 0 ticks
+	- `.append(item)`: 1 tick
+	- `.insert(idx, item)`: `len(list) - idx + 2` ticks
+	- `.remove(item)`: `len(list)` ticks
+	- `.pop(idx)`: `max(len(list) - idx, 1)` ticks
+- Set
+	- `{1, 2, 3}`: `len(set)` ticks
+	- `set()`: 1 tick
+	- `set(args)`: `len(args) + 1` ticks
+	- `.add(item)`: 1 tick
+	- `.remove(item)`: 1 tick
+- Tuple
+	- `()`: 1 tick
+	- `(1, 2, 3)`: `sum(value_costs) + 1` ticks
 
 ## Keywords
 - `break`: 0 ticks
@@ -83,7 +111,7 @@
 
 ## Control Flow
 - `if`: 1 tick
-- `elif`: 0 ticks
+- `elif`: 1 tick
 - `else`: 0 ticks
 - `for`:
 	- Initialization: 1 tick
@@ -96,8 +124,10 @@
 ### Arithmetic Functions
 - `abs()`: 1 tick
 - `random()`: 1 tick
-- `min()`: # of comparisons (this is recursive), minimum 1 tick
-- `max()`: # of comparisons (this is recursive), minimum 1 tick
+- `min()`: `max(len(items), 1)` ticks (recursive comparisons - see note below)
+- `max()`: `max(len(items), 1)` ticks (recursive comparisons - see note below)
+
+**Note on Recursive Comparisons:** When comparing complex types (lists, tuples), the actual cost includes recursive element-by-element comparison. Examples: `min([1,3], [2,4])` = 6 ticks, `min([1,2], [3,4], [5,6])` = 9 ticks. The cost scales with both the number of arguments and the elements being compared.
 
 ### Farm Functions
 - `can_harvest()`: 1 tick
@@ -153,9 +183,9 @@
 - `len()`: 1 tick
 - `list()`
 	- No args: 1 tick
-	- Args: `len(args)` ticks
-- `min()`: # of comparisons (this is recursive)
-- `max()`: # of comparisons (this is recursive)
+	- Args: `len(args) + 1` ticks
+- `min()`: `max(len(items), 1)` ticks (recursive comparisons - see note in Arithmetic Functions)
+- `max()`: `max(len(items), 1)` ticks (recursive comparisons - see note in Arithmetic Functions)
 - `range()`: 1 tick
 - `set()`
 	- no args: 1 tick

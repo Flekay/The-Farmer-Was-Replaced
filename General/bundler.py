@@ -4,6 +4,7 @@ import os
 IGNORED_FOLDERS = {
     'sorting',
     'datatypes',
+    'tests',
 }
 
 def generate_libraries_readme(libraries_dir, bundled_modules):
