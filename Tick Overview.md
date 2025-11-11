@@ -109,6 +109,19 @@
 - `from`: 0 ticks
 - `global`: 0 ticks
 
+## Functions
+- `def function_name():` (definition): 1 tick
+- `function_name()` (direct call): 0 ticks
+- `variable()` (indirect call through variable): 1 tick
+- `return`: 0 ticks
+- `pass`: 1 tick
+- `lambda`: not implemented
+- `*args`: not implemented
+- `**kwargs`: not implemented
+- `yield`: not implemented
+- `async`: not implemented
+- `await`: not implemented
+
 ## Control Flow
 - `if`: 1 tick
 - `elif`: 1 tick
