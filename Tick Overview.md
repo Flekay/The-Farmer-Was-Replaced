@@ -62,8 +62,9 @@
 	- On list: `max(len(list) - idx, 1)` ticks
 	- On dict: 1 tick
 
-- Indexing with a value: 1 tick
+- Indexing with a value: 1 tick (varies for dict keys - see Dict section)
 - Indexing with a slice: `max(number of items in slice, 1)` ticks
+- Nested indexing: Costs add up (e.g., `d[key1][key2]` = cost of first indexing + cost of second indexing)
 
 ## Literals
 - Number: 0 ticks
@@ -75,16 +76,22 @@
 	- `{k1: v1, k2: v2}`: `len(keys) + 1` ticks
 	- `dict()`: 1 tick
 	- `dict(args)`: `2 * len(args) + 1` ticks
-	- `d[key]` (indexing): 1 tick
-	- `d[key] = value` (assignment): 0 ticks
+	- `d[key]` (indexing): Cost depends on key type (see below)
+	- `d[key] = value` (assignment): Same cost as indexing (the indexing operation determines the cost; assignment itself is 0 ticks)
 	- `.pop(key)`: 1 tick
+	- **Key Type Costs** (for both read and assignment):
+		- Integer key: 1 tick
+		- String key: `max(1, len(key) // 8)` ticks
+			- Examples: 1-10 chars = 1 tick, 20 chars = 2 ticks, 50 chars = 6 ticks
+		- Tuple key: `len(tuple)` ticks
+			- Examples: (0,) = 1 tick, (0,1) = 2 ticks, (0,1,2,3,4) = 5 ticks, (0,...,9) = 10 ticks
 - List
 	- `[]`: 1 tick
 	- `[1, 2, 3]`: `max(len(list), 1)` ticks
 	- `list()`: 1 tick
 	- `list(args)`: `len(args) + 1` ticks
 	- `lst[idx]` (indexing): 1 tick
-	- `lst[idx] = value` (assignment): 0 ticks
+	- `lst[idx] = value` (assignment): 1 tick (1 for indexing + 0 for assignment)
 	- `.append(item)`: 1 tick
 	- `.insert(idx, item)`: `len(list) - idx + 2` ticks
 	- `.remove(item)`: `len(list)` ticks
@@ -109,12 +116,34 @@
 - `from`: 0 ticks
 - `global`: 0 ticks
 
+## Modules
+- `import module`: 0 ticks (+ module execution cost on first import)
+- `from module import *`: Module execution cost first time, then **0 ticks** on subsequent imports
+- `from module import name`: 0 ticks
+- `module.attribute` (read): 0 ticks
+- `module.attribute = value` (write): 0 ticks
+- `module.native_function()` (native function): 0 ticks
+- `module.stored_function()` (stored function): 1 tick
+- `m = module` (assign to variable): 0 ticks
+- `m.attribute` (read through variable): 0 ticks
+- `m.attribute = value` (write through variable): 1 tick
+- `m.function()` (any function through variable): 1 tick
+- **Note**: Dynamic module access (through variable) adds 1 tick overhead for writes and function calls
+- **Note**: Stored functions (assigned as attributes) cost 1 tick even with direct access
+- **Note**: Overheads do NOT stack - max 1 tick per operation
+- **Zero-ticking**: `from module import *` is free after first import - enables building large frameworks for free, disabling parts by overriding with system functions (0 tick assignment + 0 tick calls)
+
 ## Functions
 - `def function_name():` (definition): 1 tick
 - `function_name()` (direct call): 0 ticks
-- `variable()` (indirect call through variable): 1 tick
+- `variable()` (indirect call): 0 ticks (system functions), 1 tick (user functions)
 - `return`: 0 ticks
 - `pass`: 1 tick
+- **User function call overhead**: 1 tick when called indirectly (through variable or module attribute)
+- **System function call overhead**: 0 ticks always (even when called indirectly)
+- **Stored function overhead**: 1 tick (functions assigned as module attributes)
+- **Dynamic module overhead**: 1 tick (any function call through module variable)
+- **Note**: Overheads do NOT stack - max 1 tick per call
 - `lambda`: not implemented
 - `*args`: not implemented
 - `**kwargs`: not implemented
@@ -203,9 +232,6 @@
 - `set()`
 	- no args: 1 tick
 	- args: `len(args) + 1` ticks
-
-## Data Types
-### Dictionaries
 
 ## Exceptions:
 - `print()`: 1 second, regardless of speed
