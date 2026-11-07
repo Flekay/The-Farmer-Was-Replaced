@@ -81,6 +81,13 @@ names = []
 files = []
 timings = []
 
+# movement/wrapping_shortest_path/move_to.py
+boot_time = get_time()
+import move_to
+timings.append(get_time() - boot_time)
+files.append(move_to.move_to_pos)
+names.append("move_to.py (move_to_pos)")
+
 # movement/wrapping_shortest_path/navi_pos_to_pos_func.py
 boot_time = get_time()
 import navi_pos_to_pos_func

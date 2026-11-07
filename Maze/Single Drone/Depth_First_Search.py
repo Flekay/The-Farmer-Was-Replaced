@@ -7,7 +7,7 @@
 DIRECTION = (North, East, South, West)
 OPPOSITE = (South, West, North, East)
 WORLD_SIZE = get_world_size()
-AMOUNT = WORLD_SIZE * num_unlocked(Unlocks.Mazes)
+AMOUNT = WORLD_SIZE * (2 ** (num_unlocked(Unlocks.Mazes) - 1))
 
 clear()
 
